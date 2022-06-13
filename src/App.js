@@ -1,9 +1,21 @@
-import './App.css';
+import styles from './App.module.css';
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import AppsContainer from './Components/AppsContainer';
+import NavBar from './Components/Shared/NavBar';
+import Footer from './Components/Shared/Footer';
 
 function App() {
   return (
     <>
-    <p>Hola mundo en dev</p>
+      <BrowserRouter>
+        <div className={styles.container}>
+          <NavBar />
+          <Routes>
+            <Route path='/' element={<AppsContainer />} />
+          </Routes>
+          <Footer />
+        </div>
+      </BrowserRouter>
     </>
   );
 }
