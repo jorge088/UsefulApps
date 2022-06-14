@@ -43,6 +43,9 @@
     margin-top: 18px;
     border-radius: 50%;
     padding: .45em .55em;
+    background: none;
+    color: #fff;
+    border: none;
 }
 .currencyCalculator__exchange:hover{
     border: 1px solid #fff;
@@ -60,6 +63,7 @@
 }
 .currencyConverted__values{
     width: 140px;
+    height: auto;
     text-align: center;
     font-size: 1em;
     font-weight: 400;

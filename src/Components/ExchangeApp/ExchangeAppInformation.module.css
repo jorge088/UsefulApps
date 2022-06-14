@@ -5,14 +5,13 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: .2em;
     font-family: 'Lexend', sans-serif;
     color: #fff;
 }
 .informationTitle{
-    font-size: 1.8em;
-    letter-spacing: 2px;
-    font-weight: 600;
+    font-size: 2em;
+    letter-spacing: 1px;
+    font-weight: 700;
 }
 .informationDescription{
     font-size: 1.3em;

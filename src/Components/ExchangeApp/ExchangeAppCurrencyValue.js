@@ -1,11 +1,12 @@
 import styles from './ExchangeAppCurrencyValue.module.css';
 
-const ExchangeAppCurrencyValue = () => {
+const ExchangeAppCurrencyValue = ({ data } ) => {
+  let fecha = data.fecha.slice(0,10);
   return (
     <>
       <div className={styles.currencyValueContainer}>
-        <p className={styles.currencyValueDate}>- 14/06/2022 -</p>
-        <p className={styles.currencyValueData}>1 USD = 202,00 ARS</p>
+        <p className={styles.currencyValueDate}>- {fecha} -</p>
+        <p className={styles.currencyValueData}>1 USD = {data.compra} ARS</p>
       </div>
     </>
   )

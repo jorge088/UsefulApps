@@ -22,7 +22,7 @@ const Home = () => {
           <h1>Bienvenido</h1>
         </main>
         <div className={styles.homeCardsContainer}>
-          {apps.map(item => <HomeCard item={item}></HomeCard>)
+          {apps.map(item => <HomeCard item={item} key={item.name}></HomeCard>)
 
           }
         </div>

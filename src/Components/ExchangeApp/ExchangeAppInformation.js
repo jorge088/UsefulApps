@@ -5,7 +5,7 @@ const ExchangeAppInformation = () => {
         <>
             <div className={styles.information}>
                 <h2 className={styles.informationTitle}>CONVERSOR</h2>
-                <p className={styles.informationDescription}>Dolar - Pesos AR</p>
+                {/* <p className={styles.informationDescription}>Dolar - Pesos AR</p> */}
             </div>
         </>
     )
