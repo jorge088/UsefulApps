@@ -1,6 +1,12 @@
+import styles from './ExchangeApp.module.css'
+
 const ExchangeApp = () => {
   return (
-    <div>ExchangeApp</div>
+    <>
+      <div className={styles.exchangeApp}>
+        <p>Exchange App</p>
+      </div>
+    </>
   )
 }
 export default ExchangeApp

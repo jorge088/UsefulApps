@@ -10,10 +10,10 @@ const NavBar = () => {
             <Link to={'/'} className={styles.nav__logo} >Useful Apps</Link>
           </div>
           <ul className={styles.nav__categorys}>
-            <li><Link to={'/'} className={styles.nav__categorys__link}>HOME</Link></li>
-            <li><Link to={'/exchange'} className={styles.nav__categorys__link}>EXCHANGE</Link></li>
-            <li><Link to={'/weather'} className={styles.nav__categorys__link}>CLIMA</Link></li>
-            <li><Link to={'/'} className={styles.nav__categorys__link}>SUGERENCIAS</Link></li>
+            <li><Link to={'/'} className={styles.nav__categorys__link}>Home</Link></li>
+            <li><Link to={'/exchange'} className={styles.nav__categorys__link}>Exchange</Link></li>
+            <li><Link to={'/weather'} className={styles.nav__categorys__link}>Clima</Link></li>
+            <li><Link to={'/'} className={styles.nav__categorys__link}>Sugerencias</Link></li>
           </ul>
         </nav>
       </header>

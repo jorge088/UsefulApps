@@ -1,6 +1,11 @@
+import styles from './WeatherApp.module.css'
 const WeatherApp = () => {
   return (
-    <div>WeatherAppaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</div>
+    <>
+      <div className={styles.weatherApp}>
+        <p>Weather app</p>
+      </div>
+    </>
   )
 }
 export default WeatherApp

@@ -1,0 +1,5 @@
+.exchangeApp{
+    margin-top: 95px;
+    min-height: calc(100vh - 185px);
+    width: 100vw;
+}
