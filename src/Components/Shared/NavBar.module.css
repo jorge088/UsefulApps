@@ -6,6 +6,8 @@
     position: fixed;
     top: 0;
     color: #fff;
+    font-family: 'Lexend', sans-serif;
+
 }
 .nav{
     height: 100%;
@@ -17,7 +19,6 @@
 .nav__logo  {
     font-size: 1.8em;
     letter-spacing: 1px;
-    font-family: 'Lexend', sans-serif;
 }
 .nav__categorys{
     display: flex;
