@@ -8,7 +8,7 @@ function App() {
   return (
     <>
       <BrowserRouter>
-        <div className={styles.container}>
+        <div className={styles.app}>
           <NavBar />
           <Routes>
             <Route path='/' element={<AppsContainer />} />
