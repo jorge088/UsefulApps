@@ -19,6 +19,8 @@
 .nav__logo  {
     font-size: 1.8em;
     letter-spacing: 1px;
+    color: #fff;
+    text-decoration: none;
 }
 .nav__categorys{
     display: flex;
@@ -30,7 +32,8 @@
     letter-spacing: 1px;
     font-weight: 600;
     padding: .2em .6em;
-    
+    color: #fff;
+    text-decoration: none;
     border-radius: 8px;
     cursor: pointer;
     
