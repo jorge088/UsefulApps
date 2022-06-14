@@ -1,0 +1,22 @@
+.currencyValueContainer{
+    font-size: 1rem;
+    width: 300px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: .5em;
+    color: #fff;
+    font-family: 'Lexend', sans-serif;
+}
+.currencyValueDate{
+    font-size: 1.1em;
+    font-weight: 400;
+}
+.currencyValueData{
+    font-size: 1.1em;
+    font-weight: 600;
+    letter-spacing: 1px;
+    padding: .3em .6em;
+    border:dashed 1px #fff;
+}
