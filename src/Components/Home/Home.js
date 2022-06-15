@@ -18,9 +18,9 @@ const Home = () => {
   return (
     <>
       <div className={styles.homeContainer}>
-        <main>
+        {/* <main>
           <h1>Bienvenido</h1>
-        </main>
+        </main> */}
         <div className={styles.homeCardsContainer}>
           {apps.map(item => <HomeCard item={item} key={item.name}></HomeCard>)
 
