@@ -54,4 +54,17 @@
     position: relative;
     font-weight: 600;
     font-size: 1.5em;
+    text-align: center;
+}
+@media only screen and (max-width:575px) {
+    .card{
+        width: 85%;
+        height: 230px;
+    }
+}
+@media only screen and (min-width:576px) and (max-width:768px) {
+    .card{
+        width: 480px;
+        height: 250px;
+    }
 }

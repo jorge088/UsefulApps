@@ -1,4 +1,4 @@
-.homeContainer{
+.homeContainer {
     font-size: 1rem;
     margin-top: 95px;
     min-height: calc(100vh - 185px);
@@ -6,12 +6,41 @@
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-    align-items:center;
+    align-items: center;
 }
-.homeCardsContainer{
+
+.homeCardsContainer {
     display: flex;
     width: 100%;
     justify-content: center;
-    gap: 1em;
+    gap: 1.5em;
+}
 
+@media only screen and (max-width:575px) {
+    .homeCardsContainer {
+        font-size: .8rem;
+        flex-direction: column;
+        align-items: center;
+        padding: 3em 0;
+        gap: 2em;
+    }
+}
+
+@media only screen and (min-width:576px) and (max-width:768px) {
+    .homeCardsContainer {
+        font-size: .9rem;
+        flex-direction: column;
+        align-items: center;
+        padding: 3em 0;
+        gap: 2em;
+    }
+
+}
+
+@media only screen and (min-width:768px) and (max-width:992px) {
+    .homeCardsContainer {
+        flex-direction: column;
+        align-items: center;
+        padding: 3em 0;
+    }
 }
