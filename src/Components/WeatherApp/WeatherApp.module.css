@@ -1,4 +1,5 @@
 .weatherAppContainer {
+    font-size: 1rem;
     margin-top: 95px;
     padding: 3em 0;
     min-height: calc(100vh - 185px);
@@ -34,4 +35,25 @@
 }
 .appLowTemp{
     background: linear-gradient(120deg, #3dc9f2 8%, #00a7dc 30%,#00a7dc 70%, #0199d2 90%);
+}
+
+@media only screen and (max-width:575px) {
+    .weatherAppContainer{
+        font-size: .9rem;
+        padding: 1.5em 0;
+
+    }
+    .weatherApp{
+        width: 330px
+    }
+}
+@media only screen and (min-width:576px) and (max-width:768px) {
+    .weatherAppContainer{
+        padding: 1.5em 0;
+    }
+}
+@media only screen and (min-width:768px) and (max-width:992px) {
+    .weatherAppContainer{
+        padding: 1.5em 0;
+    }
 }
