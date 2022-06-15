@@ -1,5 +1,4 @@
 .currencyCalculator{
-    font-size: 1rem;
     color: #fff;
     width: 90%;
     height: 90px;
@@ -19,7 +18,7 @@
     font-weight: 500;
 }
 .currencyCalculator__coin__input{
-    width: 140px;
+    width: 8.75em;
     height: 35px;
     font-size: 1.1em;
     text-align: center;
@@ -53,7 +52,6 @@
 }
 
 .currencyConverted{
-    font-size: 1rem;
     margin-top: -16px;
     width: 90%;
     color: #fff;

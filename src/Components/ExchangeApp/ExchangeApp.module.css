@@ -1,4 +1,5 @@
-.exchangeAppContainer{
+.exchangeAppContainer {
+    font-size: 1rem;
     margin-top: 95px;
     padding: 3em 0;
     min-height: calc(100vh - 185px);
@@ -7,15 +8,41 @@
     justify-content: center;
     align-items: center;
 }
-.exchangeApp{
+
+.exchangeApp {
     width: 400px;
     height: 350px;
     background-color: var(--secundary);
     border-radius: 12px;
-    box-shadow: 0 6px 12px 8px rgba(20, 123, 212,.4);
+    box-shadow: 0 6px 12px 8px rgba(20, 123, 212, .4);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: 1em;
+}
+
+@media only screen and (max-width:575px) {
+    .exchangeAppContainer {
+        font-size: .9rem;
+        padding: 1.5em 0;
+    }
+
+    .exchangeApp {
+        width: 94%;
+    }
+}
+
+@media only screen and (min-width:576px) and (max-width:768px) {
+    .exchangeAppContainer {
+        font-size: .9rem;
+        padding: 1.5em 0;
+    }
+}
+
+@media only screen and (min-width:768px) and (max-width:992px) {
+    .exchangeAppContainer {
+        font-size: .9rem;
+        padding: 1.5em 0;
+    }
 }
