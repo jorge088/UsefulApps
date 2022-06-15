@@ -1,4 +1,4 @@
-.weatherAppContainer{
+.weatherAppContainer {
     margin-top: 95px;
     padding: 3em 0;
     min-height: calc(100vh - 185px);
@@ -6,18 +6,32 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-blend-mode: soft-light ;
-    background-image: radial-gradient(circle farthest-side, #ffd06b 30%,#ffbd30 100%);
 }
-.weatherApp{
+
+.containerHighTemp {
+    background-blend-mode: soft-light;
+    background-image: radial-gradient(circle farthest-side, #ffd06b 30%, #ffbd30 100%);
+}
+
+.containerLowTemp {
+    background-blend-mode: soft-light;
+    background-image: radial-gradient(circle farthest-side, #81c9fa 30%,#2196f3 100%);
+}
+
+.weatherApp {
     width: 360px;
     height: 460px;
     position: relative;
     border-radius: 12px;
     box-shadow: 0 6px 12px 8px rgba(143, 143, 143, 0.4);
-    background: linear-gradient(120deg, #ffde08 8%,#fcc632 30%, #ffae41 100%);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
+}
+.appHighTemp{
+    background: linear-gradient(120deg, #ffde08 8%, #fcc632 30%, #ffae41 100%);
+}
+.appLowTemp{
+    background: linear-gradient(120deg, #3dc9f2 8%, #00a7dc 30%,#00a7dc 70%, #0199d2 90%);
 }
