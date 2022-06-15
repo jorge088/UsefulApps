@@ -1,0 +1,44 @@
+.topicContainer {
+    font-size: 1rem;
+    margin-left: 2em;
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 1em;
+    color: rgb(66, 66, 66);
+    font-family: 'Lexend', sans-serif;
+
+
+}
+
+.topicIconContainer {
+    position: relative;
+    min-width: 30px;
+    cursor: pointer;
+}
+
+.topicIconContainer:hover .topicIconDescription {
+    display: block;
+}
+
+.topicIcon {
+    font-size: 1.3em;
+}
+
+.topicIconDescription {
+    display: none;
+    position: absolute;
+    top: -18px;
+    left: 24px;
+    width: max-content;
+    padding: 0px 4px;
+    font-size: 1em;
+    border-radius: 6px;
+    color: #f0f0f0;
+    background: rgb(34, 34, 34, 0.5);
+}
+
+.topicValue {
+    font-size: .9em;
+    font-weight: 400;
+}

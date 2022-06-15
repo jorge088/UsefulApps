@@ -1,0 +1,40 @@
+.mainContainer{
+    font-size: 1rem;
+    width: 85%;
+    position: relative;
+    color: #fff;
+    font-family: 'Lexend', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.cityName{
+    font-size: 1.35em;
+    font-weight: 500;
+    z-index: 10;
+}
+.tempInfoContainer{
+    position: relative;
+    padding-left: .6em;
+    margin-top: -.1em;
+    z-index: 10;
+}
+.tempInfoContainer__value{
+    font-size: 7em;
+    font-weight: 400;
+    
+}
+.tempInfoContainer__degree{
+    position: absolute;
+    top: 5px;
+    right: -46px;
+    font-size: 2.8em;
+    font-weight: 400;
+}
+.infoImg{
+    position: absolute;
+    bottom: -52px;
+    height: 260px;
+    right: -28px;
+    z-index: 1;
+}

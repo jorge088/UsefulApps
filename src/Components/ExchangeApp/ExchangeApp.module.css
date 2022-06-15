@@ -1,5 +1,6 @@
 .exchangeAppContainer{
     margin-top: 95px;
+    padding: 3em 0;
     min-height: calc(100vh - 185px);
     width: 100vw;
     display: flex;
