@@ -1,18 +1,22 @@
 import styles from './Home.module.css';
 import HomeCard from './HomeCard';
+import weatherImg from './../../Assets/weatherLogo.png';
+import exchangeImg from './../../Assets/exchangeLogo.png';
+
+
 const Home = () => {
   const apps = [
     {
       name: 'Weather',
       route: 'weather',
       description: 'Mira como está el clima en tu ciudad',
-      img: 'https://i.ibb.co/DthMn4H/weather-App.png'
+      img: weatherImg
     },
     {
       name: 'Exchange',
       route: 'exchange',
       description: 'Convertí USD a pesos AR',
-      img: 'https://i.ibb.co/XC6nNpW/exchange-App.png'
+      img: exchangeImg
     }
   ]
   return (
