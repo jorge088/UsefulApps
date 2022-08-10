@@ -8,6 +8,10 @@ const ExchangeApp = () => {
   
   return (
     <>
+
+      {/* { !data &&
+        <div className={styles.exchangeAppContainer} ></div>
+      } */}
       {data &&
         <div className={styles.exchangeAppContainer}>
           <div className={styles.exchangeApp}>
