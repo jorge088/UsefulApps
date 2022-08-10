@@ -2,7 +2,6 @@ import styles from './WeatherApp.module.css'
 import WeatherAppInformation from './WeatherAppInformation'
 import WeatherAppMain from './WeatherAppMain'
 import WeatherAppSearch from './WeatherAppSearch'
-
 import { useWeatherAppContext } from '../Context/WeatherAppContext'
 
 const WeatherApp = () => {
@@ -15,6 +14,7 @@ const WeatherApp = () => {
   
   return (
     <>
+
       <div className={`${styles.weatherAppContainer} ${temp < 16 ? styles.containerLowTemp : styles.containerHighTemp}`} >
         <div className={`${styles.weatherApp} ${temp < 16 ? styles.appLowTemp : styles.appHighTemp}`}>
           <WeatherAppSearch />

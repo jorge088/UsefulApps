@@ -11,21 +11,27 @@ import WeatherAppContextProvider from './Components/Context/WeatherAppContext';
 function App() {
   return (
     <>
-      <ExchangeContextProvider>
-        <WeatherAppContextProvider>
-          <BrowserRouter>
-            <div className={styles.app}>
-              <NavBar />
-              <Routes>
-                <Route path='/' element={<Home />} />
-                <Route path='/weather' element={<WeatherApp />} />
-                <Route path='/exchange' element={<ExchangeApp />} />
-              </Routes>
-              <Footer />
-            </div>
-          </BrowserRouter>
-        </WeatherAppContextProvider>
-      </ExchangeContextProvider>
+      <BrowserRouter>
+
+        <div className={styles.app}>
+          <NavBar />
+          <Routes>
+            <Route path='/' element={<Home />} />
+            <Route path='/weather' element={
+              <WeatherAppContextProvider>
+                <WeatherApp />
+              </WeatherAppContextProvider>
+            } />
+            <Route path='/exchange' element={
+              <ExchangeContextProvider>
+                <ExchangeApp />
+              </ExchangeContextProvider>
+            } />
+          </Routes>
+          <Footer />
+        </div>
+
+      </BrowserRouter>
     </>
   );
 }
