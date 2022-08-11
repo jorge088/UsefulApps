@@ -6,6 +6,13 @@
     justify-content: center;
     align-items: center;
     gap: 1em;
+    font-family: 'Lexend', sans-serif;
+
+}
+.title{
+    font-size: 2.2em;
+    letter-spacing: 2px;
+    color: var(--detail);
 }
 .formContact{
     width: 600px;
@@ -20,10 +27,10 @@
     border: none;
     padding-left: 20px;
     font-size: 1em;
+    font-family: 'Lexend', sans-serif;
     background: var(--third);
     color: #fff;
     border-radius: 4px;
-
 }
 .formContact__input::placeholder{
     font-size: 16px;
@@ -38,6 +45,7 @@
     padding:8px 20px;
     height: 140px;
     font-size: 16px;
+    font-family: 'Lexend', sans-serif;
     border: none;
     background: var(--third);
     color: #fff;

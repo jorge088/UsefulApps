@@ -21,17 +21,23 @@ const Contact = () => {
 
         if (name == '' || email == '' || message == '') {
             alert('Hay campos incompletos');
+
             return;
         }
-        
+
         if (validateEmail(email)) {
             emailjs.sendForm('service_5wdohco', 'template_79kck89', form.current, 'jbaqcmYR0pfEweOpg')
                 .then((result) => {
+                    target.name.value = '';
+                    target.email.value = '';
+                    target.message.value = '';
+                    target.name.focus();
                     alert('Enviado correctamente');
+
                 }, (error) => {
                     alert('Hubo un error al enviar');
                 });
-        }else{
+        } else {
             alert('Invalid Email');
             return;
         }
@@ -41,6 +47,7 @@ const Contact = () => {
     return (
         <>
             <div className={styles.container}>
+                <h3 className={styles.title}>Get in touch</h3>
                 <form ref={form} onSubmit={sendEmail} className={styles.formContact} >
                     <input
                         type="text"
