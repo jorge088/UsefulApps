@@ -6,17 +6,18 @@ import exchangeImg from './../../Assets/exchangeLogo.png';
 
 const Home = () => {
   const apps = [
-    {
-      name: 'Weather',
-      route: 'weather',
-      description: 'Mira como está el clima en tu ciudad',
-      img: weatherImg
-    },
+    
     {
       name: 'Exchange',
       route: 'exchange',
       description: 'Convertí USD a pesos AR',
       img: exchangeImg
+    },
+    {
+      name: 'Weather',
+      route: 'weather',
+      description: 'Mira como está el clima en tu ciudad',
+      img: weatherImg
     }
   ]
   return (
