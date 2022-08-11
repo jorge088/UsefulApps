@@ -20,15 +20,25 @@ const Contact = () => {
     return (
         <>
             <div className={styles.container}>
-                <h1>Contacto</h1>
-                <form ref={form} onSubmit={sendEmail}>
-                    <label>Name</label>
-                    <input type="text" name="name" />
-                    <label>Email</label>
-                    <input type="email" name="email" />
-                    <label>Message</label>
-                    <textarea name="message" />
-                    <input type="submit" value="Send"  />
+                <form ref={form} onSubmit={sendEmail} className={styles.formContact} >
+                    <input 
+                        type="text" 
+                        name="name" 
+                        placeholder='Name' 
+                        className={styles.formContact__input} />
+                    <input 
+                        type="email" 
+                        name="email" 
+                        placeholder='Email' 
+                        className={styles.formContact__input} />
+                    <textarea 
+                        name="message" 
+                        placeholder='Message' 
+                        className={styles.formContact__textarea}/>
+                    <input 
+                        type="submit" 
+                        value="Send" 
+                        className={styles.formContact__submit} />
                 </form>
             </div>
 

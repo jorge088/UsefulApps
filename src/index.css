@@ -1,7 +1,10 @@
 :root {
   --background: #dfe4ec;
   --secundary: #0c64b1;
-  --secundaryHover: #147bd4;
+  --secundaryHover: #0667bd;
+  --third:rgba(8, 103, 187,.8);
+  --detail:rgb(117, 62, 180);
+  --detailHover:rgb(141, 75, 216);
 }
 *{
   margin: 0;
