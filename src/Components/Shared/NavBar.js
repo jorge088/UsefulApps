@@ -23,7 +23,7 @@ const NavBar = () => {
             <li><Link to={'/'} className={styles.nav__categorys__link}>Home</Link></li>
             <li><Link to={'/exchange'} className={styles.nav__categorys__link}>Exchange</Link></li>
             <li><Link to={'/weather'} className={styles.nav__categorys__link}>Clima</Link></li>
-            <li><Link to={'/contact'} className={styles.nav__categorys__link}>Contact</Link></li>
+            <li><Link to={'/contact'} className={styles.nav__categorys__link}>Contacto</Link></li>
           </ul>
 
           <button onClick={handlerShowMenuBtn} className={styles.nav__btnShowMenu}>
@@ -35,7 +35,7 @@ const NavBar = () => {
               <li><Link onClick={handlerClickLink} to={'/'} className={styles.nav__categorys__linkResponsive}>Home</Link></li>
               <li><Link onClick={handlerClickLink} to={'/exchange'} className={styles.nav__categorys__linkResponsive}>Exchange</Link></li>
               <li><Link onClick={handlerClickLink} to={'/weather'} className={styles.nav__categorys__linkResponsive}>Clima</Link></li>
-              <li><Link onClick={handlerClickLink} to={'/contact'} className={styles.nav__categorys__linkResponsive}>Sugerencias</Link></li>
+              <li><Link onClick={handlerClickLink} to={'/contact'} className={styles.nav__categorys__linkResponsive}>Contacto</Link></li>
             </ul>
           }
 
