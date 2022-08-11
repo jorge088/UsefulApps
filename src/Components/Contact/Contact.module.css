@@ -1,6 +1,7 @@
 .container{
     margin-top: 60px;
     min-height: calc(100vh - 140px);
+    font-size: 1rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -15,7 +16,7 @@
     color: var(--detail);
 }
 .formContact{
-    width: 600px;
+    width: 700px;
     display: flex;
     flex-direction: column;
     padding: .8em .5em;
@@ -71,4 +72,17 @@
 }
 .formContact__submit:hover{
     background: var(--detailHover);
+}
+@media only screen and (max-width:575px) {
+    .title{
+        font-size: 1.8em;
+    }
+    .formContact{
+        width: 90%;
+    }
+}
+@media only screen and (min-width:576px) and (max-width:768px) {
+    .formContact{
+        width: 80%;
+    }
 }
