@@ -39,7 +39,7 @@ const Contact = () => {
                     alert('Hubo un error al enviar');
                 });
         } else {
-            alert('Invalid Email');
+            alert('Email no valido!');
             return;
         }
 
@@ -48,12 +48,12 @@ const Contact = () => {
     return (
         <>
             <div className={styles.container}>
-                <h3 className={styles.title}>Get in touch</h3>
+                <h3 className={styles.title}>Contacto</h3>
                 <form ref={form} onSubmit={sendEmail} className={styles.formContact} >
                     <input
                         type="text"
                         name="name"
-                        placeholder='Name'
+                        placeholder='Nombre'
                         className={styles.formContact__input} />
                     <input
                         type="email"
@@ -62,11 +62,11 @@ const Contact = () => {
                         className={styles.formContact__input} />
                     <textarea
                         name="message"
-                        placeholder='Message'
+                        placeholder='Mensaje'
                         className={styles.formContact__textarea} />
                     <input
                         type="submit"
-                        value="Send"
+                        value="Enviar mensaje"
                         className={styles.formContact__submit} />
                 </form>
             </div>
