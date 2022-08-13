@@ -6,7 +6,7 @@ import exchangeImg from './../../Assets/exchangeLogo.png';
 
 const Home = () => {
   const apps = [
-    
+  
     {
       name: 'Exchange',
       route: 'exchange',

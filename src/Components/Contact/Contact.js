@@ -1,9 +1,12 @@
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import styles from './Contact.module.css';
 import emailjs from '@emailjs/browser';
+import AlertPrincipal from '../Shared/AlertPrincipal';
+
+import { faCheckCircle, faCircleXmark } from '@fortawesome/free-solid-svg-icons';
 
 const Contact = () => {
-
+    const [alertPrincipal, setAlertPrincipal] = useState({ show: false, text: "", icon: null });
     const form = useRef();
 
     const validateEmail = (email) => {
@@ -21,8 +24,7 @@ const Contact = () => {
         let message = target.email.value;
 
         if (name === '' || email === '' || message === '') {
-            alert('Hay campos incompletos');
-
+            setAlertPrincipal({ show: true, text: "Hay campos incompletos", icon: faCircleXmark })
             return;
         }
 
@@ -33,21 +35,31 @@ const Contact = () => {
                     target.email.value = '';
                     target.message.value = '';
                     target.name.focus();
-                    alert('Enviado correctamente');
-
+                    setAlertPrincipal({ show: true, text: "El mensaje se envió correctamente", icon: faCheckCircle });
                 }, (error) => {
-                    alert('Hubo un error al enviar');
+                    setAlertPrincipal({ show: true, text: "Ocurrio un error, mensaje no enviado", icon: faCircleXmark });
                 });
         } else {
-            alert('Email no valido!');
+            setAlertPrincipal({ show: true, text: "Email no valido", icon: faCircleXmark })
             return;
         }
 
     };
+    const closeAlertPrincipal = () => {
+        setAlertPrincipal({ show: false })
+    }
 
     return (
         <>
             <div className={styles.container}>
+                
+                {alertPrincipal.show &&
+                    <AlertPrincipal
+                        text={alertPrincipal.text}
+                        icon={alertPrincipal.icon}
+                        closeAlert={closeAlertPrincipal} />
+                }
+
                 <h3 className={styles.title}>Contacto</h3>
                 <form ref={form} onSubmit={sendEmail} className={styles.formContact} >
                     <input
@@ -56,7 +68,6 @@ const Contact = () => {
                         placeholder='Nombre'
                         className={styles.formContact__input} />
                     <input
-                        type="email"
                         name="email"
                         placeholder='Email'
                         className={styles.formContact__input} />
