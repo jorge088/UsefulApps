@@ -5,7 +5,7 @@ const PomodoroApp = () =>{
     return (
        <>
        <div className={styles.container}>
-            POMODORO
+            Comming soon...
        </div>
        </> 
     )

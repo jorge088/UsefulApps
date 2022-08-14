@@ -2,11 +2,11 @@ import styles from './Home.module.css';
 import HomeCard from './HomeCard';
 import weatherImg from './../../Assets/weatherLogo.png';
 import exchangeImg from './../../Assets/exchangeLogo.png';
-
+import pomodoroImg from './../../Assets/pomodoroLogo.png'
 
 const Home = () => {
   const apps = [
-  
+
     {
       name: 'Exchange',
       route: 'exchange',
@@ -18,6 +18,12 @@ const Home = () => {
       route: 'weather',
       description: 'Buscá el clima en tu ciudad',
       img: weatherImg
+    },
+    {
+      name: 'Pomodoro',
+      route: 'pomodoro',
+      description: 'Administra tu tiempo',
+      img: pomodoroImg
     }
   ]
   return (
