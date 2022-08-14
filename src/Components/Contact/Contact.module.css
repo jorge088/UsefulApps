@@ -16,7 +16,7 @@
     color: var(--detail);
 }
 .formContact{
-    width: 700px;
+    width: 600px;
     display: flex;
     flex-direction: column;
     padding: .8em .5em;

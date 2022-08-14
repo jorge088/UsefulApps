@@ -16,7 +16,7 @@ const Home = () => {
     {
       name: 'Weather',
       route: 'weather',
-      description: 'Mira como está el clima en tu ciudad',
+      description: 'Buscá el clima en tu ciudad',
       img: weatherImg
     }
   ]

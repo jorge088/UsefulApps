@@ -8,6 +8,7 @@ import ExchangeApp from './Components/ExchangeApp/ExchangeApp';
 import ExchangeContextProvider from './Components/Context/ExchangeContext';
 import WeatherAppContextProvider from './Components/Context/WeatherAppContext';
 import Contact from './Components/Contact/Contact';
+import PomodoroApp from './Components/PomodoroApp/PomodoroApp';
 
 function App() {
   return (
@@ -19,24 +20,30 @@ function App() {
           <Routes>
             <Route
               path='/'
-              element={<Home />} />
+              element={<Home />}
+            />
             <Route
               path='/weather'
               element={
                 <WeatherAppContextProvider>
                   <WeatherApp />
-                </WeatherAppContextProvider>
-              } />
+                </WeatherAppContextProvider>}
+            />
             <Route
               path='/exchange'
               element={
                 <ExchangeContextProvider>
                   <ExchangeApp />
-                </ExchangeContextProvider>
-              } />
+                </ExchangeContextProvider>}
+            />
             <Route
               path='/contact'
-              element={<Contact />} />
+              element={<Contact />}
+            />
+            <Route
+              path='/pomodoro'
+              element={<PomodoroApp />}
+            />
           </Routes>
           <Footer />
         </div>

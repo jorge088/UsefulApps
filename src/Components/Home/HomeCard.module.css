@@ -1,25 +1,28 @@
 .card{
-    width: 500px;
-    height: 280px;
+    width: 300px;
+    height: 180px;
     background-size: cover;
     display: flex;
     flex-direction: column;
     justify-content:center;
     position: relative;
     align-items: center;
-    gap: 1.5em;
-    border-radius: 16px;
-    box-shadow: 0 6px 12px 2px rgba(20, 123, 212,.4);
+    gap: 1em;
+    border-radius: 6px;
+    box-shadow: 0px 6px 15px 0px rgba(20, 123, 212,.5);
     color: #fff;
-    transition: .4s ease all;
+    transition: .3s ease all;
     font-family: 'Lexend', sans-serif;
     cursor: pointer;
     z-index: 10;
+    overflow: hidden;
 }
 .card:hover{
-    transform: scale(1.1);
+    transform: scale(1.06);
+    box-shadow: 0px 10px 15px 0px rgba(20, 123, 212,.5);
     z-index: 20;
-    
+    outline: 3px solid rgb(235, 235, 235);     
+
 }
 .card::before {
     content: '';
@@ -28,43 +31,61 @@
     left: 0;
     right: 0;
     bottom: 0;
-    border-radius: 16px;
     background-color: rgba(82, 82, 82, 0.26);
     background-blend-mode:hue;
 }
 .card__img{
     width: 100%;
     height: 100%;
-    border-radius: 16px;
 }
 .card__imformation{
+    /* this is to center de div */
     position: absolute;
     top: 50%;
-    transform: translateY(-50%);
+    transform: translateY(-90%);
+    width: 100%;
 }
 .card__title{
     position: relative;
-    font-size: 2.5em;
+    font-size: 2.2em;
     letter-spacing: 2px;
-    font-weight: 700;
     text-align: center;
 }
 .card__description{
     margin-top: .4em;
-    position: relative;
-    font-weight: 600;
-    font-size: 1.5em;
+    position: absolute;
+    bottom: -200px;
+    left: 15px;
+    font-weight: 700;
+    width: 90%;
+    font-size: 1.2em;
     text-align: center;
+    transition: .3s ease all;
+}
+.card:hover .card__description{
+    bottom: -40px;
 }
 @media only screen and (max-width:575px) {
     .card{
         width: 85%;
-        height: 230px;
+        height: 200px;
+    }
+    .card__description{
+        bottom: -40px;
+        font-size: 1.3em;
+        transition: none;
     }
 }
 @media only screen and (min-width:576px) and (max-width:768px) {
     .card{
-        width: 480px;
-        height: 250px;
+        width: 260px;
+        height: 180px;
+    }
+    .card__description{
+        bottom: -50px;
+        transition: none;
+    }
+    .card:hover .card__description{
+        bottom: -50px;
     }
 }

@@ -80,10 +80,8 @@ const Contact = () => {
                     type={alertPrincipal.type}
                     closeAlert={closeAlertPrincipal} />
             }
+            
             <div className={styles.container}>
-
-
-
                 <h3 className={styles.title}>Contacto</h3>
                 <form ref={form} onSubmit={sendEmail} className={styles.formContact} >
                     <input
