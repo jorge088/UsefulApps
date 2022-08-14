@@ -6,7 +6,7 @@ import AlertPrincipal from '../Shared/AlertPrincipal';
 import { faCheckCircle, faCircleXmark } from '@fortawesome/free-solid-svg-icons';
 
 const Contact = () => {
-    const [alertPrincipal, setAlertPrincipal] = useState({ show: false, text: "", icon: null });
+    const [alertPrincipal, setAlertPrincipal] = useState({ show: false, text: "", icon: null, type: '' });
     const form = useRef();
 
     const validateEmail = (email) => {
@@ -24,23 +24,45 @@ const Contact = () => {
         let message = target.email.value;
 
         if (name === '' || email === '' || message === '') {
-            setAlertPrincipal({ show: true, text: "Hay campos incompletos", icon: faCircleXmark })
+            setAlertPrincipal({
+                show: true,
+                text: "Hay campos incompletos",
+                icon: faCircleXmark,
+                type: 'error'
+            });
             return;
         }
 
         if (validateEmail(email)) {
+            //EMAIL JS API
             emailjs.sendForm('service_5wdohco', 'template_79kck89', form.current, 'jbaqcmYR0pfEweOpg')
                 .then((result) => {
                     target.name.value = '';
                     target.email.value = '';
                     target.message.value = '';
                     target.name.focus();
-                    setAlertPrincipal({ show: true, text: "El mensaje se envió correctamente", icon: faCheckCircle });
+
+                    setAlertPrincipal({
+                        show: true,
+                        text: "El mensaje se envió correctamente",
+                        icon: faCheckCircle,
+                        type: 'success'
+                    });
                 }, (error) => {
-                    setAlertPrincipal({ show: true, text: "Ocurrio un error, mensaje no enviado", icon: faCircleXmark });
+                    setAlertPrincipal({
+                        show: true,
+                        text: "Ocurrio un error, mensaje no enviado",
+                        icon: faCircleXmark,
+                        type: 'error'
+                    });
                 });
         } else {
-            setAlertPrincipal({ show: true, text: "Email no valido", icon: faCircleXmark })
+            setAlertPrincipal({
+                show: true,
+                text: "Email no valido",
+                icon: faCircleXmark,
+                type: 'error'
+            });
             return;
         }
 
@@ -51,14 +73,16 @@ const Contact = () => {
 
     return (
         <>
+            {alertPrincipal.show &&
+                <AlertPrincipal
+                    text={alertPrincipal.text}
+                    icon={alertPrincipal.icon}
+                    type={alertPrincipal.type}
+                    closeAlert={closeAlertPrincipal} />
+            }
             <div className={styles.container}>
-                
-                {alertPrincipal.show &&
-                    <AlertPrincipal
-                        text={alertPrincipal.text}
-                        icon={alertPrincipal.icon}
-                        closeAlert={closeAlertPrincipal} />
-                }
+
+
 
                 <h3 className={styles.title}>Contacto</h3>
                 <form ref={form} onSubmit={sendEmail} className={styles.formContact} >
