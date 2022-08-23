@@ -1,0 +1,12 @@
+.button{
+    border: none;
+    height: 42px;
+    width: 220px;
+    border-radius: 4px;
+    background: var(--detail);
+    font-size: 1.1em;
+    color: #fff;
+}
+.button:hover{
+    background: var(--detailHover);
+}
