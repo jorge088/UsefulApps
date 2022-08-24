@@ -4,6 +4,7 @@ const ExchangeContext = createContext();
 export const useExchangeContext = () => useContext(ExchangeContext);
 
 const ExchangeContextProvider = ({ children }) => {
+    
     const [data,setData] = useState(null);
     const fetchData = async () =>{
         let url = "https://mercados.ambito.com/dolar/informal/variacion";
@@ -14,7 +15,7 @@ const ExchangeContextProvider = ({ children }) => {
     
     useEffect(() => {
       fetchData();
-    }, [])
+    }, [])  
     
 
     return <ExchangeContext.Provider value={{ data }}>

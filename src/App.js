@@ -9,6 +9,7 @@ import ExchangeContextProvider from './Components/Context/ExchangeContext';
 import WeatherAppContextProvider from './Components/Context/WeatherAppContext';
 import Contact from './Components/Contact/Contact';
 import PomodoroApp from './Components/PomodoroApp/PomodoroApp';
+import PomodoroContextProvider from './Components/Context/PomodoroContext';
 
 function App() {
   return (
@@ -42,7 +43,11 @@ function App() {
             />
             <Route
               path='/pomodoro'
-              element={<PomodoroApp />}
+              element={
+                <PomodoroContextProvider>
+                  <PomodoroApp />
+                </PomodoroContextProvider>
+              }
             />
           </Routes>
           <Footer />

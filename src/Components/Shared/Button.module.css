@@ -10,3 +10,7 @@
 .button:hover{
     background: var(--detailHover);
 }
+.disabled{
+    opacity: .8;
+    background: var(--detailHover)
+}
