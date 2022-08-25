@@ -1,13 +1,14 @@
-.container{
+.container {
     font-size: 1rem;
     min-height: calc(100vh - 140px);
     margin-top: 60px;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    
+
 }
-.appContainer{
+
+.appContainer {
     min-height: 300px;
     padding: .8em 0;
     width: 650px;
@@ -18,17 +19,19 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background:var(--blueSpecial);
+    background: var(--blueSpecial);
     gap: 1em;
     color: #fff;
 
 }
-.btnControl{
+
+.btnControl {
     display: flex;
     justify-content: space-around;
     width: 500px;
 }
-.sessions{
+
+.sessions {
     font-family: 'Lexend', sans-serif;
     font-size: 1.3em;
     letter-spacing: 1px;
@@ -36,11 +39,53 @@
     top: 12px;
     right: 25px;
 }
-.status{
+
+.status {
     font-family: 'Lexend', sans-serif;
     font-size: 1.3em;
     letter-spacing: 1px;
     position: absolute;
     top: 12px;
     left: 25px;
+}
+
+@media only screen and (max-width:575px) {
+    .container {
+        font-size: .9rem;
+        padding: 1em 0;
+    }
+
+    .appContainer {
+        width: 90%;
+        height: 380px;
+        padding: 2em 0 0 0;
+    }
+
+    .btnControl {
+        flex-wrap: wrap;
+        width: 90%;
+        gap: .8em;
+    }
+
+    .sessions {
+        right: 50%;
+        transform: translateX(50%);
+        top: 40px;
+    }
+
+    .status {
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80%;
+        text-align: center;
+    }
+}
+@media only screen and (min-width:576px) and (max-width:768px) {
+    .container {
+        font-size: .95rem;
+    }
+    .appContainer {
+        width: 90%;
+        padding: 1.8em 0 0 0;
+    }
 }
