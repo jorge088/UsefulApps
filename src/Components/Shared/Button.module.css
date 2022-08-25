@@ -1,18 +1,53 @@
 .button{
     border: none;
-    height: 42px;
-    width: 220px;
+    height: 44px;
+    width: 200px;
     border-radius: 4px;
-    background: var(--detail);
     font-size: 1.1em;
+    font-weight: 500;
     font-family: 'Lexend', sans-serif;
-
+    letter-spacing: 1px;
     color: #fff;
 }
-.button:hover{
+.disabled{
+    opacity: .7;
+}
+
+
+.classic{
+    background: var(--secundary);
+}
+.classic:hover{
+    background: var(--secundaryHover);
+}
+.disabled.classic:hover{
+    background: var(--secundary);
+}
+
+
+.close{
+    background: #db4242;
+}
+.close:hover{
+    background: #eb4747;
+}
+.disabled.close:hover{
+    background: #db4242;
+}
+
+
+.submit{
+    background: var(--detail);
+}
+.submit:hover{
     background: var(--detailHover);
 }
-.disabled{
-    opacity: .8;
-    background: var(--detailHover)
+.disabled.submit:hover{
+    background: var(--detail);
+}
+
+
+.transparent{
+    background: transparent;
+    outline: 1px solid #fff;
 }

@@ -26,16 +26,19 @@ const PomodoroApp = () => {
                     <div className={styles.btnControl}>
                         {settings.mode === null ?
                             <Button
+                                type={'classic'}
                                 content={'Iniciar'}
                                 _callback={() => { startPomodoro() }}
                             />
                             :
                             <Button
+                                type={'classic'}
                                 content={`${running ? 'Pausar' : 'Continuar'}`}
                                 _callback={running ? stopAnimation : startAnimation}
                             />
                         }
                         <Button
+                            type={'close'}
                             content={'Omitir'}
                             _callback={settings.mode === null ? () => { startPomodoro() } : changeExecution}
                             disabled={!running}

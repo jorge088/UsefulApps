@@ -6,8 +6,8 @@ import styles from './PomodoroCounter.module.css'
 const PomodoroCounter = ({ time, animation = true }) => {
     const { changeExecution } = usePomodoroContext();
     let alertSound = new Audio(sound);
-    let circleColor = '#b84343';
-    if (time === 25) circleColor = '#b84343';
+    let circleColor = '#db4242';
+    if (time === 25) circleColor = '#db4242';
     if (time === 5) circleColor = '#0ebe0e';
 
     const renderTime = ({ remainingTime }) => {
