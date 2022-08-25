@@ -1,15 +1,15 @@
 import { usePomodoroContext } from '../Context/PomodoroContext';
 import { CountdownCircleTimer } from 'react-countdown-circle-timer'
-
+import sound from './../../Assets/PomodoroAlert.mp3'
 import styles from './PomodoroCounter.module.css'
 
 const PomodoroCounter = ({ time, animation = true }) => {
     const {changeExecution} = usePomodoroContext();
-
+    let alertSound = new Audio(sound);
     let circleColor = '#da2a2a';
     if (time === 25) circleColor = '#da2a2a';
     if (time === 5) circleColor = '#24bb24';
-
+    
     const renderTime = ({ remainingTime }) => {
         
         let minutes = Math.floor(remainingTime / 60)
@@ -28,7 +28,10 @@ const PomodoroCounter = ({ time, animation = true }) => {
                     isPlaying={animation}
                     duration={time*60}
                     colors={[circleColor]}
-                    onComplete={()=>{changeExecution()}}
+                    onComplete={()=>{
+                        alertSound.play()
+                        changeExecution()
+                    }}
                 >
                     {renderTime}
                 </CountdownCircleTimer>
