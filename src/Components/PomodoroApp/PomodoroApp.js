@@ -14,15 +14,29 @@ const PomodoroApp = () => {
         startAnimation,
         changeExecution } = usePomodoroContext();
 
+    const getPomodoroStatus = () =>{
+        let mode = settings.mode;
+        if(mode === null) return 'Inicia tu reloj'
+        if(mode ==='work') return 'A concentrarse!'
+        if(mode ==='break') return 'Tomá un descanso corto!'
+        if(mode ==='long') return 'Tomá un descanso largo!'
+    }
+
     return (
         <>
             <div className={styles.container}>
                 <div className={styles.appContainer}>
-                    <p className={styles.sessions}>Pomodoro ({sessionsCount})</p>
+                    <p className={styles.status}>{getPomodoroStatus()}</p>
+
+                    {settings.mode === 'work' ?
+                        <p className={styles.sessions}>Pomodoro ({sessionsCount})</p>
+                    :''}
+
                     <PomodoroCounter
                         time={pomodoroTime}
                         animation={running}
                     />
+
                     <div className={styles.btnControl}>
                         {settings.mode === null ?
                             <Button

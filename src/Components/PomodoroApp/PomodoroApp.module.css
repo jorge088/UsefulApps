@@ -8,9 +8,9 @@
     
 }
 .appContainer{
-    min-height: 290px;
-    padding: .6em 0;
-    width: 700px;
+    min-height: 300px;
+    padding: .8em 0;
+    width: 650px;
     margin: auto auto;
     position: relative;
     border-radius: 6px;
@@ -30,8 +30,17 @@
 }
 .sessions{
     font-family: 'Lexend', sans-serif;
-    font-size: 1.4em;
+    font-size: 1.3em;
+    letter-spacing: 1px;
     position: absolute;
-    top: 15px;
-    right: 20px;
+    top: 12px;
+    right: 25px;
+}
+.status{
+    font-family: 'Lexend', sans-serif;
+    font-size: 1.3em;
+    letter-spacing: 1px;
+    position: absolute;
+    top: 12px;
+    left: 25px;
 }
