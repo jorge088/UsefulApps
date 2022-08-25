@@ -1,4 +1,4 @@
-.header{
+.header {
     font-size: 1rem;
     height: 60px;
     background-color: var(--secundary);
@@ -9,7 +9,8 @@
     font-family: 'Lexend', sans-serif;
     z-index: 90;
 }
-.nav{
+
+.nav {
     height: 100%;
     width: 70%;
     margin: 0 auto;
@@ -18,12 +19,14 @@
     align-items: center;
     justify-content: center;
 }
-.nav__categorys{
+
+.nav__categorys {
     display: flex;
     list-style: none;
     gap: 2px;
 }
-.nav__categorys__link{
+
+.nav__categorys__link {
     font-size: 1.em;
     letter-spacing: 1px;
     font-weight: 600;
@@ -33,12 +36,13 @@
     border-radius: 4px;
     cursor: pointer;
 }
-.nav__categorys__link:hover{
+
+.nav__categorys__link:hover {
     background-color: var(--secundaryHover);
 }
 
 /* Responsive Menu */
-.nav__btnShowMenu{
+.nav__btnShowMenu {
     display: none;
     background: none;
     border: none;
@@ -47,10 +51,13 @@
     font-size: 1.7em;
     cursor: pointer;
 }
-.nav__btnShowMenu:hover,.nav__btnShowMenu:focus{
+
+.nav__btnShowMenu:hover,
+.nav__btnShowMenu:focus {
     outline: 1px solid #fff;
 }
-.nav__categorysResponsive{
+
+.nav__categorysResponsive {
     display: none;
     position: absolute;
     top: 60px;
@@ -59,7 +66,8 @@
     width: 100%;
     min-height: 150px;
 }
-.nav__categorys__linkResponsive{
+
+.nav__categorys__linkResponsive {
     display: block;
     font-size: 1.em;
     text-align: center;
@@ -71,33 +79,39 @@
     border-radius: 4px;
     cursor: pointer;
 }
-.nav__categorys__linkResponsive:hover{
+
+.nav__categorys__linkResponsive:hover {
     background-color: var(--secundaryHover);
 
 }
 
 @media only screen and (max-width:575px) {
-    .header{
+    .header {
         font-size: .9rem;
         height: 60px;
     }
-    .nav{
+
+    .nav {
         width: 80%;
         justify-content: flex-end;
     }
-    .nav__categorys{
+
+    .nav__categorys {
         display: none;
     }
-    .nav__btnShowMenu{
+
+    .nav__btnShowMenu {
         display: block;
     }
-    .nav__categorysResponsive{
+
+    .nav__categorysResponsive {
         display: block;
     }
 }
+
 @media only screen and (min-width:576px) and (max-width:768px) {
-    .header{
+    .header {
         font-size: .9rem;
     }
-    
+
 }
