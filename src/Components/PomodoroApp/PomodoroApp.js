@@ -4,8 +4,10 @@ import styles from './PomodoroApp.module.css';
 import Button from '../Shared/Button';
 
 const PomodoroApp = () => {
-    const { settings,
+    const { 
+        settings,
         running,
+        sessionsCount,
         stopAnimation,
         startPomodoro,
         pomodoroTime,
@@ -15,6 +17,7 @@ const PomodoroApp = () => {
     return (
         <>
             <div className={styles.container}>
+                <p>Pomodoro ({sessionsCount})</p>
                 <PomodoroCounter
                     time={pomodoroTime}
                     animation={running}

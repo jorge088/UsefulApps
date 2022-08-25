@@ -13,6 +13,7 @@ const PomodoroContextProvider = ({ children }) => {
         long: 15,
         mode: null
     });
+    const [sessionsCount, setSessionsCount] = useState(0)
 
     const startPomodoro = () => {
         switch (pomodoroTime) {
@@ -53,6 +54,7 @@ const PomodoroContextProvider = ({ children }) => {
                 ...settings,
                 mode: null
             });
+            setSessionsCount(sessionsCount + 1);
             setPomodoroTime(5);
             return;
         }
@@ -73,11 +75,13 @@ const PomodoroContextProvider = ({ children }) => {
             running,
             pomodoroTime,
             settings,
+            sessionsCount,
             setSettings,
             startAnimation,
             stopAnimation,
             changeExecution,
             startPomodoro
+
         }}>
         {children}
     </PomodoroContext.Provider>
