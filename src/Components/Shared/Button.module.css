@@ -5,6 +5,8 @@
     border-radius: 4px;
     background: var(--detail);
     font-size: 1.1em;
+    font-family: 'Lexend', sans-serif;
+
     color: #fff;
 }
 .button:hover{

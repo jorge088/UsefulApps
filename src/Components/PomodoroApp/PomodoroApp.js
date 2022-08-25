@@ -4,7 +4,7 @@ import styles from './PomodoroApp.module.css';
 import Button from '../Shared/Button';
 
 const PomodoroApp = () => {
-    const { 
+    const {
         settings,
         running,
         sessionsCount,
@@ -17,29 +17,32 @@ const PomodoroApp = () => {
     return (
         <>
             <div className={styles.container}>
-                <p>Pomodoro ({sessionsCount})</p>
-                <PomodoroCounter
-                    time={pomodoroTime}
-                    animation={running}
-                />
-                <div className={styles.btnControl}>
-                    {settings.mode === null ?
-                        <Button
-                            content={'Iniciar'}
-                            _callback={()=>{startPomodoro()}}
-                        />
-                        :
-                        <Button
-                            content={`${running ? 'Pausar' : 'Continuar'}`}
-                            _callback={running ? stopAnimation : startAnimation}
-                        />
-                    }
-                    <Button
-                        content={'Omitir'}
-                        _callback={settings.mode===null ? ()=>{startPomodoro()} : changeExecution}
-                        disabled={!running}
+                <div className={styles.appContainer}>
+                    <p className={styles.sessions}>Pomodoro ({sessionsCount})</p>
+                    <PomodoroCounter
+                        time={pomodoroTime}
+                        animation={running}
                     />
+                    <div className={styles.btnControl}>
+                        {settings.mode === null ?
+                            <Button
+                                content={'Iniciar'}
+                                _callback={() => { startPomodoro() }}
+                            />
+                            :
+                            <Button
+                                content={`${running ? 'Pausar' : 'Continuar'}`}
+                                _callback={running ? stopAnimation : startAnimation}
+                            />
+                        }
+                        <Button
+                            content={'Omitir'}
+                            _callback={settings.mode === null ? () => { startPomodoro() } : changeExecution}
+                            disabled={!running}
+                        />
+                    </div>
                 </div>
+
 
             </div>
 
