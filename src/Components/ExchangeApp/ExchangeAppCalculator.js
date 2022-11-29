@@ -2,7 +2,9 @@ import styles from './ExchangeAppCalculator.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRightArrowLeft, faEquals } from '@fortawesome/free-solid-svg-icons';
 import { useState } from 'react';
+
 const ExchangeAppCalculator = ({ data }) => {
+  
   const [coin, setCoin] = useState("");
   const [peso, setPeso] = useState("");
 
