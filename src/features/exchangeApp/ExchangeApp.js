@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from "react-redux";
-import { selectAllDataQuotation, getStatus, getError, fetchQuotation } from "./exchangeSlice";
+import { selectAllDataQuotation, getStatus, fetchQuotation } from "./exchangeSlice";
 
 import styles from './ExchangeApp.module.css'
 import ExchangeAppCalculator from './ExchangeAppCalculator'
