@@ -5,7 +5,7 @@ import styles from './ExchangeApp.module.css'
 import ExchangeAppCalculator from './ExchangeAppCalculator'
 import ExchangeAppCurrencyValue from './ExchangeAppCurrencyValue'
 import ExchangeAppInformation from './ExchangeAppInformation'
-import Loading from '../../Components/Shared/Loading'
+import Loading from "../../Components/Shared/Loading";
 import { useEffect } from "react";
 
 
