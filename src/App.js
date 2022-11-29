@@ -6,7 +6,6 @@ import Footer from './Components/Shared/Footer';
 import WeatherApp from './features/weatherApp/WeatherApp';
 import ExchangeApp from './Components/ExchangeApp/ExchangeApp';
 import ExchangeContextProvider from './Components/Context/ExchangeContext';
-// import WeatherAppContextProvider from './Components/Context/WeatherAppContext';
 import Contact from './Components/Contact/Contact';
 import PomodoroApp from './Components/PomodoroApp/PomodoroApp';
 import PomodoroContextProvider from './Components/Context/PomodoroContext';
