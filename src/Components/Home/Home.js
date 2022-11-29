@@ -3,6 +3,7 @@ import HomeCard from './HomeCard';
 import weatherImg from './../../Assets/weatherLogo.png';
 import exchangeImg from './../../Assets/exchangeLogo.png';
 import pomodoroImg from './../../Assets/pomodoroLogo.png'
+import WeatherCheck from '../../features/weatherApp/WeatherCheck';
 
 const Home = () => {
   const apps = [
@@ -37,8 +38,8 @@ const Home = () => {
 
           }
         </div>
-
-
+          <p>ASSSSSSSSSSS</p>
+          <WeatherCheck/>
       </div>
     </>
   )
