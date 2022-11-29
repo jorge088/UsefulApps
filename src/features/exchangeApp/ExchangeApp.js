@@ -1,11 +1,11 @@
 import { useSelector, useDispatch } from "react-redux";
-import { selectAllDataQuotation, getStatus, getError, fetchQuotation } from "../../features/exchangeApp/exchangeSlice";
+import { selectAllDataQuotation, getStatus, getError, fetchQuotation } from "./exchangeSlice";
 
 import styles from './ExchangeApp.module.css'
 import ExchangeAppCalculator from './ExchangeAppCalculator'
 import ExchangeAppCurrencyValue from './ExchangeAppCurrencyValue'
 import ExchangeAppInformation from './ExchangeAppInformation'
-import Loading from '../Shared/Loading'
+import Loading from '../../Components/Shared/Loading'
 import { useEffect } from "react";
 
 
