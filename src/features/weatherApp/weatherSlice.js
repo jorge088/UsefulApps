@@ -42,6 +42,5 @@ export const selectAllDataWeather = (state) => state.weather.data;
 export const getWeatherStatus = (state) => state.weather.status;
 export const getWeatherError = (state) => state.weather.error;
 
-fetchWeather('Cordoba')
 
 export default weatherSlice.reducer;

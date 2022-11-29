@@ -3,6 +3,7 @@ import HomeCard from './HomeCard';
 import weatherImg from './../../Assets/weatherLogo.png';
 import exchangeImg from './../../Assets/exchangeLogo.png';
 import pomodoroImg from './../../Assets/pomodoroLogo.png'
+import ExchangeCheck from '../../features/exchangeApp/ExchangeCheck';
 const Home = () => {
   const apps = [
 
@@ -36,7 +37,7 @@ const Home = () => {
 
           }
         </div>
-          
+          <ExchangeCheck/>
       </div>
     </>
   )
