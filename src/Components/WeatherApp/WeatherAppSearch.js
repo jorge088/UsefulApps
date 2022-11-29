@@ -1,11 +1,14 @@
+import { useDispatch } from 'react-redux';
+import { fetchWeather } from '../../features/weatherApp/weatherSlice';
+
 import styles from './WeatherAppSearch.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
-import { useWeatherAppContext } from '../Context/WeatherAppContext';
 import { useState } from 'react';
 
 const WeatherAppSearch = () => {
-    const { searchCityTemp } = useWeatherAppContext();
+    const dispatch = useDispatch();
+
     const [cityName, setCityName] = useState('');
 
     const handlerSearchCityChange = (e) =>{
@@ -15,7 +18,7 @@ const WeatherAppSearch = () => {
 
     const handlerSearchCitySubmit = (e) =>{
         e.preventDefault();
-        searchCityTemp(cityName);
+        dispatch(fetchWeather(cityName));
     }
 
     return (
@@ -38,4 +41,5 @@ const WeatherAppSearch = () => {
         </>
     )
 }
+
 export default WeatherAppSearch

@@ -38,8 +38,7 @@ const Home = () => {
 
           }
         </div>
-          <p>ASSSSSSSSSSS</p>
-          <WeatherCheck/>
+          
       </div>
     </>
   )

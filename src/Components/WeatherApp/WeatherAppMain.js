@@ -1,13 +1,11 @@
 import styles from './WeatherAppMain.module.css';
 import weatherInfoImg from './../../Assets/WeatherAppInfo.svg';
-import { useWeatherAppContext } from '../Context/WeatherAppContext';
 
-const WeatherAppMain = () => {
-    const { data } = useWeatherAppContext()
+const WeatherAppMain = ({ data }) => {
 
     let temperature = '0';
     let city = '';
-    if (data) {
+    if (data.main) {
         temperature = (data.main.temp - 273).toFixed(0);
         city = `${data.name} - ${data.sys.country}`
     }

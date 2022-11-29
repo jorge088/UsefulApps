@@ -1,17 +1,14 @@
 import styles from './WeatherAppInformation.module.css';
 import WeatherAppInformationTopic from './WeatherAppInformationTopic';
-import { useWeatherAppContext } from '../Context/WeatherAppContext';
 import { faWind, faCloud, faWater, faGauge } from '@fortawesome/free-solid-svg-icons';
 
-const WeatherAppInformation = () => {
-    const { data } = useWeatherAppContext();
-
+const WeatherAppInformation = ({ data }) => {
     let windSpeed = '';
     let clouds = '';
     let humidity = '';
     let pressure = '';
 
-    if (data) {
+    if (data.main) {
         windSpeed = data.wind.speed;
         clouds = data.clouds.all;
         humidity = data.main.humidity;
