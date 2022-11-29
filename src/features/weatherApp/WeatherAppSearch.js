@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux';
-import { fetchWeather } from '../../features/weatherApp/weatherSlice';
+import { fetchWeather } from './weatherSlice';
 
 import styles from './WeatherAppSearch.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';

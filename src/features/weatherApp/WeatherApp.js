@@ -6,7 +6,7 @@ import styles from './WeatherApp.module.css';
 import WeatherAppInformation from './WeatherAppInformation';
 import WeatherAppMain from './WeatherAppMain';
 import WeatherAppSearch from './WeatherAppSearch';
-import Loading from '../Shared/Loading';
+import Loading from '../../Components/Shared/Loading';
 
 
 const WeatherApp = () => {

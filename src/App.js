@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Home from './Components/Home/Home';
 import NavBar from './Components/Shared/NavBar';
 import Footer from './Components/Shared/Footer';
-import WeatherApp from './Components/WeatherApp/WeatherApp';
+import WeatherApp from './features/weatherApp/WeatherApp';
 import ExchangeApp from './Components/ExchangeApp/ExchangeApp';
 import ExchangeContextProvider from './Components/Context/ExchangeContext';
 // import WeatherAppContextProvider from './Components/Context/WeatherAppContext';
