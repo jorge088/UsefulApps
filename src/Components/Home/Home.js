@@ -39,7 +39,7 @@ const Home = () => {
           }
         </div>
       </div>
-      <PomodoroCheck/>
+      {/* <PomodoroCheck/> */}
     </>
   )
 }
