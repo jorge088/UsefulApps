@@ -6,7 +6,7 @@ import Footer from './Components/Shared/Footer';
 import WeatherApp from './features/weatherApp/WeatherApp';
 import ExchangeApp from './features/exchangeApp/ExchangeApp';
 import Contact from './Components/Contact/Contact';
-import PomodoroApp from './Components/PomodoroApp/PomodoroApp';
+import PomodoroApp from './features/pomodoroApp/PomodoroApp';
 
 function App() {
   return (

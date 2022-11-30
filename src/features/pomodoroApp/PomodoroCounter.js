@@ -1,9 +1,9 @@
 import { useDispatch } from 'react-redux';
-import { changePomodoroCounterExecution } from '../../features/pomodoroApp/pomodoroSlice';
+import { changePomodoroCounterExecution } from './pomodoroSlice';
 
 import styles from './PomodoroCounter.module.css';
 import { CountdownCircleTimer } from 'react-countdown-circle-timer';
-import sound from './../../Assets/PomodoroAlert.mp3';
+import sound from "./../../Assets/PomodoroAlert.mp3"
 
 const PomodoroCounter = ({ time, animation = true }) => {
 

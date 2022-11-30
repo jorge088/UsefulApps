@@ -9,11 +9,11 @@ import {
     startAnimation,
     stopAnimation,
     changePomodoroCounterExecution
-} from '../../features/pomodoroApp/pomodoroSlice';
+} from "./pomodoroSlice"
 
 import styles from './PomodoroApp.module.css';
-import PomodoroCounter from './PomodoroCounter'
-import Button from '../Shared/Button';
+import PomodoroCounter from './PomodoroCounter';
+import Button from "./../../Components/Shared/Button";
 
 const PomodoroApp = () => {
 
