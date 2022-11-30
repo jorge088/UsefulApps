@@ -1,4 +1,4 @@
-import { configureStore } from "@reduxjs/toolkit";;
+import { configureStore } from "@reduxjs/toolkit";
 
 import weatherReducer from "../features/weatherApp/weatherSlice";
 import exchangeReducer from "../features/exchangeApp/exchangeSlice";
