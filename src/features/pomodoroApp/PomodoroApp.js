@@ -13,8 +13,11 @@ import {
 } from "./pomodoroSlice"
 
 import styles from './PomodoroApp.module.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faGear } from '@fortawesome/free-solid-svg-icons'
 import PomodoroCounter from './PomodoroCounter';
 import Button from "./../../Components/Shared/Button";
+import { useEffect } from 'react';
 
 const PomodoroApp = () => {
 
@@ -49,12 +52,19 @@ const PomodoroApp = () => {
     const handlerStopAnimation = () => {
         dispatch(stopAnimation())
     }
+    useEffect(() => {
+        dispatch(stopAnimation())
+    }, [dispatch])
+
 
 
     return (
         <>
             <div className={styles.container}>
                 <div className={styles.appContainer}>
+                    <button className={styles.settingsBtn}>
+                        <FontAwesomeIcon icon={faGear}></FontAwesomeIcon>
+                    </button>
                     <p className={styles.status}>{getPomodoroStatus()}</p>
 
                     {pomodoroMode === 'work' ?
