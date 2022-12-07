@@ -56,7 +56,24 @@ const pomodoroSlice = createSlice({
 
         },
         updatePomodoroTime(state, action) {
-            state.pomodoroTime = action.payload.time;
+            state.settings = {
+                work: action.payload.workTime,
+                break: action.payload.breakTime,
+                long: action.payload.longBreakTime
+            }
+            switch (state.mode) {
+                case 'start':
+                    state.pomodoroTime = state.settings['work'];
+                    break;
+                case 'work':
+                    state.pomodoroTime = state.settings['work'];
+                    break;
+                case 'break':
+                    state.pomodoroTime = state.settings['break'];
+                    break;
+                default:
+                    break;
+            }
         },
         startAnimation(state) {
             state.running = true;

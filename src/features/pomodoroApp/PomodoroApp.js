@@ -1,7 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux';
 
 import {
-    getAllSettings,
     getMode,
     getRunning,
     getPomodoroTime,
@@ -24,7 +23,6 @@ const PomodoroApp = () => {
 
     const dispatch = useDispatch();
     const pomodoroTime = useSelector(getPomodoroTime);
-    const settings = useSelector(getAllSettings);
     const pomodoroMode = useSelector(getMode);
     const running = useSelector(getRunning);
     const sessionsCount = useSelector(getSessionsCount);
