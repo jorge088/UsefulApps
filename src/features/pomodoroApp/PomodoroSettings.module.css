@@ -2,18 +2,78 @@
     position: fixed;
     width: 100%;
     height: 100%;
-    background-color: rgba(55, 55, 55, .6);
+    background-color: rgba(114, 114, 114, 0.5);
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 .settingsContainer {
-    width: 700px;
-    height: 400px;
+    width: 640px;
+    height: 300px;
+    padding: .5em 1em;
+    border-radius: 10px;
+    color: #fff;
+    font-family: 'Lexend', sans-serif;
+    background-color: #505050;
+    filter: drop-shadow(1px 4px 8px #505050);
     animation-name: appear;
-    animation-duration: .4s;
-    background-color: red;
+    animation-duration: .3s;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+}
+
+.settingsContainer h2 {
+    font-size: 1.75em;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+.settingsContainer h3 {
+    font-size: 1.45em;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-align: center;
+    padding-bottom: .3em;
+    border-bottom: 1px solid #fff;
+    width: 90%;
+}
+
+.formSettings {
+    display: flex;
+    flex-direction: column;
+    gap: 1.4em;
+    width: 90%;
+    padding-top: .4em;
+}
+
+.formSettings__section {
+    display: flex;
+    justify-content: space-between;
+}
+
+.formSettings__section label {
+    font-size: 1.25em;
+}
+
+.formSettings__section input {
+    font-size: 1.1em;
+    text-align: left;
+    padding: 0 14px;
+    border-radius: 6px;
+    border: 1px solid #fff;
+    outline: none;
+    height: 34px;
+    width: 170px;
+    background: #505050;
+    color: #fff;
+}
+
+.formSettings__section input:focus {
+    outline: none;
 }
 
 .disappear {
@@ -21,11 +81,10 @@
     animation-duration: .3s;
 }
 
-
 /* ANIMATIONS  */
 @keyframes appear {
     0% {
-        transform: scale(0.7);
+        transform: scale(0.6);
         opacity: .6;
     }
 
@@ -37,8 +96,6 @@
 
 @keyframes disappear {
     0% {
-        width: 700px;
-        height: 400px;
         opacity: 1;
     }
 
