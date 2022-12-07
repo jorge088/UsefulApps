@@ -12,6 +12,7 @@ const initialState = {
     },
     mode: 'start',
     sessionsCount: 0,
+    longBreakInterval: 4,
     status: 'idle',
     error: null
 }
@@ -33,6 +34,9 @@ const pomodoroSlice = createSlice({
                 case state.settings['break']:
                     state.mode = 'break';
                     break;
+                case state.settings['long']:
+                    state.mode = 'long';
+                    break;
                 default:
                     state.settings = null;
                     state.running = false;
@@ -45,10 +49,20 @@ const pomodoroSlice = createSlice({
             if (state.mode === 'work') {
                 state.mode = 'start'
                 state.sessionsCount += 1;
-                state.pomodoroTime = state.settings['break'];
+                if (state.sessionsCount % state.longBreakInterval === 0) {
+                    state.pomodoroTime = state.settings['long'];
+
+                } else {
+                    state.pomodoroTime = state.settings['break'];
+                }
                 return;
             }
             if (state.mode === 'break') {
+                state.mode = 'start';
+                state.pomodoroTime = state.settings['work'];
+                return;
+            }
+            if (state.mode === 'long') {
                 state.mode = 'start';
                 state.pomodoroTime = state.settings['work'];
                 return;

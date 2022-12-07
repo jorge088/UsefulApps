@@ -16,6 +16,7 @@ const PomodoroCounter = ({ time, animation = true }) => {
     let circleColor = '#db4242';
     if (time === settings.work) circleColor = '#db4242';
     if (time === settings.break) circleColor = '#0ebe0e';
+    if (time === settings.long) circleColor = '#0ebe0e';
 
 
     
