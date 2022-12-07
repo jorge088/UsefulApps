@@ -8,9 +8,9 @@ const initialState = {
     settings: {
         work: 25,
         break: 5,
-        long: 15,
-        mode: null
+        long: 15
     },
+    mode: 'start',
     sessionsCount: 0,
     status: 'idle',
     error: null
@@ -23,19 +23,15 @@ const pomodoroSlice = createSlice({
     reducers: {
         startPomodoroCounter(state) {
             switch (state.pomodoroTime) {
-                case 25:
+                case 0:
                     state.pomodoroTime = state.settings['work'];
-                    state.settings = {
-                        ...state.settings,
-                        mode: 'work'
-                    };
+                    state.mode = 'work';
                     break;
-                case 5:
-                    state.pomodoroTime = state.settings['break'];
-                    state.settings = {
-                        ...state.settings,
-                        mode: 'break'
-                    };
+                case state.settings['work']:
+                    state.mode = 'work';
+                    break;
+                case state.settings['break']:
+                    state.mode = 'break';
                     break;
                 default:
                     state.settings = null;
@@ -46,24 +42,21 @@ const pomodoroSlice = createSlice({
         },
         changePomodoroCounterExecution(state) {
             state.running = false;
-            if (state.settings.mode === 'work') {
-                state.settings = {
-                    ...state.settings,
-                    mode: null
-                }
+            if (state.mode === 'work') {
+                state.mode = 'start'
                 state.sessionsCount += 1;
-                state.pomodoroTime = 5;
+                state.pomodoroTime = state.settings['break'];
                 return;
             }
-            if (state.settings.mode === 'break') {
-                state.settings = {
-                    ...state.settings,
-                    mode: null
-                }
-                state.pomodoroTime = 25;
+            if (state.mode === 'break') {
+                state.mode = 'start';
+                state.pomodoroTime = state.settings['work'];
                 return;
             }
 
+        },
+        updatePomodoroTime(state, action) {
+            state.pomodoroTime = action.payload.time;
         },
         startAnimation(state) {
             state.running = true;
@@ -77,6 +70,7 @@ const pomodoroSlice = createSlice({
 export const getRunning = (state) => state.pomodoro.running;
 export const getPomodoroTime = (state) => state.pomodoro.pomodoroTime;
 export const getAllSettings = (state) => state.pomodoro.settings;
+export const getMode = (state) => state.pomodoro.mode;
 export const getSessionsCount = (state) => state.pomodoro.sessionsCount;
 export const getStatus = (state) => state.pomodoro.status;
 
@@ -85,7 +79,8 @@ export const {
     startPomodoroCounter,
     changePomodoroCounterExecution,
     startAnimation,
-    stopAnimation
+    stopAnimation,
+    updatePomodoroTime
 } = pomodoroSlice.actions;
 
 

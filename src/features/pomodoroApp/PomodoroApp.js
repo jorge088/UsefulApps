@@ -2,6 +2,7 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import {
     getAllSettings,
+    getMode,
     getRunning,
     getPomodoroTime,
     getSessionsCount,
@@ -18,14 +19,16 @@ import Button from "./../../Components/Shared/Button";
 const PomodoroApp = () => {
 
     const dispatch = useDispatch();
-    const settings = useSelector(getAllSettings);
     const pomodoroTime = useSelector(getPomodoroTime);
+    const settings = useSelector(getAllSettings);
+    const pomodoroMode = useSelector(getMode);
     const running = useSelector(getRunning);
     const sessionsCount = useSelector(getSessionsCount);
+    console.log(settings);
 
     const getPomodoroStatus = () => {
-        let mode = settings.mode;
-        if (mode === null) return 'Inicia tu reloj'
+        let mode = pomodoroMode;
+        if (mode === 'start') return 'Inicia tu reloj'
         if (mode === 'work') return 'A concentrarse!'
         if (mode === 'break') return 'Tomá un descanso corto!'
         if (mode === 'long') return 'Tomá un descanso largo!'
@@ -47,23 +50,24 @@ const PomodoroApp = () => {
         dispatch(stopAnimation())
     }
 
+
     return (
         <>
             <div className={styles.container}>
                 <div className={styles.appContainer}>
                     <p className={styles.status}>{getPomodoroStatus()}</p>
 
-                    {settings.mode === 'work' ?
+                    {pomodoroMode === 'work' ?
                         <p className={styles.sessions}>Pomodoro ({sessionsCount})</p>
-                        : ''}
-
+                        : ''
+                    }
                     <PomodoroCounter
                         time={pomodoroTime}
                         animation={running}
                     />
 
                     <div className={styles.btnControl}>
-                        {settings.mode === null ?
+                        {pomodoroMode === 'start' ?
                             <Button
                                 type={'classic'}
                                 content={'Iniciar'}
@@ -79,10 +83,11 @@ const PomodoroApp = () => {
                         <Button
                             type={'close'}
                             content={'Omitir'}
-                            _callback={settings.mode === null ? handlerPomodoroStart : handlerChangePomodoroExecution}
+                            _callback={pomodoroMode === 'start' ? handlerPomodoroStart : handlerChangePomodoroExecution}
                             disabled={!running}
                         />
                     </div>
+
                 </div>
             </div>
         </>
