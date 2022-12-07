@@ -17,7 +17,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGear } from '@fortawesome/free-solid-svg-icons'
 import PomodoroCounter from './PomodoroCounter';
 import Button from "./../../Components/Shared/Button";
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import PomodoroSettings from './PomodoroSettings';
 
 const PomodoroApp = () => {
 
@@ -27,7 +28,8 @@ const PomodoroApp = () => {
     const pomodoroMode = useSelector(getMode);
     const running = useSelector(getRunning);
     const sessionsCount = useSelector(getSessionsCount);
-    console.log(settings);
+    
+    const [showSettings, setShowSettings] = useState(false);
 
     const getPomodoroStatus = () => {
         let mode = pomodoroMode;
@@ -52,6 +54,11 @@ const PomodoroApp = () => {
     const handlerStopAnimation = () => {
         dispatch(stopAnimation())
     }
+
+    const handleShowSettings = () =>{
+        setShowSettings(!showSettings)
+    }
+
     useEffect(() => {
         dispatch(stopAnimation())
     }, [dispatch])
@@ -62,7 +69,9 @@ const PomodoroApp = () => {
         <>
             <div className={styles.container}>
                 <div className={styles.appContainer}>
-                    <button className={styles.settingsBtn}>
+                    <button 
+                        className={styles.settingsBtn}
+                        onClick={handleShowSettings}>
                         <FontAwesomeIcon icon={faGear}></FontAwesomeIcon>
                     </button>
                     <p className={styles.status}>{getPomodoroStatus()}</p>
@@ -99,6 +108,10 @@ const PomodoroApp = () => {
                     </div>
 
                 </div>
+                {showSettings ?
+                    <PomodoroSettings _callbackCloseSettings={handleShowSettings}/>
+                    : <></>
+                }
             </div>
         </>
     )
