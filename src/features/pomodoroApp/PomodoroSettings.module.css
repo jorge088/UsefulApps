@@ -10,8 +10,8 @@
 
 .settingsContainer {
     width: 640px;
-    height: 300px;
-    padding: .5em 1em;
+    min-height: 300px;
+    padding: 1.2em 1em;
     border-radius: 10px;
     color: #fff;
     font-family: 'Lexend', sans-serif;
@@ -75,7 +75,9 @@
 .formSettings__section input:focus {
     outline: none;
 }
-
+.formSettings__section button{
+    margin: 0 auto;
+}
 .disappear {
     animation-name: disappear;
     animation-duration: .3s;

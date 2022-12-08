@@ -2,9 +2,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import { getAllSettings, updatePomodoroTime } from './pomodoroSlice';
 import { useState } from 'react';
 
-
 import styles from './PomodoroSettings.module.css';
-
+import Button from '../../Components/Shared/Button';
 
 const PomodoroSettings = ({ _callbackCloseSettings }) => {
     const dispatch = useDispatch();
@@ -66,7 +65,7 @@ const PomodoroSettings = ({ _callbackCloseSettings }) => {
                 className={`${styles.settingsContainer} ${showDisappearAnimation ? styles.disappear : ''}`}>
                 <h2>Preferencias</h2>
                 <h3>Cronómetro</h3>
-                <form className={styles.formSettings} onSubmit={handleSubmitPomodoroSettings}>
+                <form className={styles.formSettings} >
                     <div className={styles.formSettings__section}>
                         <label>Duración del Pomodoro:</label>
                         <input
@@ -91,7 +90,13 @@ const PomodoroSettings = ({ _callbackCloseSettings }) => {
                             onChange={handleLongBreakTimeChange}
                         />
                     </div>
-                    <button type='submit'>Cargar Config</button>
+                    <div className={styles.formSettings__section}>
+                        <Button
+                            type={'submit'}
+                            content={'Guardar'}
+                            _callback={handleSubmitPomodoroSettings}
+                        />
+                    </div>
                 </form>
 
             </div>
