@@ -5,6 +5,9 @@ import { useState } from 'react';
 import styles from './PomodoroSettings.module.css';
 import Button from '../../Components/Shared/Button';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSquareXmark } from '@fortawesome/free-solid-svg-icons'
+
 const PomodoroSettings = ({ _callbackCloseSettings }) => {
     const dispatch = useDispatch();
     const [showDisappearAnimation, setShowDisappearAnimation] = useState(false);
@@ -46,7 +49,11 @@ const PomodoroSettings = ({ _callbackCloseSettings }) => {
     }
 
     const handleCloseSettings = (e) => {
-        if (e.target.id === 'container') {
+        if (
+            e.target.id === 'container'
+            || e.target.parentElement.id === 'icon'
+            || e.target.parentElement.id === 'btnCloseSettings'
+            || e.target.id === 'btnCloseSettings') {
             setShowDisappearAnimation(true)
             setTimeout(() => {
                 _callbackCloseSettings()
@@ -61,8 +68,16 @@ const PomodoroSettings = ({ _callbackCloseSettings }) => {
             className={styles.container}
             onClick={handleCloseSettings}>
 
-            <div
-                className={`${styles.settingsContainer} ${showDisappearAnimation ? styles.disappear : ''}`}>
+            <div id='asdas'
+                className={`${styles.settingsContainer} ${showDisappearAnimation ? styles.disappear : ''}`}
+            >
+                <button
+                    className={styles.btnCloseSettings}
+                    id="btnCloseSettings"
+                    onClick={handleCloseSettings}
+                >
+                    <FontAwesomeIcon id='icon' icon={faSquareXmark}></FontAwesomeIcon>
+                </button>
                 <h2>Preferencias</h2>
                 <h3>Cronómetro</h3>
                 <form className={styles.formSettings} >
@@ -98,9 +113,7 @@ const PomodoroSettings = ({ _callbackCloseSettings }) => {
                         />
                     </div>
                 </form>
-
             </div>
-
         </div>
     )
 }
