@@ -7,10 +7,17 @@ import Button from '../../Components/Shared/Button';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSquareXmark } from '@fortawesome/free-solid-svg-icons'
+import SideAlert from '../../Components/Shared/SideAlert';
 
 const PomodoroSettings = ({ _callbackCloseSettings }) => {
     const dispatch = useDispatch();
     const [showDisappearAnimation, setShowDisappearAnimation] = useState(false);
+    const [sideAlert, setSideAlert] = useState({
+        show: false,
+        type: '',
+        text: ''
+    });
+
     const settings = useSelector(getAllSettings);
     const [workTime, setWorkTime] = useState(settings.work);
     const [breakTime, setBreakTime] = useState(settings.break);
@@ -45,7 +52,13 @@ const PomodoroSettings = ({ _callbackCloseSettings }) => {
                     breakTime: breakTime,
                     longBreakTime: longBreakTime
                 }
-            ))
+            ));
+        setSideAlert({
+            show: true,
+            text: "¡Configuraciones guardadas!",
+            type: 'succed'
+        })
+
     }
 
     const handleCloseSettings = (e) => {
@@ -61,14 +74,31 @@ const PomodoroSettings = ({ _callbackCloseSettings }) => {
             }, 250)
         }
     }
+    const handleCloseSideAlert = () => {
+        setSideAlert({
+            show: false,
+            type: '',
+            text: ''
+        });
+    }
+
+
 
     return (
         <div
             id='container'
             className={styles.container}
-            onClick={handleCloseSettings}>
+            onClick={handleCloseSettings}
+        >
+            {sideAlert.show &&
+                <SideAlert
+                    text={sideAlert.text}
+                    type={sideAlert.type}
+                    _callback={handleCloseSideAlert}
+                />
+            }
 
-            <div id='asdas'
+            <div
                 className={`${styles.settingsContainer} ${showDisappearAnimation ? styles.disappear : ''}`}
             >
                 <button

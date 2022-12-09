@@ -1,0 +1,56 @@
+.sideAlertContainer{
+    position: absolute;
+    bottom: 25px;
+    right: 25px;
+    width: 280px;
+    height: 50px;
+    font-size: 1rem;
+    z-index: 30;
+    
+    border-radius: 6px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: appear;
+    animation-duration: .4s;
+}
+.succed{
+    background:var(--secundary);
+}
+.error{
+    background: #db4242;
+}
+
+.sideAlertContainer p{
+    font-family: 'Lexend', sans-serif;
+    color: #fff;
+    font-size: 1.1em;
+}
+
+.disappear{
+    animation: disappear;
+    animation-duration: .3s;
+}
+
+@keyframes appear {
+    0% {
+        transform: scale(0.6);
+        opacity: .6;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes disappear {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(1.07);
+        opacity: .6;
+    }
+}
