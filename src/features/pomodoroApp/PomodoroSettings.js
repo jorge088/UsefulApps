@@ -25,20 +25,20 @@ const PomodoroSettings = ({ _callbackCloseSettings }) => {
 
 
     const handleWorkTimeChange = (e) => {
-        if (e.target.value > 0) {
-            setWorkTime(Number(e.target.value));
+        if (e.target.value > 0 || e.target.value === '') {
+            setWorkTime(e.target.value);
         }
     }
 
     const handleBreakTimeChange = (e) => {
-        if (e.target.value > 0) {
-            setBreakTime(Number(e.target.value));
+        if (e.target.value > 0 || e.target.value === '') {
+            setBreakTime(e.target.value);
         }
     }
 
     const handleLongBreakTimeChange = (e) => {
-        if (e.target.value > 0) {
-            setLongBreakTime(Number(e.target.value));
+        if (e.target.value > 0 || e.target.value === '') {
+            setLongBreakTime(e.target.value);
         }
     }
 
@@ -48,9 +48,9 @@ const PomodoroSettings = ({ _callbackCloseSettings }) => {
         dispatch(
             updatePomodoroTime(
                 {
-                    workTime: workTime,
-                    breakTime: breakTime,
-                    longBreakTime: longBreakTime
+                    workTime: Number(workTime),
+                    breakTime: Number(breakTime),
+                    longBreakTime: Number(longBreakTime)
                 }
             ));
         setSideAlert({
@@ -113,27 +113,36 @@ const PomodoroSettings = ({ _callbackCloseSettings }) => {
                 <form className={styles.formSettings} >
                     <div className={styles.formSettings__section}>
                         <label>Duración del Pomodoro:</label>
-                        <input
-                            type='number'
-                            value={workTime}
-                            onChange={handleWorkTimeChange}
-                        />
+                        <span className={styles.inputBlock}>
+                            <input
+                                type='number'
+                                value={workTime}
+                                onChange={handleWorkTimeChange}
+                            />
+                            <p className={styles.inputDescription}>en minutos</p>
+                        </span>
                     </div>
                     <div className={styles.formSettings__section}>
                         <label>Duración del descanso:</label>
-                        <input
-                            type='number'
-                            value={breakTime}
-                            onChange={handleBreakTimeChange}
-                        />
+                        <span className={styles.inputBlock}>
+                            <input
+                                type='number'
+                                value={breakTime}
+                                onChange={handleBreakTimeChange}
+                            />
+                            <p className={styles.inputDescription}>en minutos</p>
+                        </span>
                     </div>
                     <div className={styles.formSettings__section}>
                         <label>Duración del descanso largo:</label>
-                        <input
-                            type='number'
-                            value={longBreakTime}
-                            onChange={handleLongBreakTimeChange}
-                        />
+                        <span className={styles.inputBlock}>
+                            <input
+                                type='number'
+                                value={longBreakTime}
+                                onChange={handleLongBreakTimeChange}
+                            />
+                            <p className={styles.inputDescription}>en minutos</p>
+                        </span>
                     </div>
                     <div className={styles.formSettings__section}>
                         <Button

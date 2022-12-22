@@ -62,9 +62,9 @@
 .formSettings {
     display: flex;
     flex-direction: column;
-    gap: 1.7em;
+    gap: 2em;
     width: 90%;
-    padding-top: .4em;
+    padding-top: .6em;
 }
 
 .formSettings__section {
@@ -93,6 +93,20 @@
 
 .formSettings__section input:focus {
     outline: none;
+}
+
+.inputBlock{
+    position: relative;
+}
+
+.inputDescription{
+    position: absolute;
+    left: 0px;
+    top:39px;
+}
+.inputDescription{
+    font-size: .8em;
+    opacity: .8;
 }
 
 .formSettings__section button {
