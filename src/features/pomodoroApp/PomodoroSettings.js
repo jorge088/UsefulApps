@@ -23,22 +23,38 @@ const PomodoroSettings = ({ _callbackCloseSettings }) => {
     const [breakTime, setBreakTime] = useState(settings.break);
     const [longBreakTime, setLongBreakTime] = useState(settings.long);
 
+    const [invalidWorkTime, setInvalidWorkTime] = useState(false);
+    const [invalidBreakTime, setInvalidBreakTime] = useState(false);
+    const [invalidLongBreakTime, setInvalidLongBreakTime] = useState(false);
+
+
+    const canSave = invalidWorkTime || invalidBreakTime || invalidLongBreakTime;
 
     const handleWorkTimeChange = (e) => {
-        if (e.target.value > 0 || e.target.value === '') {
-            setWorkTime(e.target.value);
+        setWorkTime(e.target.value);
+        if (e.target.validity.badInput || e.target.value <= 0) {//The input allow numbers, if value isn't a number throw a true badInput
+            setInvalidWorkTime(true)
+        } else {
+            setInvalidWorkTime(false);
+
         }
     }
 
     const handleBreakTimeChange = (e) => {
-        if (e.target.value > 0 || e.target.value === '') {
-            setBreakTime(e.target.value);
+        setBreakTime(e.target.value);
+        if (e.target.validity.badInput || e.target.value <= 0) {//The input allow numbers, if value isn't a number throw a true badInput
+            setInvalidBreakTime(true)
+        } else {
+            setInvalidBreakTime(false);
         }
     }
 
     const handleLongBreakTimeChange = (e) => {
-        if (e.target.value > 0 || e.target.value === '') {
-            setLongBreakTime(e.target.value);
+        setLongBreakTime(e.target.value);
+        if (e.target.validity.badInput || e.target.value <= 0) {//The input allow numbers, if value isn't a number throw a true badInput
+            setInvalidLongBreakTime(true)
+        } else {
+            setInvalidLongBreakTime(false);
         }
     }
 
@@ -53,6 +69,7 @@ const PomodoroSettings = ({ _callbackCloseSettings }) => {
                     longBreakTime: Number(longBreakTime)
                 }
             ));
+
         setSideAlert({
             show: true,
             text: "¡Configuraciones guardadas!",
@@ -74,6 +91,7 @@ const PomodoroSettings = ({ _callbackCloseSettings }) => {
             }, 250)
         }
     }
+
     const handleCloseSideAlert = () => {
         setSideAlert({
             show: false,
@@ -81,7 +99,6 @@ const PomodoroSettings = ({ _callbackCloseSettings }) => {
             text: ''
         });
     }
-
 
 
     return (
@@ -108,6 +125,7 @@ const PomodoroSettings = ({ _callbackCloseSettings }) => {
                 >
                     <FontAwesomeIcon id='icon' icon={faSquareXmark}></FontAwesomeIcon>
                 </button>
+
                 <h2>Preferencias</h2>
                 <h3>Cronómetro</h3>
                 <form className={styles.formSettings} >
@@ -117,6 +135,7 @@ const PomodoroSettings = ({ _callbackCloseSettings }) => {
                             <input
                                 type='number'
                                 value={workTime}
+                                className={invalidWorkTime ? styles.invalidInput : ''}
                                 onChange={handleWorkTimeChange}
                             />
                             <p className={styles.inputDescription}>en minutos</p>
@@ -128,6 +147,7 @@ const PomodoroSettings = ({ _callbackCloseSettings }) => {
                             <input
                                 type='number'
                                 value={breakTime}
+                                className={invalidBreakTime ? styles.invalidInput : ''}
                                 onChange={handleBreakTimeChange}
                             />
                             <p className={styles.inputDescription}>en minutos</p>
@@ -139,6 +159,7 @@ const PomodoroSettings = ({ _callbackCloseSettings }) => {
                             <input
                                 type='number'
                                 value={longBreakTime}
+                                className={invalidLongBreakTime ? styles.invalidInput : ''}
                                 onChange={handleLongBreakTimeChange}
                             />
                             <p className={styles.inputDescription}>en minutos</p>
@@ -149,6 +170,7 @@ const PomodoroSettings = ({ _callbackCloseSettings }) => {
                             type={'submit'}
                             content={'Guardar'}
                             _callback={handleSubmitPomodoroSettings}
+                            disabled={canSave}
                         />
                     </div>
                 </form>

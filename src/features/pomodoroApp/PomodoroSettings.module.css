@@ -91,6 +91,10 @@
     color: #fff;
 }
 
+.formSettings__section .invalidInput{
+    border: 1px solid red;
+}
+
 .formSettings__section input:focus {
     outline: none;
 }
