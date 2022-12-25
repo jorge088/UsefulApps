@@ -1,8 +1,7 @@
 .exchangeAppContainer {
     font-size: 1rem;
     margin-top: 60px;
-    padding: 3em 0;
-    min-height: calc(100vh - 140px);
+    min-height: calc(100vh - 120px);
     width: 100vw;
     display: flex;
     justify-content: center;
