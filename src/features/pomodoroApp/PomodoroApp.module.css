@@ -20,7 +20,7 @@
     flex-direction: column;
     align-items: center;
     justify-content:center;
-    background: var(--blueSpecial);
+    background: var(--backgroundGray);
     gap: 1em;
     color: #fff;
 

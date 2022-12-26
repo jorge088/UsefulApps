@@ -13,7 +13,7 @@
 .title{
     font-size: 2.2em;
     letter-spacing: 2px;
-    color: var(--detail);
+    color: var(--detailPurple);
 }
 .formContact{
     width: 600px;
@@ -29,8 +29,8 @@
     padding-left: 20px;
     font-size: 1em;
     font-family: 'Lexend', sans-serif;
-    background: var(--third);
     color: #fff;
+    background: var(--secundaryHover);
     border-radius: 4px;
 }
 .formContact__input::placeholder{
@@ -39,7 +39,7 @@
     opacity: .9;
 }
 .formContact__input:focus{
-    outline: 2px solid var(--detail);
+    outline: 2px solid var(--detailPurple);
 }
 .formContact__textarea{
     resize: none;
@@ -48,7 +48,7 @@
     font-size: 16px;
     font-family: 'Lexend', sans-serif;
     border: none;
-    background: var(--third);
+    background: var(--secundaryHover);
     color: #fff;
     border-radius: 4px;
 }
@@ -60,18 +60,18 @@
 .formContact__textarea:focus{
     border: none;
     font-size: 16px;
-    outline: 2px solid var(--detail);
+    outline: 2px solid var(--detailPurple);
 }
 .formContact__submit{
     border: none;
     height: 42px;
     border-radius: 4px;
-    background: var(--detail);
+    background: var(--detailPurple);
     font-size: 1em;
     color: #fff;
 }
 .formContact__submit:hover{
-    background: var(--detailHover);
+    background: var(--detailPurpleHover);
 }
 @media only screen and (max-width:575px) {
     .title{

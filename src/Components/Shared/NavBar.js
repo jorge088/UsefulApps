@@ -1,24 +1,34 @@
 import styles from './NavBar.module.css';
 import { Link } from 'react-router-dom';
+
+import { useDispatch, useSelector } from 'react-redux';
+import { toggleStyleMode, getDarkMode } from '../../features/darkMode/darkModeSlice';
+
 import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBars } from '@fortawesome/free-solid-svg-icons';
+import { faBars, faSun, faMoon } from '@fortawesome/free-solid-svg-icons';
 
 const NavBar = () => {
   const [showMenu, setShowMenu] = useState(false);
+  const dispatch = useDispatch();
+  const darkMode = useSelector(getDarkMode);
 
   const handlerShowMenuBtn = () => {
     setShowMenu(!showMenu);
   }
-  const handlerClickLink = () =>{
+  const handlerClickLink = () => {
     setShowMenu(false);
+  }
+
+  const handlerChangeMode = () => {
+    dispatch(toggleStyleMode());
   }
 
   return (
     <>
       <header className={styles.header}>
         <nav className={styles.nav}>
-          
+
           <ul className={styles.nav__categorys}>
             <li><Link to={'/'} className={styles.nav__categorys__link}>Home</Link></li>
             <li><Link to={'/exchange'} className={styles.nav__categorys__link}>Exchange</Link></li>
@@ -40,6 +50,9 @@ const NavBar = () => {
               <li><Link onClick={handlerClickLink} to={'/contact'} className={styles.nav__categorys__linkResponsive}>Contacto</Link></li>
             </ul>
           }
+          <button onClick={handlerChangeMode} className={styles.btnChangeStyleMode}>
+            <FontAwesomeIcon icon={darkMode? faSun : faMoon} />
+          </button>
 
         </nav>
       </header>

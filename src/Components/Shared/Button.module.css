@@ -1,4 +1,4 @@
-.button{
+.button {
     border: none;
     height: 44px;
     width: 200px;
@@ -9,45 +9,52 @@
     letter-spacing: 1px;
     color: #fff;
 }
-.disabled{
+
+.disabled {
     opacity: .7;
 }
 
 
-.classic{
+.classic {
     background: var(--secundary);
 }
-.classic:hover{
+
+.classic:hover {
     background: var(--secundaryHover);
 }
-.disabled.classic:hover{
+
+.disabled.classic:hover {
     background: var(--secundary);
 }
 
 
-.close{
-    background: #db4242;
+.close {
+    background: var(--dangerRed);
 }
-.close:hover{
-    background: #eb4747;
+
+.close:hover {
+    background: var(--dangerRedHover);
 }
-.disabled.close:hover{
-    background: #db4242;
+
+.disabled.close:hover {
+    background: var(--dangerRed);
 }
 
 
-.submit{
-    background: var(--detail);
+.submit {
+    background: var(--detailPurple);
 }
-.submit:hover{
-    background: var(--detailHover);
+
+.submit:hover {
+    background: var(--detailPurpleHover);
 }
-.disabled.submit:hover{
-    background: var(--detail);
+
+.disabled.submit:hover {
+    background: var(--detailPurple);
 }
 
 
-.transparent{
+.transparent {
     background: transparent;
     outline: 1px solid #fff;
 }

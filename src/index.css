@@ -1,13 +1,4 @@
-:root {
-  --background: #dde2e7;
-  --secundary: #0c64b1;
-  --secundaryHover: #0c71ca;
-  --third:rgba(8, 103, 187,.8);
-  --blueSpecial:#888080;
-  --detail:rgb(117, 62, 180);
-  --detailHover:rgb(128, 68, 196);
-  --darkBackground:#534e4e;
-}
+
 *{
   margin: 0;
   padding: 0;

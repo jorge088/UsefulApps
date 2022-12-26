@@ -1,8 +1,28 @@
 @import url('https://fonts.googleapis.com/css2?family=Lexend:wght@200;300;400;500;600;700;800&display=swap');
-.app{
+
+.app {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     background-color: var(--background);
+    transition: .25s ease;
+}
+
+.app {
+    --background: #dde2e7;
+    --secundary: #0c64b1;
+    --secundaryHover: #0c71ca;
+    --backgroundGray: #888080;
+    --detailPurple: #753eb4;
+    --detailPurpleHover: #8044c4;
+    --border:#c5c5c5;
+    --borderHover:#ebebeb;
+    --dangerRed:#db4242;
+    --dangerRedHover:#eb4747;
+    --font:#464646;
+}
+.app.dark{
+    --background:#393e41;
+    --font:#fff;
 }
