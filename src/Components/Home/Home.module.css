@@ -1,7 +1,7 @@
 .homeContainer {
     font-size: 1rem;
     margin-top: 60px;
-    min-height: calc(100vh - 140px);
+    min-height: calc(100vh - 60px);
     width: 100vw;
     display: flex;
     flex-direction: column;

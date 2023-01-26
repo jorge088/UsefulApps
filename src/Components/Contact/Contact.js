@@ -2,6 +2,7 @@ import { useRef, useState } from 'react';
 import styles from './Contact.module.css';
 import emailjs from '@emailjs/browser';
 import SideAlert from '../Shared/SideAlert';
+import Footer from '../Shared/Footer';
 
 const Contact = () => {
     const [formData, setFormData] = useState({
@@ -148,7 +149,7 @@ const Contact = () => {
                         className={styles.formContact__submit} />
                 </form>
             </div>
-
+            <Footer/>
         </>
     )
 }

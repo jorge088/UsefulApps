@@ -2,8 +2,7 @@ import styles from './Home.module.css';
 import HomeCard from './HomeCard';
 import weatherImg from './../../Assets/weatherLogo.png';
 import exchangeImg from './../../Assets/exchangeLogo.png';
-import pomodoroImg from './../../Assets/pomodoroLogo.png'
-import Footer from '../Shared/Footer';
+import pomodoroImg from './../../Assets/pomodoroLogo.png';
 
 const Home = () => {
   const apps = [
@@ -39,7 +38,7 @@ const Home = () => {
           }
         </div>
       </div>
-      <Footer/>
+
     </>
   )
 }

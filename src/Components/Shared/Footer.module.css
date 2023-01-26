@@ -1,7 +1,7 @@
 .footer {
     font-size: 1rem;
     width: 100vw;
-    height: 80px;
+    height: 50px;
     background-color: var(--secundary);
     display: flex;
     justify-content: center;
@@ -25,7 +25,6 @@
 }
 
 .footer__container__icons {
-    margin-top: .5em;
     display: flex;
     gap: 1em;
 }
