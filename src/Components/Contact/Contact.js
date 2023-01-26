@@ -1,13 +1,45 @@
 import { useRef, useState } from 'react';
 import styles from './Contact.module.css';
 import emailjs from '@emailjs/browser';
-import AlertPrincipal from '../Shared/AlertPrincipal';
-
-import { faCheckCircle, faCircleXmark } from '@fortawesome/free-solid-svg-icons';
+import SideAlert from '../Shared/SideAlert';
 
 const Contact = () => {
-    const [alertPrincipal, setAlertPrincipal] = useState({ show: false, text: "", icon: null, type: '' });
+    const [formData, setFormData] = useState({
+        name: "",
+        email: "",
+        message: "",
+        errors: {
+            name: false,
+            email: false,
+            message: false
+        }
+    });
+
+    const [sideAlert, setSideAlert] = useState({
+        show: false,
+        type: '',
+        text: ''
+    });
+
     const form = useRef();
+
+    const handleChange = (evt) => {
+        const value = evt.target.value;
+        let errorInput = false;
+
+        if (value === "") errorInput = true;
+        if (evt.target.name === "email") errorInput = !validateEmail(value);
+
+        setFormData({
+            ...formData,
+            [evt.target.name]: value,
+            errors: {
+                ...formData.errors,
+                [evt.target.name]: errorInput
+            }
+        });
+
+    }
 
     const validateEmail = (email) => {
         return email.match(
@@ -16,87 +48,100 @@ const Contact = () => {
         );
     };
 
-    const sendEmail = (e) => {
-        e.preventDefault();
-        let target = e.target;
-        let name = target.name.value;
-        let email = target.email.value;
-        let message = target.email.value;
+    const isValid = () => {
+        return formData.name !== '' && formData.message !== "" && validateEmail(formData.email)
+    }
 
-        if (name === '' || email === '' || message === '') {
-            setAlertPrincipal({
-                show: true,
-                text: "Hay campos incompletos",
-                icon: faCircleXmark,
-                type: 'error'
-            });
-            return;
+    const checkFormErrors = () => {
+        const error = {
+            name: false,
+            email: false,
+            message: false
+        };
+        if (formData.name === "") {
+            error.name = true;
         }
 
-        if (validateEmail(email)) {
+        if (!validateEmail(formData.email)) {
+            error.email = true
+        }
+        if (formData.message === "") {
+            error.message = true
+        }
+        return error;
+
+    }
+
+    const sendEmail = (e) => {
+        e.preventDefault();
+        if (isValid()) {
             //EMAIL JS API
             emailjs.sendForm('service_5wdohco', 'template_79kck89', form.current, 'jbaqcmYR0pfEweOpg')
                 .then((result) => {
-                    target.name.value = '';
-                    target.email.value = '';
-                    target.message.value = '';
-                    target.name.focus();
+                    setSideAlert({
+                        show: true,
+                        text: "¡Mensaje Enviado!",
+                        type: 'succed'
+                    })
 
-                    setAlertPrincipal({
-                        show: true,
-                        text: "El mensaje se envió correctamente",
-                        icon: faCheckCircle,
-                        type: 'success'
-                    });
                 }, (error) => {
-                    setAlertPrincipal({
+                    setSideAlert({
                         show: true,
-                        text: "Ocurrio un error, mensaje no enviado",
-                        icon: faCircleXmark,
+                        text: "¡Error al enviar!",
                         type: 'error'
-                    });
+                    })
                 });
         } else {
-            setAlertPrincipal({
-                show: true,
-                text: "Email no valido",
-                icon: faCircleXmark,
-                type: 'error'
-            });
-            return;
+            let inputsError = checkFormErrors()
+            setFormData({
+                ...formData,
+                errors: inputsError
+            })
+
         }
 
     };
-    const closeAlertPrincipal = () => {
-        setAlertPrincipal({ show: false })
+
+    const handleCloseSideAlert = () => {
+        setSideAlert({
+            show: false,
+            type: '',
+            text: ''
+        });
     }
 
     return (
         <>
-            {alertPrincipal.show &&
-                <AlertPrincipal
-                    text={alertPrincipal.text}
-                    icon={alertPrincipal.icon}
-                    type={alertPrincipal.type}
-                    closeAlert={closeAlertPrincipal} />
-            }
-            
+
             <div className={styles.container}>
+                {sideAlert.show &&
+                    <SideAlert
+                        text={sideAlert.text}
+                        type={sideAlert.type}
+                        _callback={handleCloseSideAlert}
+                    />
+                }
                 <h3 className={styles.title}>Contacto</h3>
                 <form ref={form} onSubmit={sendEmail} className={styles.formContact} >
                     <input
                         type="text"
                         name="name"
                         placeholder='Nombre'
-                        className={styles.formContact__input} />
+                        className={`${styles.formContact__input} ${formData.errors.name ? styles.formInputError : ""}`}
+                        value={formData.name}
+                        onChange={handleChange} />
                     <input
                         name="email"
                         placeholder='Email'
-                        className={styles.formContact__input} />
+                        className={`${styles.formContact__input} ${formData.errors.email ? styles.formInputError : ""}`}
+                        value={formData.email}
+                        onChange={handleChange} />
                     <textarea
                         name="message"
                         placeholder='Mensaje'
-                        className={styles.formContact__textarea} />
+                        className={`${styles.formContact__textarea} ${formData.errors.message ? styles.formInputError : ""}`}
+                        value={formData.message}
+                        onChange={handleChange} />
                     <input
                         type="submit"
                         value="Enviar mensaje"

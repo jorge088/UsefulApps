@@ -8,15 +8,14 @@
     align-items: center;
     gap: 1em;
     font-family: 'Lexend', sans-serif;
-
 }
 .title{
-    font-size: 2.2em;
-    letter-spacing: 2px;
+    font-size: 2.9em;
+    letter-spacing: 1px;
     color: var(--detailPurple);
 }
 .formContact{
-    width: 600px;
+    width: 750px;
     display: flex;
     flex-direction: column;
     padding: .8em .5em;
@@ -24,13 +23,12 @@
 }
 .formContact__input{
     height: 46px;
-    outline: none;
     border: none;
     padding-left: 20px;
     font-size: 1em;
     font-family: 'Lexend', sans-serif;
     color: #fff;
-    background: var(--secundaryHover);
+    background: var(--inputBackground);
     border-radius: 4px;
 }
 .formContact__input::placeholder{
@@ -39,7 +37,7 @@
     opacity: .9;
 }
 .formContact__input:focus{
-    outline: 2px solid var(--detailPurple);
+    outline: 2px solid var(--inputOutline);
 }
 .formContact__textarea{
     resize: none;
@@ -48,7 +46,7 @@
     font-size: 16px;
     font-family: 'Lexend', sans-serif;
     border: none;
-    background: var(--secundaryHover);
+    background: var(--inputBackground);
     color: #fff;
     border-radius: 4px;
 }
@@ -59,9 +57,17 @@
 }
 .formContact__textarea:focus{
     border: none;
+    outline: 2px solid var(--inputOutline);
     font-size: 16px;
-    outline: 2px solid var(--detailPurple);
 }
+
+.formInputError{
+    outline: 2px solid var(--dangerRed);
+}
+.formInputError:focus{
+    outline: 2px solid var(--dangerRed);
+}
+
 .formContact__submit{
     border: none;
     height: 42px;
@@ -75,7 +81,7 @@
 }
 @media only screen and (max-width:575px) {
     .title{
-        font-size: 1.8em;
+        font-size: 2.4em;
     }
     .formContact{
         width: 90%;
@@ -84,5 +90,8 @@
 @media only screen and (min-width:576px) and (max-width:768px) {
     .formContact{
         width: 80%;
+    }
+    .title{
+        font-size: 2.6em;
     }
 }

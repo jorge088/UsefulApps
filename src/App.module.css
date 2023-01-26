@@ -21,8 +21,12 @@
     --dangerRed:#db4242;
     --dangerRedHover:#eb4747;
     --font:#464646;
+    --inputBackground:#1a82dd;
+    --inputOutline: #753eb4;
 }
 .app.dark{
     --background:#393e41;
     --font:#fff;
+    --inputBackground:#777777;
+    --inputOutline: #c8c5cc;
 }
