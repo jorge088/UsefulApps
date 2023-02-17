@@ -26,8 +26,8 @@ const ExchangeApp = () => {
     content =
       <div className={styles.exchangeAppContainer}>
         <div className={styles.exchangeApp}>
-          <ExchangeAppInformation />
-          <ExchangeAppCurrencyValue data={data} />
+          <ExchangeAppInformation data={data} />
+          {/* <ExchangeAppCurrencyValue data={data} /> */}
           <ExchangeAppCalculator data={data} />
         </div>
       </div>

@@ -11,6 +11,8 @@
 
 .app {
     --background: #dde2e7;
+    --backgoundSecundary:#0c64b1;
+    --shadowBackgroundSecundary:#147bd466;
     --secundary: #0c64b1;
     --secundaryHover: #0c71ca;
     --backgroundGray: #888080;
@@ -26,6 +28,9 @@
 }
 .app.dark{
     --background:#393e41;
+    --backgoundSecundary:#6b6b6b;
+    --shadowBackgroundSecundary:#6b6b6b00;
+
     --font:#fff;
     --inputBackground:#777777;
     --inputOutline: #c8c5cc;

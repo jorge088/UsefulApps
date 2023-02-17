@@ -1,68 +1,141 @@
 .currencyCalculator{
     color: #fff;
-    width: 90%;
-    height: 90px;
     display: flex;
-    justify-content: space-around;
+    width: 100%;
+    justify-content: space-between;
     align-items: center;
     font-family: 'Lexend', sans-serif;
 }
 .currencyCalculator__coin{
     display: flex;
-    flex-direction: column;
     align-items: center;
-    gap: .3em;
 }
-.currencyCalculator__coin__name{
-    font-size: 1em;
-    font-weight: 500;
+.currencyCalculator__coin__info{
+    background-color: #003c80;
+    width: 90px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.currencyCalculator__coin__info__name{
+    font-size: 1.2em;
+    font-weight: 400;
+    letter-spacing: 0px;
 }
 .currencyCalculator__coin__input{
-    width: 8.75em;
-    height: 35px;
-    font-size: 1.1em;
-    text-align: center;
+    width: 11em;
+    height: 60px;
+    font-size: 1.4em;
+    text-align: left;
+    padding-left: 20px;
     color: #fff;
-    font-weight: 400;
-    border-radius: 8px;
+    font-weight: 500;
     border-style: none;
-    background-color: rgb(240,240,240,0.35 );
+    outline: transparent;
+    background-color: #f0f0f059;
+    transition: .2s ease;
+
 }
 .currencyCalculator__coin__input:focus{
-    outline:none;
-    box-shadow: 0 1px 8px 0px rgba(255, 255, 255, 0.4);
+    outline:1px solid #003c80;
 }
 .currencyCalculator__coin__input[type=number] {
     -moz-appearance:textfield; /* Firefox */
 }
 
 .currencyCalculator__exchange{
-    font-size: 1.2em;
+    font-size: 1.4em;
     cursor: pointer;
-    margin-top: 18px;
-    border-radius: 50%;
-    padding: .45em .55em;
     background: none;
     color: #fff;
     border: none;
 }
-.currencyCalculator__exchange:hover{
-    border: 1px solid #fff;
-    box-shadow: 0 1px 2px 1px rgba(255, 255, 255, 0.2);
-}
 
 .currencyConverted{
-    margin-top: -16px;
-    width: 90%;
+    width: 100%;
+    margin: 0;
     color: #fff;
     font-family: 'Lexend', sans-serif;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
 }
 .currencyConverted__values{
-    width: 140px;
-    height: auto;
+    height: 40px;
+    width: 16em;
     text-align: center;
-    font-size: 1em;
-    font-weight: 700;
+    font-size: 1.4em;
+    font-weight: 600;
+}
+.convert{
+    text-align: right;
+}
+.converted{
+    text-align: left;
+}
+.currencyConverted__icon{
+    /* justify-self: center; */
+}
+
+
+@media only screen and (max-width:575px) {
+    .currencyCalculator{
+        flex-direction: column;
+        gap: 1.2em;
+    }
+
+    .currencyCalculator__coin{
+        width: 100%;
+        justify-content: center;
+    }
+    .currencyCalculator__coin__input{
+        width: 60%;
+    }
+    .currencyConverted{
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .currencyConverted__icon{
+        /* background-color: red; */
+    }
+    .currencyConverted__values{
+        width: 90%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .convert{
+        text-align: center;
+    }
+    .converted{
+        text-align: center;
+    }
+
+}
+@media only screen and (min-width:576px) and (max-width:768px) {
+  
+    .currencyCalculator{
+        flex-direction: column;
+        gap: 1.2em;
+    }
+    .currencyCalculator__coin{
+        width: 100%;
+        justify-content: center;
+    }
+    .currencyCalculator__coin__input{
+        width: 70%;
+    }
+    .currencyConverted__values{
+        min-width: 12em;
+        width: auto;
+    }
+}
+@media only screen and (min-width:768px) and (max-width:992px) {
+    
+
+    .currencyCalculator__coin__input{
+        min-width: 8em;
+        max-width: 14em;
+    }
 }

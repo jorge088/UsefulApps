@@ -51,7 +51,6 @@ const ExchangeAppCalculator = ({ data }) => {
       <form className={styles.currencyCalculator}>
 
         <div className={styles.currencyCalculator__coin}>
-          <label className={styles.currencyCalculator__coin__name}>Dolar</label>
           <input
             className={styles.currencyCalculator__coin__input}
             type='number'
@@ -60,6 +59,11 @@ const ExchangeAppCalculator = ({ data }) => {
             value={coin}>
 
           </input>
+          <span className={styles.currencyCalculator__coin__info}>
+            <label className={styles.currencyCalculator__coin__info__name}>USD--</label>
+          </span>
+          
+
         </div>
 
         <button className={styles.currencyCalculator__exchange} onClick={changeValues}>
@@ -67,7 +71,6 @@ const ExchangeAppCalculator = ({ data }) => {
         </button>
 
         <div className={styles.currencyCalculator__coin}>
-          <label className={styles.currencyCalculator__coin__name}>Peso AR</label>
           <input
             className={styles.currencyCalculator__coin__input}
             type='number'
@@ -75,15 +78,20 @@ const ExchangeAppCalculator = ({ data }) => {
             onChange={handlerPesoChange}
             placeholder='0'>
           </input>
+          <span className={styles.currencyCalculator__coin__info}>
+            <label className={styles.currencyCalculator__coin__info__name}>ARS--</label>
+          </span>
+          
+
         </div>
       </form>
 
       <div className={styles.currencyConverted}>
-        <p className={styles.currencyConverted__values}>$ {coin} USD</p>
+        <p className={`${styles.currencyConverted__values} ${styles.convert}`}>$ {coin} USD</p>
         <p className={styles.currencyConverted__icon}>
           <FontAwesomeIcon icon={faEquals} ></FontAwesomeIcon>
         </p>
-        <p className={styles.currencyConverted__values}>$ {peso} ARS</p>
+        <p className={`${styles.currencyConverted__values} ${styles.converted}`}>$ {peso} ARS</p>
       </div>
     </>
   )
