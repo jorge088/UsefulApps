@@ -3,7 +3,6 @@ import { selectAllDataQuotation, getStatus, fetchQuotation } from "./exchangeSli
 
 import styles from './ExchangeApp.module.css'
 import ExchangeAppCalculator from './ExchangeAppCalculator'
-import ExchangeAppCurrencyValue from './ExchangeAppCurrencyValue'
 import ExchangeAppInformation from './ExchangeAppInformation'
 import Loading from "../../Components/Shared/Loading";
 import { useEffect } from "react";
@@ -27,7 +26,6 @@ const ExchangeApp = () => {
       <div className={styles.exchangeAppContainer}>
         <div className={styles.exchangeApp}>
           <ExchangeAppInformation data={data} />
-          {/* <ExchangeAppCurrencyValue data={data} /> */}
           <ExchangeAppCalculator data={data} />
         </div>
       </div>
