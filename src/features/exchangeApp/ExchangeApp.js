@@ -24,10 +24,9 @@ const ExchangeApp = () => {
   } else if (exchangeStatus === 'succeded') {
     content =
       <div className={styles.exchangeAppContainer}>
-        <div className={styles.exchangeApp}>
-          <ExchangeAppInformation data={data} />
-          <ExchangeAppCalculator data={data} />
-        </div>
+        <ExchangeAppCalculator data={data} />
+        {/* <ExchangeAppInformation data={data} /> */}
+
       </div>
   } else if (exchangeStatus === 'failed') {
     <p>FALLÓ</p>
