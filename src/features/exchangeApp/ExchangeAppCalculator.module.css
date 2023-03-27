@@ -7,8 +7,8 @@
     flex-direction: column;
     align-items: flex-start;
     justify-content: center;
-    padding: 1em 1.5em;
-    gap: 1.4em;
+    padding: .8em 1.5em .4em 1.5em;
+    gap: .6em;
 }
 
 .title{
@@ -19,6 +19,7 @@
     text-align: center;
     align-self: center;
     font-family: 'Lexend', sans-serif;
+    margin-bottom: .1em;
 
 }
 
@@ -39,24 +40,24 @@
 .formCalculator__coin__info {
     background-color: #003c80;
     width: 90px;
-    height: 50px;
+    height: 45px;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
 .formCalculator__coin__info__name {
-    font-size: 1em;
+    font-size: .9em;
     font-weight: 400;
     letter-spacing: 0px;
 }
 
 .formCalculator__coin__input {
     width: 10.8em;
-    height: 50px;
+    height: 45px;
     font-size: 1.3em;
     text-align: left;
-    padding-left: 20px;
+    padding-left: 15px;
     color: #fff;
     font-weight: 500;
     border-style: none;
@@ -109,10 +110,6 @@
     text-align: left;
 }
 
-.currencyConverted__icon {
-    /* justify-self: center; */
-}
-
 
 @media only screen and (max-width:575px) {
     .calculator {
@@ -138,10 +135,6 @@
         flex-direction: column;
         align-items: center;
         justify-content: space-between;
-    }
-
-    .currencyConverted__icon {
-        /* background-color: red; */
     }
 
     .currencyConverted__values {

@@ -26,11 +26,13 @@
     --font:#333333;
     --inputBackground:#1783e2;
     --inputOutline: #753eb4;
+    --outlineContent:#5085b3;
 }
 .app.dark{
     --background:#393e41;
-    --backgoundSecundary:#6b6b6b;
+    --backgoundSecundary:#747474;
     --backgroundContent: #646464;
+    --outlineContent:#fff;
 
     --shadowBackgroundSecundary:#6b6b6b00;
 
