@@ -6,9 +6,8 @@
     align-items: center;
     flex-wrap: wrap;
     border-radius: 4px;
-    padding: .8em 1.5em;
+    padding: .5em 1.5em;
     background: var(--backgroundContent);
-    box-shadow: 0 1px 6px 0px var(--shadowBackgroundSecundary);
     gap: .5em;
 }
 
@@ -42,6 +41,17 @@
 
 .currencyInformation__data__variation span {
     display: flex;
+    gap: 7px;
+}
+.variationUp{
+    color: #0ebe0e;
+    font-size: 1.2em;
+
+}
+.variationDown{
+    color: var(--dangerRed);
+    font-size: 1.2em;
+
 }
 
 .currencyInformation__data__value {

@@ -7,13 +7,13 @@
     flex-direction: column;
     align-items: flex-start;
     justify-content: center;
-    padding: .8em 1.5em .4em 1.5em;
+    padding: .4em 1.5em .2em 1.5em;
     gap: .6em;
 }
 
 .title{
     color: var(--font);
-    font-size: 1.7em;
+    font-size: 1.6em;
     font-weight: 500;
     letter-spacing: 1px;
     text-align: center;
@@ -40,7 +40,7 @@
 .formCalculator__coin__info {
     background-color: #003c80;
     width: 90px;
-    height: 45px;
+    height: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -54,8 +54,8 @@
 
 .formCalculator__coin__input {
     width: 10.8em;
-    height: 45px;
-    font-size: 1.3em;
+    height: 40px;
+    font-size: 1.2em;
     text-align: left;
     padding-left: 15px;
     color: #fff;
@@ -98,8 +98,8 @@
     height: 40px;
     width: 16em;
     text-align: center;
-    font-size: 1.3em;
-    font-weight: 600;
+    font-size: 1.2em;
+    font-weight: 500;
 }
 
 .convert {

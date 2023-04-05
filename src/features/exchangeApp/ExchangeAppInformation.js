@@ -12,9 +12,6 @@ const ExchangeAppInformation = ({ data }) => {
                         <ExchangeAppInformationCurrency currencyData={currency} key={currency.name} />
                     )
                 }
-
-
-
             </div>
 
         </>

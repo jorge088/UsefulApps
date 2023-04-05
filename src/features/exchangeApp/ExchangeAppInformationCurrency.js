@@ -1,18 +1,25 @@
 import styles from './ExchangeAppInformationCurrency.module.css';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowDown, faArrowUp } from '@fortawesome/free-solid-svg-icons';
+
 const ExchangeAppInformationCurrency = ({ currencyData }) => {
 
     const { name, values: currencyValues, historic } = currencyData;
     let fecha = currencyValues.fecha.slice(0, 10);
-
-
+    let variation = currencyValues["class-variacion"];
     return (
         <div className={styles.currencyInformation}>
+
             <h3 className={styles.currencyInformation__name}>{name}</h3>
             <div className={styles.currencyInformation__data}>
                 <div className={styles.currencyInformation__data__variation}>
                     <span>
-                        <p>p</p>
+                        <FontAwesomeIcon 
+                            icon={variation === "up" ? faArrowUp : faArrowDown}
+                            className={variation==="up" ? styles.variationUp : styles.variationDown}
+                            >    
+                        </FontAwesomeIcon>
                         <p>{currencyValues.variacion}</p>
                     </span>
                     <p className={styles.description}>VARIACIÓN</p>
