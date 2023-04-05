@@ -4,10 +4,9 @@ import { faArrowRightArrowLeft, faEquals } from '@fortawesome/free-solid-svg-ico
 import { useState } from 'react';
 
 const ExchangeAppCalculator = ({ data }) => {
-
+  const { values: informal_USD } = data.informal_USD
   const [coin, setCoin] = useState("");
   const [peso, setPeso] = useState("");
-
   const handlerCoinChange = (e) => {
     e.preventDefault();
     if (!e.target.value) {
@@ -40,10 +39,10 @@ const ExchangeAppCalculator = ({ data }) => {
     e.preventDefault();
   }
   const calcCoinValue = (pesoValue) => {
-    return pesoValue / parseFloat(data.compra);
+    return pesoValue / parseFloat(informal_USD.compra);
   }
   const calcPesoValue = (coinValue) => {
-    return coinValue * parseFloat(data.compra);
+    return coinValue * parseFloat(informal_USD.compra);
   }
 
   return (
