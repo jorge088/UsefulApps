@@ -8,7 +8,8 @@
     align-items: flex-start;
     justify-content: center;
     padding: .4em 1.5em .2em 1.5em;
-    gap: .6em;
+    gap: .8em;
+    font-size: 1rem;
 }
 
 .title{
@@ -29,6 +30,7 @@
     width: 100%;
     justify-content: space-between;
     align-items: center;
+    
     font-family: 'Lexend', sans-serif;
 }
 
@@ -98,7 +100,7 @@
     height: 40px;
     width: 16em;
     text-align: center;
-    font-size: 1.2em;
+    font-size: 1.1em;
     font-weight: 500;
 }
 
@@ -114,8 +116,10 @@
 @media only screen and (max-width:575px) {
     .calculator {
         min-width: auto;
-        width: 92%;
-        padding: 1.5em .5em;
+        width: 85%;
+        padding: .8em .2em;
+        padding-bottom: 0;
+        font-size: .9rem;
     }
     .formCalculator {
         flex-direction: column;
@@ -139,9 +143,11 @@
 
     .currencyConverted__values {
         width: 90%;
+        height: 35px;
         display: flex;
         align-items: center;
         justify-content: center;
+        gap: 0;
     }
 
     .convert {
@@ -158,9 +164,8 @@
 
     .calculator {
         min-width: auto;
-        width: 90%;
-        padding: 1.5em 1em;
-
+        width: 80%;
+        padding: 1em .6em;
     }
 
     .formCalculator {
@@ -176,7 +181,6 @@
     .formCalculator__coin__input {
         width: 70%;
     }
-
     .currencyConverted__values {
         min-width: 12em;
         width: auto;
