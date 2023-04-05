@@ -93,7 +93,7 @@
 }
 
 .formSettings__section .invalidInput{
-    border: 1px solid red;
+    border: 1px solid var(--dangerRed);
 }
 
 .formSettings__section input:focus {

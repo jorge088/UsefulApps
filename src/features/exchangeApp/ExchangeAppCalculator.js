@@ -1,48 +1,79 @@
 import styles from './ExchangeAppCalculator.module.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowRightArrowLeft, faEquals } from '@fortawesome/free-solid-svg-icons';
+
 import { useState } from 'react';
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEquals } from '@fortawesome/free-solid-svg-icons';
+
+import argentinaBrandImg from '../../Assets/argentinaBrand.png'
+import unitedStateBrandImg from '../../Assets/unitedStatesBrand.png'
+
 
 const ExchangeAppCalculator = ({ data }) => {
   const { values: informal_USD } = data.informal_USD
   const [coin, setCoin] = useState("");
   const [peso, setPeso] = useState("");
+
+  const re = /^[0-9\b]+$/;
+
+
   const handlerCoinChange = (e) => {
     e.preventDefault();
-    if (!e.target.value) {
-      setCoin("");
-      setPeso("")
-      return null;
+    const value = e.target.value;
+
+    if (value === '') {
+      setCoin('')
+      setPeso('')
+      return
     }
 
-    let pesoValue = calcPesoValue(parseFloat(e.target.value));
-
-    setCoin(parseFloat(e.target.value))
-    setPeso(pesoValue.toFixed(2));
+    if (value === '' || re.test(value)) {
+      let pesoValue = calcPesoValue(parseFloat(value));
+      setCoin(parseFloat(e.target.value))
+      setPeso(pesoValue);
+    }
   }
 
   const handlerPesoChange = (e) => {
     e.preventDefault();
-    if (!e.target.value) {
-      setCoin("");
-      setPeso("");
-      return null;
+    const value = e.target.value;
+
+    if (value === '') {
+      setCoin('')
+      setPeso('')
+      return
     }
 
-    let coinValue = calcCoinValue(parseFloat(e.target.value));
+    if (value === '' || re.test(value)) {
+      let coinValue = calcCoinValue(parseFloat(e.target.value));
+      setPeso(parseFloat(e.target.value))
+      setCoin(coinValue);
 
-    setPeso(parseFloat(e.target.value))
-    setCoin(coinValue.toFixed(2));
+    }
   }
 
-  const changeValues = (e) => {
-    e.preventDefault();
-  }
+  // const changeValues = (e) => {
+  //   e.preventDefault();
+  //   let pesoValue = coin;
+  //   let coinValue = calcCoinValue(pesoValue);
+
+
+  //   setPeso(pesoValue);
+  //   setCoin(coinValue);
+  // }
+
   const calcCoinValue = (pesoValue) => {
-    return pesoValue / parseFloat(informal_USD.compra);
+    return (pesoValue / parseFloat(informal_USD.compra)).toFixed(2);
   }
   const calcPesoValue = (coinValue) => {
-    return coinValue * parseFloat(informal_USD.compra);
+    return (coinValue * parseFloat(informal_USD.compra)).toFixed(2);
+  }
+
+  const handleFocusInput = (e) => {
+    e.target.select()
+  }
+  function numberWithCommas(number) {
+    return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");//use a regex to add commas
   }
 
   return (
@@ -53,41 +84,43 @@ const ExchangeAppCalculator = ({ data }) => {
           <div className={styles.formCalculator__coin}>
             <input
               className={styles.formCalculator__coin__input}
-              type='number'
               placeholder='0'
               onChange={handlerCoinChange}
+              onFocus={handleFocusInput}
               value={coin}>
 
             </input>
             <span className={styles.formCalculator__coin__info}>
-              <label className={styles.formCalculator__coin__info__name}>USD--</label>
+              <img src={unitedStateBrandImg} className={styles.brandImg} alt='United State brand icon'></img>
+              <label className={styles.formCalculator__coin__info__name}>USD</label>
             </span>
           </div>
 
-          <button className={styles.formCalculator__exchange} onClick={changeValues}>
+          {/* <button className={styles.formCalculator__exchange} onClick={changeValues}>
             <FontAwesomeIcon icon={faArrowRightArrowLeft}></FontAwesomeIcon>
-          </button>
+          </button> */}
 
           <div className={styles.formCalculator__coin}>
             <input
               className={styles.formCalculator__coin__input}
-              type='number'
               value={peso}
               onChange={handlerPesoChange}
+              onFocus={handleFocusInput}
               placeholder='0'>
             </input>
             <span className={styles.formCalculator__coin__info}>
-              <label className={styles.formCalculator__coin__info__name}>ARS--</label>
+              <img src={argentinaBrandImg} className={styles.brandImg} alt="Argentina brand icon"></img>
+              <label className={styles.formCalculator__coin__info__name}>ARS</label>
             </span>
           </div>
         </form>
 
         <div className={styles.currencyConverted}>
-          <p className={`${styles.currencyConverted__values} ${styles.convert}`}>$ {coin} USD</p>
+          <p className={`${styles.currencyConverted__values} ${styles.convert}`}>$ {numberWithCommas(coin)} USD</p>
           <p className={styles.currencyConverted__icon}>
             <FontAwesomeIcon icon={faEquals} ></FontAwesomeIcon>
           </p>
-          <p className={`${styles.currencyConverted__values} ${styles.converted}`}>$ {peso} ARS</p>
+          <p className={`${styles.currencyConverted__values} ${styles.converted}`}>$ {numberWithCommas(peso)} ARS</p>
         </div>
       </div>
     </>

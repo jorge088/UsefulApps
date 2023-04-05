@@ -41,11 +41,15 @@
 
 .formCalculator__coin__info {
     background-color: #003c80;
-    width: 90px;
+    width: 85px;
     height: 40px;
     display: flex;
+    gap: 5px;
     align-items: center;
     justify-content: center;
+}
+.brandImg{
+    width: 32px;
 }
 
 .formCalculator__coin__info__name {
@@ -68,7 +72,13 @@
     transition: .2s ease;
 
 }
+.formCalculator__coin__input.invalidInput:focus{
+    outline: 1px solid var(--dangerRed);
 
+}
+.invalidInput{
+    outline: 1px solid var(--dangerRed);
+}
 .formCalculator__coin__input:focus {
     outline: 1px solid #003c80;
 }
