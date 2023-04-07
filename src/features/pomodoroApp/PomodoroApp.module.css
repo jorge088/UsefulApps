@@ -19,7 +19,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content:center;
+    justify-content: center;
     background: var(--backgroundGray);
     gap: 1em;
     color: #fff;
@@ -49,7 +49,8 @@
     top: 12px;
     left: 60px;
 }
-.settingsBtn{
+
+.settingsBtn {
     font-size: 1.7em;
     position: absolute;
     top: 11px;
@@ -81,6 +82,7 @@
         right: 50%;
         transform: translateX(50%);
         top: 40px;
+        font-size: 1.2em;
     }
 
     .status {
@@ -88,12 +90,16 @@
         transform: translateX(-50%);
         width: 80%;
         text-align: center;
+        font-size: 1.25em;
+
     }
 }
+
 @media only screen and (min-width:576px) and (max-width:768px) {
     .container {
         font-size: .95rem;
     }
+
     .appContainer {
         width: 90%;
         padding: 1.8em 0 0 0;

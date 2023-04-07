@@ -1,14 +1,11 @@
 import { useSelector, useDispatch } from 'react-redux';
 
 import {
-    getMode,
-    getRunning,
-    getPomodoroTime,
-    getSessionsCount,
     startPomodoroCounter,
     startAnimation,
     stopAnimation,
-    changePomodoroCounterExecution
+    changePomodoroCounterExecution,
+    getPomodoroState
 } from "./pomodoroSlice"
 
 import styles from './PomodoroApp.module.css';
@@ -22,16 +19,12 @@ import PomodoroSettings from './PomodoroSettings';
 const PomodoroApp = () => {
 
     const dispatch = useDispatch();
-    const pomodoroTime = useSelector(getPomodoroTime);
-    const pomodoroMode = useSelector(getMode);
-    const running = useSelector(getRunning);
-    const sessionsCount = useSelector(getSessionsCount);
-    
+    const { pomodoroTime, running, status, sessionsCount, mode } = useSelector(getPomodoroState);
+
     const [showSettings, setShowSettings] = useState(false);
 
-    const getPomodoroStatus = () => {
-        let mode = pomodoroMode;
-        if (mode === 'start') return 'Inicia tu reloj'
+    const getExecutionStatus = () => {
+        if (status === 'stopped') return 'Inicia tu reloj'
         if (mode === 'work') return 'A concentrarse!'
         if (mode === 'break') return 'Tomá un descanso corto!'
         if (mode === 'long') return 'Tomá un descanso largo!'
@@ -53,13 +46,19 @@ const PomodoroApp = () => {
         dispatch(stopAnimation())
     }
 
-    const handleShowSettings = () =>{
-        setShowSettings(!showSettings)
+    const handleShowSettings = () => {
+        setShowSettings(!showSettings);
+
     }
 
     useEffect(() => {
         dispatch(stopAnimation())
     }, [dispatch])
+
+    const handleEsc = (e) => {
+        if (e.key === 'Escape' && showSettings) handleShowSettings();
+    }
+    window.addEventListener('keydown', handleEsc)
 
 
 
@@ -67,14 +66,14 @@ const PomodoroApp = () => {
         <>
             <div className={styles.container}>
                 <div className={styles.appContainer}>
-                    <button 
+                    <button
                         className={styles.settingsBtn}
                         onClick={handleShowSettings}>
                         <FontAwesomeIcon icon={faGear}></FontAwesomeIcon>
                     </button>
-                    <p className={styles.status}>{getPomodoroStatus()}</p>
+                    <p className={styles.status}>{getExecutionStatus()}</p>
 
-                    {pomodoroMode === 'work' ?
+                    {mode === 'work' ?
                         <p className={styles.sessions}>Pomodoro ({sessionsCount})</p>
                         : ''
                     }
@@ -84,7 +83,7 @@ const PomodoroApp = () => {
                     />
 
                     <div className={styles.btnControl}>
-                        {pomodoroMode === 'start' ?
+                        {status === 'stopped' ?
                             <Button
                                 type={'classic'}
                                 content={'Iniciar'}
@@ -100,14 +99,14 @@ const PomodoroApp = () => {
                         <Button
                             type={'close'}
                             content={'Omitir'}
-                            _callback={pomodoroMode === 'start' ? handlerPomodoroStart : handlerChangePomodoroExecution}
+                            _callback={status === 'stopped' ? handlerPomodoroStart : handlerChangePomodoroExecution}
                             disabled={!running}
                         />
                     </div>
 
                 </div>
                 {showSettings ?
-                    <PomodoroSettings _callbackCloseSettings={handleShowSettings}/>
+                    <PomodoroSettings _callbackCloseSettings={handleShowSettings} />
                     : <></>
                 }
             </div>

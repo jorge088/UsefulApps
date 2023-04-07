@@ -1,7 +1,7 @@
 import { useDispatch,useSelector } from 'react-redux';
 import { 
     changePomodoroCounterExecution,
-    getAllSettings
+    getMode
 } from './pomodoroSlice';
 
 import styles from './PomodoroCounter.module.css';
@@ -10,13 +10,13 @@ import sound from "./../../Assets/PomodoroAlert.mp3"
 
 const PomodoroCounter = ({ time, animation = true }) => {
     const dispatch = useDispatch();
-    const settings = useSelector(getAllSettings);
+    const mode = useSelector(getMode);
     let alertSound = new Audio(sound);
 
     let circleColor = '#db4242';
-    if (time === settings.work) circleColor = '#db4242';
-    if (time === settings.break) circleColor = '#0ebe0e';
-    if (time === settings.long) circleColor = '#0ebe0e';
+    if (mode ==='work') circleColor = '#db4242';
+    if (mode === 'break') circleColor = '#0ebe0e';
+    if ( mode === 'long') circleColor = '#0ebe0e';
 
 
     

@@ -12,6 +12,7 @@ import SideAlert from '../../Components/Shared/SideAlert';
 const PomodoroSettings = ({ _callbackCloseSettings }) => {
     const dispatch = useDispatch();
     const [showDisappearAnimation, setShowDisappearAnimation] = useState(false);
+
     const [sideAlert, setSideAlert] = useState({
         show: false,
         type: '',
@@ -19,54 +20,68 @@ const PomodoroSettings = ({ _callbackCloseSettings }) => {
     });
 
     const settings = useSelector(getAllSettings);
-    const [workTime, setWorkTime] = useState(settings.work);
-    const [breakTime, setBreakTime] = useState(settings.break);
-    const [longBreakTime, setLongBreakTime] = useState(settings.long);
 
-    const [invalidWorkTime, setInvalidWorkTime] = useState(false);
-    const [invalidBreakTime, setInvalidBreakTime] = useState(false);
-    const [invalidLongBreakTime, setInvalidLongBreakTime] = useState(false);
+    const [pomodoroSetting, setPomodoroSettings] = useState({
+        workTime: settings.work,
+        breakTime: settings.break,
+        longTime: settings.long
+    });
 
+    const [invalidInput, setInvalidInput] = useState({
+        workTime: false,
+        breakTime: false,
+        longTime: false
+    })
 
-    const canSave = invalidWorkTime || invalidBreakTime || invalidLongBreakTime;
+    const re = /^[0-9\b]+$/;
 
-    const handleWorkTimeChange = (e) => {
-        setWorkTime(e.target.value);
-        if (e.target.validity.badInput || e.target.value <= 0) {//The input allow numbers, if value isn't a number throw a true badInput
-            setInvalidWorkTime(true)
-        } else {
-            setInvalidWorkTime(false);
+    const canSave = pomodoroSetting.workTime !== '' && pomodoroSetting.breakTime !== '' && pomodoroSetting.longTime !== '';
 
+    const handleChangeInputTime = (e) => {
+        const { name, value } = e.target;
+
+        if (value === '') {
+            setPomodoroSettings({
+                ...pomodoroSetting,
+                [name]: ''
+            })
+            setInvalidInput({
+                ...invalidInput,
+                [name]: true
+            })
+            return
         }
-    }
 
-    const handleBreakTimeChange = (e) => {
-        setBreakTime(e.target.value);
-        if (e.target.validity.badInput || e.target.value <= 0) {//The input allow numbers, if value isn't a number throw a true badInput
-            setInvalidBreakTime(true)
-        } else {
-            setInvalidBreakTime(false);
-        }
-    }
-
-    const handleLongBreakTimeChange = (e) => {
-        setLongBreakTime(e.target.value);
-        if (e.target.validity.badInput || e.target.value <= 0) {//The input allow numbers, if value isn't a number throw a true badInput
-            setInvalidLongBreakTime(true)
-        } else {
-            setInvalidLongBreakTime(false);
+        if (re.test(value)) {
+            setPomodoroSettings({
+                ...pomodoroSetting,
+                [name]: value
+            })
+            setInvalidInput({
+                ...invalidInput,
+                [name]: false
+            })
         }
     }
 
     const handleSubmitPomodoroSettings = (e) => {
         e.preventDefault();
-        console.log(`WORK ${workTime}, BREAK ${breakTime}, LONG ${longBreakTime}`);
+        // console.log(`WORK ${pomodoroSetting.workTime}, BREAK ${pomodoroSetting.breakTime}, LONG ${pomodoroSetting.breakTime}`);
+        if (!canSave) {
+            console.log('NO SE PUEDE');
+            setSideAlert({
+                show: true,
+                text: "¡Complete todos los datos!",
+                type: 'error'
+            })
+            return;
+        }
         dispatch(
             updatePomodoroTime(
                 {
-                    workTime: Number(workTime),
-                    breakTime: Number(breakTime),
-                    longBreakTime: Number(longBreakTime)
+                    workTime: Number(pomodoroSetting.workTime),
+                    breakTime: Number(pomodoroSetting.breakTime),
+                    longBreakTime: Number(pomodoroSetting.longTime)
                 }
             ));
 
@@ -86,7 +101,7 @@ const PomodoroSettings = ({ _callbackCloseSettings }) => {
             || e.target.id === 'btnCloseSettings') {
             setShowDisappearAnimation(true)
             setTimeout(() => {
-                _callbackCloseSettings()
+                _callbackCloseSettings();
 
             }, 250)
         }
@@ -99,7 +114,6 @@ const PomodoroSettings = ({ _callbackCloseSettings }) => {
             text: ''
         });
     }
-
 
     return (
         <div
@@ -133,10 +147,10 @@ const PomodoroSettings = ({ _callbackCloseSettings }) => {
                         <label>Duración del Pomodoro:</label>
                         <span className={styles.inputBlock}>
                             <input
-                                type='number'
-                                value={workTime}
-                                className={invalidWorkTime ? styles.invalidInput : ''}
-                                onChange={handleWorkTimeChange}
+                                value={pomodoroSetting.workTime}
+                                name='workTime'
+                                className={invalidInput.workTime ? styles.invalidInput : ''}
+                                onChange={handleChangeInputTime}
                             />
                             <p className={styles.inputDescription}>en minutos</p>
                         </span>
@@ -145,10 +159,10 @@ const PomodoroSettings = ({ _callbackCloseSettings }) => {
                         <label>Duración del descanso:</label>
                         <span className={styles.inputBlock}>
                             <input
-                                type='number'
-                                value={breakTime}
-                                className={invalidBreakTime ? styles.invalidInput : ''}
-                                onChange={handleBreakTimeChange}
+                                name='breakTime'
+                                value={pomodoroSetting.breakTime}
+                                className={invalidInput.breakTime ? styles.invalidInput : ''}
+                                onChange={handleChangeInputTime}
                             />
                             <p className={styles.inputDescription}>en minutos</p>
                         </span>
@@ -157,10 +171,10 @@ const PomodoroSettings = ({ _callbackCloseSettings }) => {
                         <label>Duración del descanso largo:</label>
                         <span className={styles.inputBlock}>
                             <input
-                                type='number'
-                                value={longBreakTime}
-                                className={invalidLongBreakTime ? styles.invalidInput : ''}
-                                onChange={handleLongBreakTimeChange}
+                                name='longTime'
+                                value={pomodoroSetting.longTime}
+                                className={invalidInput.longTime ? styles.invalidInput : ''}
+                                onChange={handleChangeInputTime}
                             />
                             <p className={styles.inputDescription}>en minutos</p>
                         </span>
@@ -170,7 +184,7 @@ const PomodoroSettings = ({ _callbackCloseSettings }) => {
                             type={'submit'}
                             content={'Guardar'}
                             _callback={handleSubmitPomodoroSettings}
-                            disabled={canSave}
+                            disabled={!canSave}
                         />
                     </div>
                 </form>
