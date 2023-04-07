@@ -39,17 +39,17 @@ export const fetchQuotation = createAsyncThunk('exchange/fetchQuotation', async 
     const euro_weekly = await fetchData(URL_EURO_SEMANAL)
 
     const data = {
-        informal_USD: {
-            name: 'DOLAR INFORMAL',
-            values: informal_USD,
-            weekly: informal_USD_weekly,
-            historic: informal_USD_historic
-        },
         oficial_USD: {
             name: 'DOLAR OFICIAL',
             values: oficial_USD,
             weekly: oficial_USD_weekly,
             historic: oficial_USD_historic
+        },
+        informal_USD: {
+            name: 'DOLAR INFORMAL',
+            values: informal_USD,
+            weekly: informal_USD_weekly,
+            historic: informal_USD_historic
         },
         mep_USD: {
             name: 'DOLAR MEP',

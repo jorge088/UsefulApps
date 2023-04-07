@@ -1,12 +1,12 @@
 .currencyInformation {
     color: var(--font);
-    width: 90%;
+    width: 95%;
     display: flex;
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
     border-radius: 4px;
-    padding: .5em 1.5em;
+    padding: .5em 1em;
     background: var(--backgroundContent);
     gap: .5em;
 }
@@ -20,7 +20,7 @@
 }
 
 .currencyInformation__data {
-    width: 260px;
+    width: 250px;
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
@@ -43,12 +43,14 @@
     display: flex;
     gap: 7px;
 }
-.variationUp{
+
+.variationUp {
     color: #0ebe0e;
     font-size: 1.2em;
 
 }
-.variationDown{
+
+.variationDown {
     color: var(--dangerRed);
     font-size: 1.2em;
 
@@ -74,7 +76,7 @@
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-    width: 280px;
+    width: 180px;
 }
 
 .currencyInformation__historicData h4 {
@@ -94,14 +96,14 @@
 }
 
 .currencyInformation__graph {
-    width: 270px;
-    height: 100px;
-    padding: .4em 0;
-    /* background-color: grey; */
+    /* background-color: var(--backgoundSecundary); */
+    width: 400px;
 }
 
 .description {
-    font-size: .85em;
+    font-size: .8em;
+    width: 80px;
+    text-align: center;
     font-weight: 300;
 }
 
@@ -117,18 +119,25 @@
         flex-direction: column;
         width: 92%;
         padding: 1em 1em;
-        gap: 1em;
+        gap: 1.3em;
     }
-    .currencyInformation__data{
+
+    .currencyInformation__data {
         width: 90%;
         justify-content: space-around;
     }
-    .currencyInformation__data__date{
+
+    .currencyInformation__data__date {
         text-align: center;
     }
-    .currencyInformation__historicData{
+
+    .currencyInformation__historicData {
         width: 90%;
         justify-content: space-around;
+    }
+
+    .currencyInformation__graph {
+        width: 90%;
     }
 }
 
@@ -141,20 +150,28 @@
         flex-direction: column;
         width: 92%;
         padding: 1em 1em;
-        gap: 1em;
+        gap: 1.2em;
     }
-    .currencyInformation__data{
+
+    .currencyInformation__data {
         width: 90%;
         justify-content: space-around;
     }
-    .currencyInformation__data__date{
+
+    .currencyInformation__data__date {
         text-align: center;
     }
-    .currencyInformation__historicData{
+
+    .currencyInformation__historicData {
         width: 90%;
         justify-content: space-around;
     }
+
+    .currencyInformation__graph {
+        width: 90%;
+    }
 }
+
 @media only screen and (min-width:768px) and (max-width:992px) {
     .informationContainer {
         width: 95%;
@@ -164,17 +181,24 @@
         flex-direction: column;
         width: 92%;
         padding: 1em 1em;
-        gap: 1em;
+        gap: 1.5em;
     }
-    .currencyInformation__data{
+
+    .currencyInformation__data {
         width: 90%;
         justify-content: space-around;
     }
-    .currencyInformation__data__date{
+
+    .currencyInformation__data__date {
         text-align: center;
     }
-    .currencyInformation__historicData{
+
+    .currencyInformation__historicData {
         width: 90%;
         justify-content: space-around;
+    }
+
+    .currencyInformation__graph {
+        width: 500px;
     }
 }
