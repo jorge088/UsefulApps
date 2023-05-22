@@ -5,7 +5,7 @@ import { updatePomodoroDetail } from './pomodoroSlice';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faRightToBracket } from '@fortawesome/free-solid-svg-icons'
 
-const PomodoroDetailForm = () => {
+const PomodoroDetailForm = ({ _callbackShowSideAlert }) => {
     const [detail, setDetail] = useState({
         category: '',
         description: ''
@@ -26,7 +26,11 @@ const PomodoroDetailForm = () => {
         dispatch(updatePomodoroDetail({
             category: detail.category,
             description: detail.description
-        }))
+        }));
+        _callbackShowSideAlert({
+            type: 'succed',
+            text: '¡Datos guardados!'
+        })
     }
 
     return (
@@ -53,7 +57,7 @@ const PomodoroDetailForm = () => {
                         onChange={handleInputChange} />
                 </div>
                 <button className={styles.btnSubmitDetail}>
-                    <FontAwesomeIcon icon={faRightToBracket}/>
+                    <FontAwesomeIcon icon={faRightToBracket} />
                 </button>
             </form>
         </div>

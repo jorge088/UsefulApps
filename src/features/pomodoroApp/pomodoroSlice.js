@@ -92,7 +92,9 @@ const pomodoroSlice = createSlice({
             state.sessionDuration = action.payload.time;
         },
         updatePomodoroDetail(state, action) {
-            const { category, description } = action.payload;
+            let { category, description } = action.payload;
+            if (category === '') category = '-';
+            if (description === '') description = '-';
             state.detail = { category, description }
         },
         saveSession(state) {

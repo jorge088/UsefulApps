@@ -18,6 +18,7 @@ import { useEffect, useState } from 'react';
 import PomodoroSettings from './PomodoroSettings';
 import PomodoroHistory from './PomodoroHistory';
 import PomodoroDetailForm from './PomodoroDetailForm';
+import SideAlert from '../../Components/Shared/SideAlert';
 
 const PomodoroApp = () => {
 
@@ -25,6 +26,12 @@ const PomodoroApp = () => {
     const { pomodoroTime, running, status, sessionsCount, mode } = useSelector(getPomodoroState);
 
     const [showSettings, setShowSettings] = useState(false);
+
+    const [sideAlert, setSideAlert] = useState({
+        show: false,
+        type: '',
+        text: ''
+    });
 
     const getExecutionStatus = () => {
         if (status === 'stopped') return 'Inicia tu reloj'
@@ -63,6 +70,23 @@ const PomodoroApp = () => {
         if (e.key === 'Escape' && showSettings) handleShowSettings();
     }
     window.addEventListener('keydown', handleEsc)
+
+
+    const showSideAlert = ({ type, text }) => {
+        setSideAlert({
+            show: true,
+            type,
+            text
+        })
+    }
+
+    const handleCloseSideAlert = () => {
+        setSideAlert({
+            show: false,
+            type: '',
+            text: ''
+        });
+    }
 
     return (
         <>
@@ -107,11 +131,18 @@ const PomodoroApp = () => {
                     </div>
 
                 </div>
-                <PomodoroDetailForm />
+                <PomodoroDetailForm _callbackShowSideAlert={showSideAlert} />
                 <PomodoroHistory />
                 {showSettings ?
-                    <PomodoroSettings _callbackCloseSettings={handleShowSettings} />
+                    <PomodoroSettings _callbackCloseSettings={handleShowSettings} _callbackShowSideAlert={showSideAlert} />
                     : <></>
+                }
+                {sideAlert.show &&
+                    <SideAlert
+                        text={sideAlert.text}
+                        type={sideAlert.type}
+                        _callback={handleCloseSideAlert}
+                    />
                 }
             </div>
         </>

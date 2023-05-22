@@ -7,17 +7,11 @@ import Button from '../../Components/Shared/Button';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSquareXmark } from '@fortawesome/free-solid-svg-icons'
-import SideAlert from '../../Components/Shared/SideAlert';
 
-const PomodoroSettings = ({ _callbackCloseSettings }) => {
+const PomodoroSettings = ({ _callbackCloseSettings, _callbackShowSideAlert }) => {
     const dispatch = useDispatch();
     const [showDisappearAnimation, setShowDisappearAnimation] = useState(false);
 
-    const [sideAlert, setSideAlert] = useState({
-        show: false,
-        type: '',
-        text: ''
-    });
 
     const settings = useSelector(getAllSettings);
 
@@ -68,11 +62,9 @@ const PomodoroSettings = ({ _callbackCloseSettings }) => {
         e.preventDefault();
         // console.log(`WORK ${pomodoroSetting.workTime}, BREAK ${pomodoroSetting.breakTime}, LONG ${pomodoroSetting.breakTime}`);
         if (!canSave) {
-            console.log('NO SE PUEDE');
-            setSideAlert({
-                show: true,
-                text: "¡Complete todos los datos!",
-                type: 'error'
+            _callbackShowSideAlert({
+                type: 'error',
+                text: "¡Complete todos los datos!"
             })
             return;
         }
@@ -84,11 +76,9 @@ const PomodoroSettings = ({ _callbackCloseSettings }) => {
                     longBreakTime: Number(pomodoroSetting.longTime)
                 }
             ));
-
-        setSideAlert({
-            show: true,
-            text: "¡Configuraciones guardadas!",
-            type: 'succed'
+        _callbackShowSideAlert({
+            type: 'succed',
+            text: "¡Configuraciones guardadas!"
         })
 
     }
@@ -107,28 +97,12 @@ const PomodoroSettings = ({ _callbackCloseSettings }) => {
         }
     }
 
-    const handleCloseSideAlert = () => {
-        setSideAlert({
-            show: false,
-            type: '',
-            text: ''
-        });
-    }
-
     return (
         <div
             id='container'
             className={styles.container}
             onClick={handleCloseSettings}
         >
-            {sideAlert.show &&
-                <SideAlert
-                    text={sideAlert.text}
-                    type={sideAlert.type}
-                    _callback={handleCloseSideAlert}
-                />
-            }
-
             <div
                 className={`${styles.settingsContainer} ${showDisappearAnimation ? styles.disappear : ''}`}
             >
