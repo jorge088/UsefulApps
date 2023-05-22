@@ -1,6 +1,8 @@
-import { useDispatch,useSelector } from 'react-redux';
-import { 
+import { useDispatch, useSelector } from 'react-redux';
+import {
     changePomodoroCounterExecution,
+    saveSession,
+    updateSessionDuration,
     getMode
 } from './pomodoroSlice';
 
@@ -14,12 +16,12 @@ const PomodoroCounter = ({ time, animation = true }) => {
     let alertSound = new Audio(sound);
 
     let circleColor = '#db4242';
-    if (mode ==='work') circleColor = '#db4242';
+    if (mode === 'work') circleColor = '#db4242';
     if (mode === 'break') circleColor = '#0ebe0e';
-    if ( mode === 'long') circleColor = '#0ebe0e';
+    if (mode === 'long') circleColor = '#0ebe0e';
 
 
-    
+
 
     const renderTime = ({ remainingTime }) => {
         // console.log(remainingTime);
@@ -34,7 +36,16 @@ const PomodoroCounter = ({ time, animation = true }) => {
 
     const handlerTimeCounterComplete = () => {
         alertSound.play();
+        if(mode==='work') dispatch(saveSession())
         dispatch(changePomodoroCounterExecution());
+    }
+
+    const handleSessionTimeFinished = (timeRemaining) => {
+        let finished = (time * 60) - timeRemaining;
+        if (finished % 60 === 0) {
+            let minute = Math.ceil(finished / 60);
+            dispatch(updateSessionDuration({ time: minute }));
+        }
     }
 
     return (
@@ -48,6 +59,7 @@ const PomodoroCounter = ({ time, animation = true }) => {
                 size={180}
                 strokeWidth={13}
                 onComplete={handlerTimeCounterComplete}
+                onUpdate={(remainingTime) => { mode === 'work' && handleSessionTimeFinished(remainingTime) }}
             >
                 {renderTime}
             </CountdownCircleTimer>

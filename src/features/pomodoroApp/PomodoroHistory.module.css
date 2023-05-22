@@ -1,0 +1,90 @@
+.pomodoroHistoryContainer {
+    width: 850px;
+    height: 300px;
+    padding: .8em 1.2em;
+    font-family: 'Lexend', sans-serif;
+    font-size: 1rem;
+}
+
+.lengthContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    height: 35px;
+}
+
+.pomodoroLength {
+    padding: 0 1em;
+    z-index: 10;
+    color: var(--font);
+    font-size: 1em;
+    font-family: 'Lexend', sans-serif;
+
+}
+
+.historyHeaders {
+    display: flex;
+    align-items: center;
+    height: 35px;
+    border-bottom: 1px solid #9c9c9c;
+    font-size: 11px;
+}
+
+.headers {
+    color: var(--font);
+    width: 175px;
+    font-size: 1.05em;
+    font-weight: 400;
+}
+
+.pomodoroItem {
+    height: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #9c9c9c;
+}
+
+.pomodoroData {
+    color: var(--font);
+    width: 180px;
+    font-size: 1em;
+}
+
+.description {
+    width: 500px;
+}
+
+.btnDelete {
+    background: none;
+    border: none;
+    color: var(--font);
+    font-size: 18px;
+    width: 20px;
+    cursor: pointer;
+}
+
+@media only screen and (max-width:575px) {
+    .pomodoroHistoryContainer {
+        width: 90%;
+        font-size: .9rem;
+
+    }
+}
+
+@media only screen and (min-width:576px) and (max-width:768px) {
+    .pomodoroHistoryContainer {
+        width: 90%;
+        font-size: .9rem;
+
+    }
+}
+
+@media only screen and (min-width:768px) and (max-width:992px) {
+    .pomodoroHistoryContainer {
+        width: 700px;
+
+
+    }
+}

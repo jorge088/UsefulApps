@@ -5,7 +5,8 @@ import {
     startAnimation,
     stopAnimation,
     changePomodoroCounterExecution,
-    getPomodoroState
+    getPomodoroState,
+    saveSession
 } from "./pomodoroSlice"
 
 import styles from './PomodoroApp.module.css';
@@ -15,6 +16,8 @@ import PomodoroCounter from './PomodoroCounter';
 import Button from "./../../Components/Shared/Button";
 import { useEffect, useState } from 'react';
 import PomodoroSettings from './PomodoroSettings';
+import PomodoroHistory from './PomodoroHistory';
+import PomodoroDetailForm from './PomodoroDetailForm';
 
 const PomodoroApp = () => {
 
@@ -35,6 +38,7 @@ const PomodoroApp = () => {
     }
 
     const handlerChangePomodoroExecution = () => {
+        if (mode === 'work') dispatch(saveSession())
         dispatch(changePomodoroCounterExecution())
     }
 
@@ -59,8 +63,6 @@ const PomodoroApp = () => {
         if (e.key === 'Escape' && showSettings) handleShowSettings();
     }
     window.addEventListener('keydown', handleEsc)
-
-
 
     return (
         <>
@@ -105,6 +107,8 @@ const PomodoroApp = () => {
                     </div>
 
                 </div>
+                <PomodoroDetailForm />
+                <PomodoroHistory />
                 {showSettings ?
                     <PomodoroSettings _callbackCloseSettings={handleShowSettings} />
                     : <></>
