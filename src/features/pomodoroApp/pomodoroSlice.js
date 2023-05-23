@@ -5,7 +5,7 @@ const initialState = {
 
     running: false,
     pomodoroTime: 25,
-    sessionDuration: 1,
+    sessionDuration: 0,
     settings: {
         work: 25,
         break: 5,
@@ -34,7 +34,7 @@ const pomodoroSlice = createSlice({
         changePomodoroCounterExecution(state) {
             state.running = false;
             state.pomodoroTime = 0;
-            updateSessionDuration({ time: 1 })
+            updateSessionDuration({ time: 0 })
             if (state.mode === 'work') {
                 state.status = 'stopped';
                 state.sessionsCount += 1;

@@ -1,17 +1,11 @@
-import { useDispatch, useSelector } from 'react-redux';
-import {
-    changePomodoroCounterExecution,
-    saveSession,
-    updateSessionDuration,
-    getMode
-} from './pomodoroSlice';
+import { useSelector } from 'react-redux';
+import { getMode } from './pomodoroSlice';
 
 import styles from './PomodoroCounter.module.css';
 import { CountdownCircleTimer } from 'react-countdown-circle-timer';
 import sound from "./../../Assets/PomodoroAlert.mp3"
 
-const PomodoroCounter = ({ time, animation = true }) => {
-    const dispatch = useDispatch();
+const PomodoroCounter = ({ time, animation = true, _callbackupdateSessionTimeDuration, _callbackPomodoroTimerFinished }) => {
     const mode = useSelector(getMode);
     let alertSound = new Audio(sound);
 
@@ -19,7 +13,6 @@ const PomodoroCounter = ({ time, animation = true }) => {
     if (mode === 'work') circleColor = '#db4242';
     if (mode === 'break') circleColor = '#0ebe0e';
     if (mode === 'long') circleColor = '#0ebe0e';
-
 
 
 
@@ -36,16 +29,13 @@ const PomodoroCounter = ({ time, animation = true }) => {
 
     const handlerTimeCounterComplete = () => {
         alertSound.play();
-        if(mode==='work') dispatch(saveSession())
-        dispatch(changePomodoroCounterExecution());
+        _callbackPomodoroTimerFinished();
     }
 
     const handleSessionTimeFinished = (timeRemaining) => {
         let finished = (time * 60) - timeRemaining;
-        if (finished % 60 === 0) {
-            let minute = Math.ceil(finished / 60);
-            dispatch(updateSessionDuration({ time: minute }));
-        }
+        // console.log('Tiempo completado[segundos]', finished);
+        _callbackupdateSessionTimeDuration(finished)
     }
 
     return (

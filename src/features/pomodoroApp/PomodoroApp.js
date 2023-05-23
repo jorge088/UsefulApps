@@ -5,6 +5,7 @@ import {
     startAnimation,
     stopAnimation,
     changePomodoroCounterExecution,
+    updateSessionDuration,
     getPomodoroState,
     saveSession
 } from "./pomodoroSlice"
@@ -24,14 +25,13 @@ const PomodoroApp = () => {
 
     const dispatch = useDispatch();
     const { pomodoroTime, running, status, sessionsCount, mode } = useSelector(getPomodoroState);
-
     const [showSettings, setShowSettings] = useState(false);
-
     const [sideAlert, setSideAlert] = useState({
         show: false,
         type: '',
         text: ''
     });
+    const [sessionDuration, setSessionDuration] = useState(0);
 
     const getExecutionStatus = () => {
         if (status === 'stopped') return 'Inicia tu reloj'
@@ -40,12 +40,20 @@ const PomodoroApp = () => {
         if (mode === 'long') return 'Tomá un descanso largo!'
     }
 
+    const updateSessionTimeDuration = (timeFinished) => {
+        let minute = parseInt(timeFinished / 60)
+        setSessionDuration(minute)
+    }
+
     const handlerPomodoroStart = () => {
         dispatch(startPomodoroCounter());
     }
 
     const handlerChangePomodoroExecution = () => {
-        if (mode === 'work') dispatch(saveSession())
+        if (mode === 'work') {
+            dispatch(updateSessionDuration({ time: sessionDuration }));
+            dispatch(saveSession())
+        }
         dispatch(changePomodoroCounterExecution())
     }
 
@@ -103,9 +111,12 @@ const PomodoroApp = () => {
                         <p className={styles.sessions}>Pomodoro ({sessionsCount})</p>
                         : ''
                     }
+
                     <PomodoroCounter
                         time={pomodoroTime}
                         animation={running}
+                        _callbackupdateSessionTimeDuration={updateSessionTimeDuration}
+                        _callbackPomodoroTimerFinished={handlerChangePomodoroExecution}
                     />
 
                     <div className={styles.btnControl}>
