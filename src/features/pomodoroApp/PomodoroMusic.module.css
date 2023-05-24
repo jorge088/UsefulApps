@@ -1,0 +1,204 @@
+.pomodoroMusicContainer {
+    width: 950px;
+    font-size: 1rem;
+    background: var(--backgroundContent);
+    border-radius: 6px;
+
+}
+
+.musicShow {
+    height: 55px;
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.musicShow.line {
+    border-bottom: 1px solid #ffffff5d;
+}
+
+.btnShowMusic {
+    width: 320px;
+    padding: .8em 10px;
+    font-family: 'Lexend', sans-serif;
+    color: var(--font);
+    font-size: 1em;
+    background: none;
+    text-align: left;
+    border: none;
+    cursor: pointer;
+}
+
+.musicIcon {
+    margin-left: 8px;
+    font-size: 1.2em;
+}
+
+.btnCloseMusic {
+    font-family: 'Lexend', sans-serif;
+    font-size: 2.2em;
+    border-radius: 4px;
+    color: var(--dangerRed);
+    background: none;
+    border: none;
+    margin-right: 20px;
+}
+
+.closeIcon {
+    cursor: pointer;
+}
+
+.musicContainer {
+    padding: 5px 0;
+}
+
+.musicCategoryContainer {
+    padding: 5px 0;
+}
+
+.musicCategoryContainer ul {
+    display: flex;
+    list-style: none;
+    justify-content: space-evenly;
+    align-items: center;
+    font-family: 'Lexend', sans-serif;
+    color: var(--font);
+    font-size: 1em;
+    height: 36px;
+}
+
+.musicCategoryContainer ul li {
+    padding: .5em 0;
+    width: 220px;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.musicCategoryContainer ul li:hover {
+    background: #ffffff5d;
+}
+
+.musicCategoryContainer ul li.selected {
+    background: #ffffff5d;
+}
+
+.videosContainer {
+    margin-top: 5px;
+    height: 260px;
+    padding: 1em 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.imgVideoContainer {
+    filter: drop-shadow(1px 1px 12px var(--shadowBackground));
+    position: relative;
+    cursor: pointer;
+}
+
+.imgVideoContainer:hover .playIcon {
+    font-size: 3.5em;
+    filter: drop-shadow(1px 1px 10px hsl(0, 0%, 71%));
+
+}
+
+.videoTitle {
+    position: absolute;
+    font-family: 'Lexend', sans-serif;
+    font-size: .9em;
+    color: var(--font);
+
+}
+
+.playIcon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    font-size: 3em;
+    filter: drop-shadow(1px 1px 10px hsl(0, 0%, 55%));
+    color: #fff;
+    transition: all 250ms ease-in-out;
+}
+
+.videosImg {
+    width: 300px;
+    height: auto;
+}
+
+.videosIframe {
+    border: none;
+    width: 445px;
+    height: 250px;
+    filter: drop-shadow(1px 1px 12px var(--shadowBackground));
+
+}
+
+@media only screen and (max-width:575px) {
+    .pomodoroMusicContainer {
+        width: 90%;
+        font-size: .8rem;
+    }
+
+    .musicCategoryContainer ul li {
+        width: 90px;
+    }
+
+    .videosContainer {
+        flex-direction: column;
+        height: auto;
+        gap: 2em;
+    }
+
+    .videosIframe {
+        width: 90%;
+    }
+
+}
+
+@media only screen and (min-width:576px) and (max-width:768px) {
+    .pomodoroMusicContainer {
+        width: 90%;
+        font-size: .9rem;
+    }
+
+    .musicCategoryContainer ul li {
+        width: 120px;
+    }
+
+    .videosContainer {
+        flex-direction: column;
+        height: auto;
+        gap: 2em;
+    }
+
+    .videosImg {
+        width: 300px;
+    }
+}
+
+@media only screen and (min-width:768px) and (max-width:992px) {
+    .pomodoroMusicContainer {
+        width: 90%;
+        font-size: .9rem;
+    }
+
+    .musicCategoryContainer ul li {
+        width: 160px;
+    }
+
+    .videosContainer {
+        height: auto;
+    }
+
+    .videosImg {
+        width: 220px;
+    }
+
+    .imgVideoContainer {
+        padding: 1em 0;
+    }
+}

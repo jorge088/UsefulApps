@@ -1,4 +1,18 @@
+import styles from './PomodoroApp.module.css';
+import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+
+
+import PomodoroCounter from './PomodoroCounter';
+import Button from "./../../Components/Shared/Button";
+import SideAlert from '../../Components/Shared/SideAlert';
+import PomodoroSettings from './PomodoroSettings';
+import PomodoroDetailForm from './PomodoroDetailForm';
+import PomodoroHistory from './PomodoroHistory';
+import PomodoroMusic from './PomodoroMusic';
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faGear } from '@fortawesome/free-solid-svg-icons'
 
 import {
     startPomodoroCounter,
@@ -10,19 +24,7 @@ import {
     saveSession
 } from "./pomodoroSlice"
 
-import styles from './PomodoroApp.module.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faGear } from '@fortawesome/free-solid-svg-icons'
-import PomodoroCounter from './PomodoroCounter';
-import Button from "./../../Components/Shared/Button";
-import { useEffect, useState } from 'react';
-import PomodoroSettings from './PomodoroSettings';
-import PomodoroHistory from './PomodoroHistory';
-import PomodoroDetailForm from './PomodoroDetailForm';
-import SideAlert from '../../Components/Shared/SideAlert';
-
 const PomodoroApp = () => {
-
     const dispatch = useDispatch();
     const { pomodoroTime, running, status, sessionsCount, mode } = useSelector(getPomodoroState);
     const [showSettings, setShowSettings] = useState(false);
@@ -143,10 +145,13 @@ const PomodoroApp = () => {
 
                 </div>
                 <PomodoroDetailForm _callbackShowSideAlert={showSideAlert} />
+                <PomodoroMusic />
                 <PomodoroHistory />
-                {showSettings ?
-                    <PomodoroSettings _callbackCloseSettings={handleShowSettings} _callbackShowSideAlert={showSideAlert} />
-                    : <></>
+
+                {
+                    showSettings ?
+                        <PomodoroSettings _callbackCloseSettings={handleShowSettings} _callbackShowSideAlert={showSideAlert} />
+                        : <></>
                 }
                 {sideAlert.show &&
                     <SideAlert

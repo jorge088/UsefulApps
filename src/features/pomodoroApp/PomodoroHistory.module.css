@@ -1,6 +1,8 @@
 .pomodoroHistoryContainer {
     width: 850px;
-    height: 300px;
+    min-height: 300px;
+    max-height: 400px;
+    overflow-y: scroll;
     padding: .8em 1.2em;
     font-family: 'Lexend', sans-serif;
     font-size: 1rem;
