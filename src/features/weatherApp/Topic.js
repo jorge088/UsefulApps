@@ -1,7 +1,7 @@
-import styles from './WeatherAppInformationTopic.module.css';
+import styles from './Topic.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-const WeatherAppInformationTopic = ( {topic, topicValue , topicIcon } ) => {
+const Topic = ( {topic, topicValue , topicIcon } ) => {
   return (
     <>
         <div className={styles.topicContainer}>
@@ -14,4 +14,4 @@ const WeatherAppInformationTopic = ( {topic, topicValue , topicIcon } ) => {
     </>
   )
 }
-export default WeatherAppInformationTopic
+export default Topic

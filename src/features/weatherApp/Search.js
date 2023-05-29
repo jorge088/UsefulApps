@@ -1,12 +1,12 @@
 import { useDispatch } from 'react-redux';
 import { fetchWeather } from './weatherSlice';
 
-import styles from './WeatherAppSearch.module.css';
+import styles from './Search.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import { useState } from 'react';
 
-const WeatherAppSearch = () => {
+const Search = () => {
     const dispatch = useDispatch();
 
     const [cityName, setCityName] = useState('');
@@ -42,4 +42,4 @@ const WeatherAppSearch = () => {
     )
 }
 
-export default WeatherAppSearch
+export default Search

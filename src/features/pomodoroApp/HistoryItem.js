@@ -1,10 +1,10 @@
-import styles from './PomodoroHistory.module.css';
+import styles from './History.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import { useDispatch } from 'react-redux';
 import { deleteHistoryItem } from './pomodoroSlice';
 
-const PomodoroHistoryItem = ({ pomodoro }) => {
+const HistoryItem = ({ pomodoro }) => {
 
     const dispatch = useDispatch();
 
@@ -31,4 +31,4 @@ const PomodoroHistoryItem = ({ pomodoro }) => {
         </div>
     )
 }
-export default PomodoroHistoryItem
+export default HistoryItem

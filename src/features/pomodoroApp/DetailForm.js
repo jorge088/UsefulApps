@@ -5,7 +5,7 @@ import { updatePomodoroDetail } from './pomodoroSlice';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faRightToBracket } from '@fortawesome/free-solid-svg-icons'
 
-const PomodoroDetailForm = ({ _callbackShowSideAlert }) => {
+const DetailForm = ({ _callbackShowSideAlert }) => {
     const [detail, setDetail] = useState({
         category: '',
         description: ''
@@ -63,4 +63,4 @@ const PomodoroDetailForm = ({ _callbackShowSideAlert }) => {
         </div>
     )
 }
-export default PomodoroDetailForm
+export default DetailForm

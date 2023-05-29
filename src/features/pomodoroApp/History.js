@@ -1,13 +1,13 @@
-import styles from './PomodoroHistory.module.css';
-import PomodoroHistoryItem from './PomodoroHistoryItem';
+import styles from './History.module.css';
+import HistoryItem from './HistoryItem';
 import { useSelector, useDispatch } from 'react-redux';
 import { getHistory, getHistoryFromStorage } from './pomodoroSlice';
 import { useEffect } from 'react';
 
-const PomodoroHistory = () => {
+const History = () => {
     const history = useSelector(getHistory);
     const dispatch = useDispatch();
-    let pomodoros = history.map((pom) => <PomodoroHistoryItem pomodoro={pom} key={pom.id} />);
+    let pomodoros = history.map((pom) => <HistoryItem pomodoro={pom} key={pom.id} />);
     let pomodorosLength = history.length;
     useEffect(() => {
         dispatch(getHistoryFromStorage());
@@ -27,4 +27,4 @@ const PomodoroHistory = () => {
         </div>
     )
 }
-export default PomodoroHistory
+export default History

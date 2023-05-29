@@ -1,10 +1,10 @@
-import styles from './PomodoroMusic.module.css';
+import styles from './Music.module.css';
 import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlayCircle, faMusic, faSquareXmark } from '@fortawesome/free-solid-svg-icons'
-import MUSIC_VIDEOS_DATA from './../../Consts/musicVideoData.js';
+import MUSIC_VIDEOS_DATA from '../../Consts/musicVideoData.js';
 
-const PomodoroMusic = () => {
+const Music = () => {
 
     const [showMusicSelector, setShowMusicSelector] = useState(false);
     const [videoContainer, setVideoContainer] = useState({
@@ -121,4 +121,4 @@ const PomodoroMusic = () => {
         </div>
     )
 }
-export default PomodoroMusic
+export default Music

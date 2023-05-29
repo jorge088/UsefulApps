@@ -3,9 +3,9 @@ import { useSelector, useDispatch } from 'react-redux'
 import { selectAllDataWeather, getWeatherStatus, fetchWeather } from '../../features/weatherApp/weatherSlice';
 
 import styles from './WeatherApp.module.css';
-import WeatherAppInformation from './WeatherAppInformation';
-import WeatherAppMain from './WeatherAppMain';
-import WeatherAppSearch from './WeatherAppSearch';
+import Information from './Information';
+import MainData from './MainData';
+import Search from './Search';
 import Loading from '../../Components/Shared/Loading';
 
 
@@ -32,9 +32,9 @@ const WeatherApp = () => {
     content =
       <div className={`${styles.weatherAppContainer} ${temp < 16 ? styles.containerLowTemp : styles.containerHighTemp}`} >
         <div className={`${styles.weatherApp} ${temp < 16 ? styles.appLowTemp : styles.appHighTemp}`}>
-          <WeatherAppSearch />
-          <WeatherAppMain data={data} />
-          <WeatherAppInformation data={data} />
+          <Search />
+          <MainData data={data} />
+          <Information data={data} />
         </div>
       </div>
   }

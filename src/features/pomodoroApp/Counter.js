@@ -1,11 +1,11 @@
 import { useSelector } from 'react-redux';
 import { getMode } from './pomodoroSlice';
 
-import styles from './PomodoroCounter.module.css';
+import styles from './Counter.module.css';
 import { CountdownCircleTimer } from 'react-countdown-circle-timer';
 import sound from "./../../Assets/PomodoroAlert.mp3"
 
-const PomodoroCounter = ({ time, animation = true, _callbackupdateSessionTimeDuration, _callbackPomodoroTimerFinished }) => {
+const Counter = ({ time, animation = true, _callbackupdateSessionTimeDuration, _callbackPomodoroTimerFinished }) => {
     const mode = useSelector(getMode);
     let alertSound = new Audio(sound);
 
@@ -58,4 +58,4 @@ const PomodoroCounter = ({ time, animation = true, _callbackupdateSessionTimeDur
 
 }
 
-export default PomodoroCounter
+export default Counter

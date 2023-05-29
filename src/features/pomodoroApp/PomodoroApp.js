@@ -3,13 +3,13 @@ import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 
-import PomodoroCounter from './PomodoroCounter';
+import Counter from './Counter';
 import Button from "./../../Components/Shared/Button";
 import SideAlert from '../../Components/Shared/SideAlert';
-import PomodoroSettings from './PomodoroSettings';
-import PomodoroDetailForm from './PomodoroDetailForm';
-import PomodoroHistory from './PomodoroHistory';
-import PomodoroMusic from './PomodoroMusic';
+import Settings from './Settings';
+import DetailForm from './DetailForm';
+import History from './History';
+import Music from './Music';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGear } from '@fortawesome/free-solid-svg-icons'
@@ -114,7 +114,7 @@ const PomodoroApp = () => {
                         : ''
                     }
 
-                    <PomodoroCounter
+                    <Counter
                         time={pomodoroTime}
                         animation={running}
                         _callbackupdateSessionTimeDuration={updateSessionTimeDuration}
@@ -144,13 +144,13 @@ const PomodoroApp = () => {
                     </div>
 
                 </div>
-                <PomodoroDetailForm _callbackShowSideAlert={showSideAlert} />
-                <PomodoroMusic />
-                <PomodoroHistory />
+                <DetailForm _callbackShowSideAlert={showSideAlert} />
+                <Music />
+                <History />
 
                 {
                     showSettings ?
-                        <PomodoroSettings _callbackCloseSettings={handleShowSettings} _callbackShowSideAlert={showSideAlert} />
+                        <Settings _callbackCloseSettings={handleShowSettings} _callbackShowSideAlert={showSideAlert} />
                         : <></>
                 }
                 {sideAlert.show &&

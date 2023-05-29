@@ -1,7 +1,7 @@
-import styles from './WeatherAppMain.module.css';
+import styles from './MainData.module.css';
 import weatherInfoImg from './../../Assets/WeatherAppInfo.svg';
 
-const WeatherAppMain = ({ data }) => {
+const MainData = ({ data }) => {
 
     let temperature = '0';
     let city = '';
@@ -23,4 +23,4 @@ const WeatherAppMain = ({ data }) => {
         </>
     )
 }
-export default WeatherAppMain
+export default MainData

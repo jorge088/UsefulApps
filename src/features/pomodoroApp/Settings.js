@@ -2,13 +2,13 @@ import { useSelector, useDispatch } from 'react-redux';
 import { getAllSettings, updatePomodoroTime } from './pomodoroSlice';
 import { useState } from 'react';
 
-import styles from './PomodoroSettings.module.css';
+import styles from './Settings.module.css';
 import Button from '../../Components/Shared/Button';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSquareXmark } from '@fortawesome/free-solid-svg-icons'
 
-const PomodoroSettings = ({ _callbackCloseSettings, _callbackShowSideAlert }) => {
+const Settings = ({ _callbackCloseSettings, _callbackShowSideAlert }) => {
     const dispatch = useDispatch();
     const [showDisappearAnimation, setShowDisappearAnimation] = useState(false);
 
@@ -166,4 +166,4 @@ const PomodoroSettings = ({ _callbackCloseSettings, _callbackShowSideAlert }) =>
         </div>
     )
 }
-export default PomodoroSettings
+export default Settings
