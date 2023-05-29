@@ -1,18 +1,18 @@
 .calculator {
-    width: 750px;
+    width: 800px;
+    min-height: 150px;
     background: var(--backgroundContent);
     border-radius: 6px;
     box-shadow: 0 1px 6px 1px var(--shadowBackgroundSecundary);
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    justify-content: center;
-    padding: .4em 1.5em .2em 1.5em;
-    gap: .8em;
+    padding: 1em 1.5em;
+    gap: .6em;
     font-size: 1rem;
 }
 
-.title{
+.title {
     color: var(--font);
     font-size: 1.6em;
     font-weight: 500;
@@ -20,8 +20,16 @@
     text-align: center;
     align-self: center;
     font-family: 'Lexend', sans-serif;
-    margin-bottom: .1em;
+    margin-bottom: 0em;
 
+}
+
+.currencySelectedInformation {
+    align-self: center;
+    color: var(--font);
+    font-size: 1em;
+    font-family: 'Lexend', sans-serif;
+    font-weight: 500;
 }
 
 .formCalculator {
@@ -30,8 +38,8 @@
     width: 100%;
     justify-content: space-between;
     align-items: center;
-    
     font-family: 'Lexend', sans-serif;
+    margin: .8em 0;
 }
 
 .formCalculator__coin {
@@ -40,26 +48,48 @@
 }
 
 .formCalculator__coin__info {
-    background-color: #003c80;
-    width: 85px;
+    background-color: none;
+    width: 120px;
     height: 40px;
     display: flex;
     gap: 5px;
     align-items: center;
     justify-content: center;
+    padding: 0 4px;
+    outline: 1px solid var(--inputBackground);
 }
-.brandImg{
-    width: 32px;
+
+.selectCurrency {
+    background: none;
+    font-family: 'Lexend', sans-serif;
+    border: none;
+    width: 100%;
+    height: 100%;
+    color: var(--font);
+    font-size: .95em;
+    text-align: center;
+    letter-spacing: 0px;
+    font-weight: 400;
+    padding: 0;
+    cursor: pointer;
+}
+
+.optionsSelect {
+    font-family: 'Lexend', sans-serif;
+    font-size: 1.1em;
+
 }
 
 .formCalculator__coin__info__name {
-    font-size: .9em;
+    font-size: .95em;
+    font-family: 'Lexend', sans-serif;
     font-weight: 400;
     letter-spacing: 0px;
+    color: var(--font);
 }
 
 .formCalculator__coin__input {
-    width: 10.8em;
+    width: 12em;
     height: 40px;
     font-size: 1.2em;
     text-align: left;
@@ -72,13 +102,16 @@
     transition: .2s ease;
 
 }
-.formCalculator__coin__input.invalidInput:focus{
+
+.formCalculator__coin__input.invalidInput:focus {
     outline: 1px solid var(--dangerRed);
 
 }
-.invalidInput{
+
+.invalidInput {
     outline: 1px solid var(--dangerRed);
 }
+
 .formCalculator__coin__input:focus {
     outline: 1px solid #003c80;
 }
@@ -101,36 +134,51 @@
     margin: 0;
     font-family: 'Lexend', sans-serif;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+    align-items: center;
     color: var(--font);
+    height: 48px;
+    gap: 2em;
+    /* background-color: red; */
+}
 
+.convertedContainer {
+    display: flex;
+    align-items: flex-end;
+    min-width: 320px;
 }
 
 .currencyConverted__values {
-    height: 40px;
-    width: 16em;
-    text-align: center;
     font-size: 1.1em;
-    font-weight: 500;
+    font-weight: 600;
 }
 
 .convert {
     text-align: right;
+    justify-content: flex-end;
 }
 
 .converted {
     text-align: left;
 }
 
+.currencyName {
+    max-width: 110px;
+    font-size: .95em;
+    text-align: center;
+    margin-left: 5px;
+    font-weight: 400;
+}
 
 @media only screen and (max-width:575px) {
     .calculator {
         min-width: auto;
         width: 85%;
-        padding: .8em .2em;
+        padding: 1em .2em;
         padding-bottom: 0;
         font-size: .9rem;
     }
+
     .formCalculator {
         flex-direction: column;
         gap: 1.2em;
@@ -149,23 +197,18 @@
         flex-direction: column;
         align-items: center;
         justify-content: space-between;
+        height: auto;
+        gap: .4em;
+        padding: .5em 0;
     }
 
-    .currencyConverted__values {
-        width: 90%;
-        height: 35px;
-        display: flex;
+    .convertedContainer {
+        min-width: auto;
         align-items: center;
-        justify-content: center;
-        gap: 0;
     }
 
-    .convert {
-        text-align: center;
-    }
-
-    .converted {
-        text-align: center;
+    .currencyName {
+        max-width: 130px;
     }
 
 }
@@ -191,9 +234,24 @@
     .formCalculator__coin__input {
         width: 70%;
     }
-    .currencyConverted__values {
-        min-width: 12em;
-        width: auto;
+
+
+    .currencyConverted {
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        height: auto;
+        gap: .6em;
+        padding: .5em 0;
+    }
+
+    .convertedContainer {
+        min-width: auto;
+        align-items: center;
+    }
+
+    .currencyName {
+        max-width: 130px;
     }
 }
 
@@ -205,8 +263,35 @@
         padding: 1.5em 1.5em;
     }
 
+    .formCalculator {
+        flex-direction: column;
+        gap: 1.2em;
+    }
+
+    .formCalculator__coin {
+        width: 100%;
+        justify-content: center;
+    }
+
     .formCalculator__coin__input {
-        min-width: 8em;
-        max-width: 14em;
+        width: 60%;
+    }
+
+    .currencyConverted {
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        height: auto;
+        gap: .4em;
+        padding: .5em 0;
+    }
+
+    .convertedContainer {
+        min-width: auto;
+        align-items: center;
+    }
+
+    .currencyName {
+        max-width: 130px;
     }
 }
