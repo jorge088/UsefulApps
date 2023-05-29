@@ -1,32 +1,32 @@
 import { useSelector, useDispatch } from "react-redux";
-import { selectAllDataQuotation, getStatus, fetchQuotation } from "./exchangeSlice";
+import { getCurrenciesData, getStatus, fetchCurrencyQuotation } from "./exchangeSlice";
 
 import styles from './ExchangeApp.module.css'
-import ExchangeAppCalculator from './ExchangeAppCalculator'
-import ExchangeAppInformation from './ExchangeAppInformation'
+import ExchangeAppCalculator from './Calculator'
+import InformationContainer from './InformationContainer'
 import Loading from "../../Components/Shared/Loading";
 import { useEffect } from "react";
 
 
 const ExchangeApp = () => {
   const dispatch = useDispatch();
-  const data = useSelector(selectAllDataQuotation);
+  const currenciesData = useSelector(getCurrenciesData);
   const exchangeStatus = useSelector(getStatus)
 
   useEffect(() => {
     if (exchangeStatus === 'idle') {
-      dispatch(fetchQuotation());
+      dispatch(fetchCurrencyQuotation());
     }
   }, [exchangeStatus, dispatch]);
+
   let content;
   if (exchangeStatus === 'loading') {
     content = <Loading />
   } else if (exchangeStatus === 'succeded') {
     content =
       <div className={styles.exchangeAppContainer}>
-        <ExchangeAppCalculator data={data} />
-        <ExchangeAppInformation data={data} />
-
+        <ExchangeAppCalculator currenciesData={currenciesData} />
+        <InformationContainer currenciesData={currenciesData} />
       </div>
   } else if (exchangeStatus === 'failed') {
     <p>FALLÓ</p>

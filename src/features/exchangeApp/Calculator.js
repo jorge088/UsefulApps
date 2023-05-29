@@ -1,4 +1,4 @@
-import styles from './ExchangeAppCalculator.module.css';
+import styles from './Calculator.module.css';
 
 import { useState } from 'react';
 
@@ -9,8 +9,9 @@ import argentinaBrandImg from '../../Assets/argentinaBrand.png'
 import unitedStateBrandImg from '../../Assets/unitedStatesBrand.png'
 
 
-const ExchangeAppCalculator = ({ data }) => {
-  const { values: informal_USD } = data.informal_USD
+const ExchangeAppCalculator = ({ currenciesData }) => {
+
+  const informal_USD = currenciesData.find(coin => coin.name === 'DOLAR INFORMAL').values;
   const [coin, setCoin] = useState("");
   const [peso, setPeso] = useState("");
 
