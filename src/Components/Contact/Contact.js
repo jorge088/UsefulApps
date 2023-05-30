@@ -2,7 +2,7 @@ import { useRef, useState } from 'react';
 import styles from './Contact.module.css';
 import emailjs from '@emailjs/browser';
 import SideAlert from '../Shared/SideAlert';
-import Footer from '../Shared/Footer';
+// import Footer from '../Shared/Footer';
 
 const Contact = () => {
     const [formData, setFormData] = useState({
@@ -22,24 +22,26 @@ const Contact = () => {
         text: ''
     });
 
+    const [isSending, setIsSending] = useState(false)
+
     const form = useRef();
 
     const handleChange = (evt) => {
         const value = evt.target.value;
+        const name = evt.target.name;
         let errorInput = false;
 
         if (value === "") errorInput = true;
-        if (evt.target.name === "email") errorInput = !validateEmail(value);
+        if (name === "email") errorInput = !validateEmail(value);
 
         setFormData({
             ...formData,
-            [evt.target.name]: value,
+            [name]: value,
             errors: {
                 ...formData.errors,
-                [evt.target.name]: errorInput
+                [name]: errorInput
             }
         });
-
     }
 
     const validateEmail = (email) => {
@@ -75,7 +77,10 @@ const Contact = () => {
 
     const sendEmail = (e) => {
         e.preventDefault();
+        if (isSending) return;
+
         if (isValid()) {
+            setIsSending(true);
             //EMAIL JS API
             emailjs.sendForm('service_5wdohco', 'template_79kck89', form.current, 'jbaqcmYR0pfEweOpg')
                 .then((result) => {
@@ -84,6 +89,17 @@ const Contact = () => {
                         text: "¡Mensaje Enviado!",
                         type: 'succed'
                     })
+                    setIsSending(false);
+                    setFormData({
+                        name: "",
+                        email: "",
+                        message: "",
+                        errors: {
+                            name: false,
+                            email: false,
+                            message: false
+                        }
+                    });
 
                 }, (error) => {
                     setSideAlert({
@@ -113,7 +129,6 @@ const Contact = () => {
 
     return (
         <>
-
             <div className={styles.container}>
                 {sideAlert.show &&
                     <SideAlert
@@ -122,8 +137,9 @@ const Contact = () => {
                         _callback={handleCloseSideAlert}
                     />
                 }
-                <h3 className={styles.title}>Contacto</h3>
+
                 <form ref={form} onSubmit={sendEmail} className={styles.formContact} >
+                    <h3 className={styles.title}>Puedes contactarme enviando un mensaje</h3>
                     <input
                         type="text"
                         name="name"
@@ -131,25 +147,32 @@ const Contact = () => {
                         className={`${styles.formContact__input} ${formData.errors.name ? styles.formInputError : ""}`}
                         value={formData.name}
                         onChange={handleChange} />
+                    {formData.errors.name && <p className={styles.errorMessage}>Ingrese su nombre.</p>}
+
                     <input
                         name="email"
                         placeholder='Email'
                         className={`${styles.formContact__input} ${formData.errors.email ? styles.formInputError : ""}`}
                         value={formData.email}
                         onChange={handleChange} />
+                    {formData.errors.email && <p className={styles.errorMessage}>Ingrese un email correcto.</p>}
+
                     <textarea
                         name="message"
                         placeholder='Mensaje'
                         className={`${styles.formContact__textarea} ${formData.errors.message ? styles.formInputError : ""}`}
                         value={formData.message}
                         onChange={handleChange} />
+                    {formData.errors.name && <p className={styles.errorMessage}>Ingrese su mensaje</p>}
+
                     <input
                         type="submit"
-                        value="Enviar mensaje"
+
+                        value={`${isSending ? 'Enviando...' : 'Enviar mensaje'}`}
                         className={styles.formContact__submit} />
                 </form>
             </div>
-            <Footer/>
+            {/* <Footer /> */}
         </>
     )
 }
