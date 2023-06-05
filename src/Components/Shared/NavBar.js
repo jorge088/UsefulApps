@@ -31,10 +31,10 @@ const NavBar = () => {
 
           <ul className={styles.nav__categorys}>
             <li><Link to={'/'} className={styles.nav__categorys__link}>Home</Link></li>
-            <li><Link to={'/exchange'} className={styles.nav__categorys__link}>Exchange</Link></li>
-            <li><Link to={'/weather'} className={styles.nav__categorys__link}>Clima</Link></li>
+            <li><Link to={'/conversor'} className={styles.nav__categorys__link}>Conversor</Link></li>
+            <li><Link to={'/clima'} className={styles.nav__categorys__link}>Clima</Link></li>
             <li><Link to={'/pomodoro'} className={styles.nav__categorys__link}>Pomodoro</Link></li>
-            <li><Link to={'/contact'} className={styles.nav__categorys__link}>Contacto</Link></li>
+            <li><Link to={'/contacto'} className={styles.nav__categorys__link}>Contacto</Link></li>
           </ul>
 
           <button onClick={handlerShowMenuBtn} className={styles.nav__btnShowMenu}>
@@ -44,10 +44,10 @@ const NavBar = () => {
           {showMenu &&
             <ul className={styles.nav__categorysResponsive}>
               <li><Link onClick={handlerClickLink} to={'/'} className={styles.nav__categorys__linkResponsive}>Home</Link></li>
-              <li><Link onClick={handlerClickLink} to={'/exchange'} className={styles.nav__categorys__linkResponsive}>Exchange</Link></li>
-              <li><Link onClick={handlerClickLink} to={'/weather'} className={styles.nav__categorys__linkResponsive}>Clima</Link></li>
+              <li><Link onClick={handlerClickLink} to={'/conversor'} className={styles.nav__categorys__linkResponsive}>Conversor</Link></li>
+              <li><Link onClick={handlerClickLink} to={'/clima'} className={styles.nav__categorys__linkResponsive}>Clima</Link></li>
               <li><Link onClick={handlerClickLink} to={'/pomodoro'} className={styles.nav__categorys__linkResponsive}>Pomodoro</Link></li>
-              <li><Link onClick={handlerClickLink} to={'/contact'} className={styles.nav__categorys__linkResponsive}>Contacto</Link></li>
+              <li><Link onClick={handlerClickLink} to={'/contacto'} className={styles.nav__categorys__linkResponsive}>Contacto</Link></li>
             </ul>
           }
           <button onClick={handlerChangeMode} className={styles.btnChangeStyleMode}>

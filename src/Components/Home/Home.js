@@ -10,14 +10,14 @@ const Home = () => {
   const apps = [
 
     {
-      name: 'Exchange',
-      route: 'exchange',
+      name: 'Conversor',
+      route: 'conversor',
       description: 'Convertí USD a pesos AR',
       img: exchangeImg
     },
     {
-      name: 'Weather',
-      route: 'weather',
+      name: 'Clima',
+      route: 'clima',
       description: 'Buscá el clima en tu ciudad',
       img: weatherImg
     },

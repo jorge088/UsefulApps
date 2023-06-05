@@ -28,15 +28,15 @@ function App() {
                 element={<Home />}
               />
               <Route
-                path='/weather'
+                path='/clima'
                 element={<WeatherApp />}
               />
               <Route
-                path='/exchange'
+                path='/conversor'
                 element={<ExchangeApp />}
               />
               <Route
-                path='/contact'
+                path='/contacto'
                 element={<Contact />}
               />
               <Route
