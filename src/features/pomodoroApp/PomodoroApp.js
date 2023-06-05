@@ -1,4 +1,5 @@
 import styles from './PomodoroApp.module.css';
+import { Helmet } from 'react-helmet-async';
 import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
@@ -15,6 +16,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGear } from '@fortawesome/free-solid-svg-icons';
 
 import sound from "./../../Assets/PomodoroAlert.mp3";
+import pomodoroIcon from './../../Assets/pomodoroIcon.ico';
+import pomodoroIconBreak from './../../Assets/pomodoroIcon2.ico';
+
 
 import {
     startPomodoroCounter,
@@ -37,7 +41,6 @@ const PomodoroApp = () => {
     });
     const [sessionDuration, setSessionDuration] = useState(0);
     let alertSound = new Audio(sound);
-
     const getExecutionStatus = () => {
         if (status === 'stopped') return 'Inicia tu reloj'
         if (mode === 'work') return 'A concentrarse!'
@@ -46,8 +49,8 @@ const PomodoroApp = () => {
     }
 
     const updateSessionTimeDuration = (timeFinished) => {
-        let minute = Math.ceil(timeFinished / 60);
-        setSessionDuration(minute);
+        // console.log(`${parseInt((pomodoroTime*60-timeFinished)/60)}:${(pomodoroTime*60-timeFinished)%60}`);
+        setSessionDuration(timeFinished);
     }
 
     const handlerPomodoroStart = () => {
@@ -56,7 +59,8 @@ const PomodoroApp = () => {
 
     const handlerChangePomodoroExecution = () => {
         if (mode === 'work') {
-            dispatch(updateSessionDuration({ time: sessionDuration }));
+            let minutesFinished = Math.ceil(sessionDuration / 60)
+            dispatch(updateSessionDuration({ time: minutesFinished }));
             dispatch(saveSession());
         }
         dispatch(changePomodoroCounterExecution())
@@ -104,9 +108,32 @@ const PomodoroApp = () => {
         });
     }
 
+    const getTitle = () => {
+        if (status === 'stopped') return 'Pomodoro | Useful Apps';
+        if (status === 'running' && running) {
+            if (mode === 'work') return 'En ejecución - Pomodoro';
+            if (mode === 'break') return 'Descanso corto - Pomodoro';
+            if (mode === 'long') return 'Descanso largo - Pomodoro';
+        }else{
+            return 'Pomodoro | Useful Apps';
+        }
+    }
+
+    const getIcon = () => {
+        if (status === 'stopped') return pomodoroIcon;
+        if (!running) return pomodoroIcon;
+        if (mode === 'work') return pomodoroIcon;
+        if (mode === 'break') return pomodoroIconBreak;
+        if (mode === 'long') return pomodoroIconBreak;
+    }
+
     return (
         <>
             <div className={styles.container}>
+                <Helmet>
+                    <title>{getTitle()}</title>
+                    <link rel="icon" type="image/png" href={getIcon()} sizes="48x48" ></link>
+                </Helmet>
                 <div className={styles.appContainer}>
                     <button
                         className={styles.settingsBtn}

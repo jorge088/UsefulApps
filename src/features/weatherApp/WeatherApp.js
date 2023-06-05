@@ -1,3 +1,4 @@
+import { Helmet } from 'react-helmet-async';
 import { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { selectAllDataWeather, getWeatherStatus, fetchWeather } from '../../features/weatherApp/weatherSlice';
@@ -8,6 +9,7 @@ import MainData from './MainData';
 import Search from './Search';
 import Loading from '../../Components/Shared/Loading';
 
+import weatherAppIcon from "./../../Assets/weatherAppIcon.ico"
 
 const WeatherApp = () => {
   const dispatch = useDispatch();
@@ -41,6 +43,11 @@ const WeatherApp = () => {
 
   return (
     <>
+      <Helmet>
+        <title>Clima | Useful Apps</title>
+        <link rel="icon" type="image/png" href={weatherAppIcon} sizes="48x48" ></link>
+
+      </Helmet>
       {content}
     </>
   )

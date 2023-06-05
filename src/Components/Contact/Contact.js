@@ -1,8 +1,10 @@
+import { Helmet } from 'react-helmet-async';
 import { useRef, useState } from 'react';
 import styles from './Contact.module.css';
 import emailjs from '@emailjs/browser';
 import SideAlert from '../Shared/SideAlert';
 // import Footer from '../Shared/Footer';
+import usefulAppsIcon from "./../../Assets/usefulAppsIcon.ico";
 
 const Contact = () => {
     const [formData, setFormData] = useState({
@@ -129,6 +131,10 @@ const Contact = () => {
 
     return (
         <>
+            <Helmet>
+                <title>Contacto | Useful Apps</title>
+                <link rel="icon" type="image/png" href={usefulAppsIcon} sizes="48x48" ></link>
+            </Helmet>
             <div className={styles.container}>
                 {sideAlert.show &&
                     <SideAlert

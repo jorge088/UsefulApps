@@ -1,4 +1,5 @@
 import styles from './App.module.css';
+import { HelmetProvider } from 'react-helmet-async';
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { useSelector } from 'react-redux';
 import { getDarkMode } from './features/darkMode/darkModeSlice';
@@ -16,35 +17,38 @@ function App() {
 
   return (
     <>
-      <BrowserRouter>
+      <HelmetProvider>
+        <BrowserRouter>
 
-        <div className={appStyles}>
-          <NavBar />
-          <Routes>
-            <Route
-              path='/'
-              element={<Home />}
-            />
-            <Route
-              path='/weather'
-              element={<WeatherApp />}
-            />
-            <Route
-              path='/exchange'
-              element={<ExchangeApp />}
-            />
-            <Route
-              path='/contact'
-              element={<Contact />}
-            />
-            <Route
-              path='/pomodoro'
-              element={<PomodoroApp />}
-            />
-          </Routes>
-        </div>
+          <div className={appStyles}>
+            <NavBar />
+            <Routes>
+              <Route
+                path='/'
+                element={<Home />}
+              />
+              <Route
+                path='/weather'
+                element={<WeatherApp />}
+              />
+              <Route
+                path='/exchange'
+                element={<ExchangeApp />}
+              />
+              <Route
+                path='/contact'
+                element={<Contact />}
+              />
+              <Route
+                path='/pomodoro'
+                element={<PomodoroApp />}
+              />
+            </Routes>
+          </div>
 
-      </BrowserRouter>
+        </BrowserRouter>
+      </HelmetProvider>
+
     </>
   );
 }

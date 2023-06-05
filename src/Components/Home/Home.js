@@ -1,8 +1,10 @@
+import { Helmet } from 'react-helmet-async';
 import styles from './Home.module.css';
 import HomeCard from './HomeCard';
 import weatherImg from './../../Assets/weatherLogo.png';
 import exchangeImg from './../../Assets/exchangeLogo.png';
 import pomodoroImg from './../../Assets/pomodoroLogo.png';
+import usefulAppsIcon from "./../../Assets/usefulAppsIcon.ico"
 
 const Home = () => {
   const apps = [
@@ -28,6 +30,11 @@ const Home = () => {
   ]
   return (
     <>
+      <Helmet>
+        <title>Useful Apps</title>
+        <link rel="icon" type="image/png" href={usefulAppsIcon} sizes="48x48" ></link>
+
+      </Helmet>
       <div className={styles.homeContainer}>
         {/* <main>
           <h1>Bienvenido</h1>

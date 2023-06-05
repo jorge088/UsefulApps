@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet-async";
 import { useSelector, useDispatch } from "react-redux";
 import { getCurrenciesData, getStatus, fetchCurrencyQuotation } from "./exchangeSlice";
 
@@ -6,6 +7,7 @@ import ExchangeAppCalculator from './Calculator'
 import InformationContainer from './InformationContainer'
 import Loading from "../../Components/Shared/Loading";
 import { useEffect } from "react";
+import exchangeIcon from "./../../Assets/exchangeAppIcon.ico"
 
 
 const ExchangeApp = () => {
@@ -34,6 +36,11 @@ const ExchangeApp = () => {
 
   return (
     <>
+      <Helmet>
+        <title>Conversor | Useful Apps</title>
+        <link rel="icon" type="image/png" href={exchangeIcon} sizes="48x48" ></link>
+
+      </Helmet>
       {content}
     </>
   )
