@@ -3,19 +3,14 @@ import { getMode } from './pomodoroSlice';
 
 import styles from './Counter.module.css';
 import { CountdownCircleTimer } from 'react-countdown-circle-timer';
-import sound from "./../../Assets/PomodoroAlert.mp3"
 
-const Counter = ({ time, animation = true, _callbackupdateSessionTimeDuration, _callbackPomodoroTimerFinished }) => {
+const Counter = ({ time, animation = true, _callbackupdateSessionTimeDuration, _callbackPomodoroTimerFinished, sound }) => {
     const mode = useSelector(getMode);
-    let alertSound = new Audio(sound);
-
     let circleColor = '#db4242';
     if (mode === 'work') circleColor = '#db4242';
     if (mode === 'break') circleColor = '#0ebe0e';
     if (mode === 'long') circleColor = '#0ebe0e';
-
-
-
+    
     const renderTime = ({ remainingTime }) => {
         // console.log(remainingTime);
         let minutes = Math.floor(remainingTime / 60);
@@ -28,14 +23,16 @@ const Counter = ({ time, animation = true, _callbackupdateSessionTimeDuration, _
     };
 
     const handlerTimeCounterComplete = () => {
-        alertSound.play();
+        sound.muted = false;
+        sound.play();
+        _callbackupdateSessionTimeDuration(time*60);
         _callbackPomodoroTimerFinished();
     }
 
     const handleSessionTimeFinished = (timeRemaining) => {
         let finished = (time * 60) - timeRemaining;
         // console.log('Tiempo completado[segundos]', finished);
-        _callbackupdateSessionTimeDuration(finished)
+        _callbackupdateSessionTimeDuration(finished);
     }
 
     return (

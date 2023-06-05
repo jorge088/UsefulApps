@@ -163,7 +163,7 @@ const Contact = () => {
                         className={`${styles.formContact__textarea} ${formData.errors.message ? styles.formInputError : ""}`}
                         value={formData.message}
                         onChange={handleChange} />
-                    {formData.errors.name && <p className={styles.errorMessage}>Ingrese su mensaje</p>}
+                    {formData.errors.message && <p className={styles.errorMessage}>Ingrese su mensaje</p>}
 
                     <input
                         type="submit"

@@ -12,7 +12,9 @@ import History from './History';
 import Music from './Music';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faGear } from '@fortawesome/free-solid-svg-icons'
+import { faGear } from '@fortawesome/free-solid-svg-icons';
+
+import sound from "./../../Assets/PomodoroAlert.mp3";
 
 import {
     startPomodoroCounter,
@@ -22,7 +24,7 @@ import {
     updateSessionDuration,
     getPomodoroState,
     saveSession
-} from "./pomodoroSlice"
+} from "./pomodoroSlice";
 
 const PomodoroApp = () => {
     const dispatch = useDispatch();
@@ -34,6 +36,7 @@ const PomodoroApp = () => {
         text: ''
     });
     const [sessionDuration, setSessionDuration] = useState(0);
+    let alertSound = new Audio(sound);
 
     const getExecutionStatus = () => {
         if (status === 'stopped') return 'Inicia tu reloj'
@@ -43,8 +46,8 @@ const PomodoroApp = () => {
     }
 
     const updateSessionTimeDuration = (timeFinished) => {
-        let minute = parseInt(timeFinished / 60)
-        setSessionDuration(minute)
+        let minute = Math.ceil(timeFinished / 60);
+        setSessionDuration(minute);
     }
 
     const handlerPomodoroStart = () => {
@@ -54,17 +57,17 @@ const PomodoroApp = () => {
     const handlerChangePomodoroExecution = () => {
         if (mode === 'work') {
             dispatch(updateSessionDuration({ time: sessionDuration }));
-            dispatch(saveSession())
+            dispatch(saveSession());
         }
         dispatch(changePomodoroCounterExecution())
     }
 
     const handlerStartAnimation = () => {
-        dispatch(startAnimation())
+        dispatch(startAnimation());
     }
 
     const handlerStopAnimation = () => {
-        dispatch(stopAnimation())
+        dispatch(stopAnimation());
     }
 
     const handleShowSettings = () => {
@@ -73,7 +76,10 @@ const PomodoroApp = () => {
     }
 
     useEffect(() => {
-        dispatch(stopAnimation())
+        alertSound.muted = true;
+        alertSound.play();
+        dispatch(stopAnimation());
+        // eslint-disable-next-line
     }, [dispatch])
 
     const handleEsc = (e) => {
@@ -117,6 +123,7 @@ const PomodoroApp = () => {
                     <Counter
                         time={pomodoroTime}
                         animation={running}
+                        sound={alertSound}
                         _callbackupdateSessionTimeDuration={updateSessionTimeDuration}
                         _callbackPomodoroTimerFinished={handlerChangePomodoroExecution}
                     />
