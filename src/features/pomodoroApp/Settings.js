@@ -1,58 +1,57 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { getAllSettings, updatePomodoroTime } from './pomodoroSlice';
+import { getAllSettings, updateSettings, getMode } from './pomodoroSlice';
 import { useState } from 'react';
 import styles from './Settings.module.css';
 import Button from '../../Components/Shared/Button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSquareXmark } from '@fortawesome/free-solid-svg-icons'
+import { faSquareXmark } from '@fortawesome/free-solid-svg-icons';
 
-const Settings = ({ _callbackCloseSettings, _callbackShowSideAlert }) => {
+const Settings = ({ _callbackCloseSettings, _callbackShowSideAlert, _callbackChangePomodoroTime }) => {
     const dispatch = useDispatch();
     const [showDisappearAnimation, setShowDisappearAnimation] = useState(false);
     const settings = useSelector(getAllSettings);
-    const [pomodoroSetting, setPomodoroSettings] = useState({
-        workTime: settings.work,
-        breakTime: settings.break,
-        longTime: settings.long
+    const pomodoroMode = useSelector(getMode);
+    const [pomodoroTimeSetting, setPomodoroTimeSetting] = useState({
+        work: settings.work,
+        break: settings.break,
+        long: settings.long
     });
     const [invalidInput, setInvalidInput] = useState({
         workTime: false,
         breakTime: false,
         longTime: false
-    })
+    });
     const re = /^[0-9\b]+$/;
-    const canSave = pomodoroSetting.workTime !== '' && pomodoroSetting.breakTime !== '' && pomodoroSetting.longTime !== '';
+    const canSave = pomodoroTimeSetting.work !== '' && pomodoroTimeSetting.break !== '' && pomodoroTimeSetting.long !== '';
 
     const handleChangeInputTime = (e) => {
         const { name, value } = e.target;
-
         if (value === '') {
-            setPomodoroSettings({
-                ...pomodoroSetting,
+            setPomodoroTimeSetting({
+                ...pomodoroTimeSetting,
                 [name]: ''
-            })
+            });
             setInvalidInput({
                 ...invalidInput,
                 [name]: true
-            })
-            return
+            });
+            return;
         }
-
         if (re.test(value)) {
-            setPomodoroSettings({
-                ...pomodoroSetting,
+            setPomodoroTimeSetting({
+                ...pomodoroTimeSetting,
                 [name]: value
-            })
+            });
             setInvalidInput({
                 ...invalidInput,
                 [name]: false
-            })
+            });
         }
-    }
+    };
 
-    const handleSubmitPomodoroSettings = (e) => {
+    const handleSubmitPomodoroTimeSettings = (e) => {
         e.preventDefault();
-        // console.log(`WORK ${pomodoroSetting.workTime}, BREAK ${pomodoroSetting.breakTime}, LONG ${pomodoroSetting.breakTime}`);
+        // console.log(`WORK ${pomodoroTimeSetting.work}, BREAK ${pomodoroTimeSetting.break}, LONG ${pomodoroTimeSetting.breakTime}`);
         if (!canSave) {
             _callbackShowSideAlert({
                 type: 'error',
@@ -60,20 +59,23 @@ const Settings = ({ _callbackCloseSettings, _callbackShowSideAlert }) => {
             })
             return;
         }
+        let updateCounterTime = settings[pomodoroMode] !== Number(pomodoroTimeSetting[pomodoroMode]);
         dispatch(
-            updatePomodoroTime(
+            updateSettings(
                 {
-                    workTime: Number(pomodoroSetting.workTime),
-                    breakTime: Number(pomodoroSetting.breakTime),
-                    longBreakTime: Number(pomodoroSetting.longTime)
+                    workTime: Number(pomodoroTimeSetting.work),
+                    breakTime: Number(pomodoroTimeSetting.break),
+                    longBreakTime: Number(pomodoroTimeSetting.long)
                 }
             ));
+        if (updateCounterTime) {
+            _callbackChangePomodoroTime(Number(pomodoroTimeSetting[pomodoroMode]) * 60);
+        }
         _callbackShowSideAlert({
             type: 'succed',
             text: "¡Configuraciones guardadas!"
-        })
-
-    }
+        });
+    };
 
     const handleCloseSettings = (e) => {
         if (
@@ -81,13 +83,12 @@ const Settings = ({ _callbackCloseSettings, _callbackShowSideAlert }) => {
             || e.target.parentElement.id === 'icon'
             || e.target.parentElement.id === 'btnCloseSettings'
             || e.target.id === 'btnCloseSettings') {
-            setShowDisappearAnimation(true)
+            setShowDisappearAnimation(true);
             setTimeout(() => {
                 _callbackCloseSettings();
-
-            }, 250)
+            }, 250);
         }
-    }
+    };
 
     return (
         <div
@@ -113,8 +114,8 @@ const Settings = ({ _callbackCloseSettings, _callbackShowSideAlert }) => {
                         <label>Duración del Pomodoro:</label>
                         <span className={styles.inputBlock}>
                             <input
-                                value={pomodoroSetting.workTime}
-                                name='workTime'
+                                value={pomodoroTimeSetting.work}
+                                name='work'
                                 className={invalidInput.workTime ? styles.invalidInput : ''}
                                 onChange={handleChangeInputTime}
                             />
@@ -125,8 +126,8 @@ const Settings = ({ _callbackCloseSettings, _callbackShowSideAlert }) => {
                         <label>Duración del descanso:</label>
                         <span className={styles.inputBlock}>
                             <input
-                                name='breakTime'
-                                value={pomodoroSetting.breakTime}
+                                name='break'
+                                value={pomodoroTimeSetting.break}
                                 className={invalidInput.breakTime ? styles.invalidInput : ''}
                                 onChange={handleChangeInputTime}
                             />
@@ -137,8 +138,8 @@ const Settings = ({ _callbackCloseSettings, _callbackShowSideAlert }) => {
                         <label>Duración del descanso largo:</label>
                         <span className={styles.inputBlock}>
                             <input
-                                name='longTime'
-                                value={pomodoroSetting.longTime}
+                                name='long'
+                                value={pomodoroTimeSetting.long}
                                 className={invalidInput.longTime ? styles.invalidInput : ''}
                                 onChange={handleChangeInputTime}
                             />
@@ -149,7 +150,7 @@ const Settings = ({ _callbackCloseSettings, _callbackShowSideAlert }) => {
                         <Button
                             type={'submit'}
                             content={'Guardar'}
-                            _callback={handleSubmitPomodoroSettings}
+                            _callback={handleSubmitPomodoroTimeSettings}
                             disabled={!canSave}
                         />
                     </div>

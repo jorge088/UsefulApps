@@ -7,7 +7,7 @@ const initialState = {
     pomodoroTime: 1,
     sessionDuration: 0,
     settings: {
-        work: 25,
+        work: 1,
         break: 5,
         long: 15
     },
@@ -61,24 +61,11 @@ const pomodoroSlice = createSlice({
             }
 
         },
-        updatePomodoroTime(state, action) {
+        updateSettings(state, action) {
             state.settings = {
                 work: action.payload.workTime,
                 break: action.payload.breakTime,
                 long: action.payload.longBreakTime
-            }
-            switch (state.mode) {
-                case 'work':
-                    state.pomodoroTime = state.settings['work'];
-                    break;
-                case 'break':
-                    state.pomodoroTime = state.settings['break'];
-                    break;
-                case 'long':
-                    state.pomodoroTime = state.settings['long'];
-                    break;
-                default:
-                    break;
             }
         },
         startAnimation(state) {
@@ -145,7 +132,7 @@ export const {
     changePomodoroCounterExecution,
     startAnimation,
     stopAnimation,
-    updatePomodoroTime,
+    updateSettings,
     updateSessionDuration,
     updatePomodoroDetail,
     saveSession,

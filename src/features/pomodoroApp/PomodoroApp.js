@@ -87,9 +87,6 @@ const PomodoroApp = () => {
     };
 
     const handleShowSettings = () => {
-        if (showSettings) {
-            setCounterTime(pomodoroTime * 60);
-        }
         setShowSettings(!showSettings);
     };
 
@@ -192,7 +189,7 @@ const PomodoroApp = () => {
 
                 {
                     showSettings ?
-                        <Settings _callbackCloseSettings={handleShowSettings} _callbackShowSideAlert={showSideAlert} />
+                        <Settings _callbackCloseSettings={handleShowSettings} _callbackShowSideAlert={showSideAlert} _callbackChangePomodoroTime={setCounterTime} />
                         : <></>
                 }
                 {sideAlert.show &&
