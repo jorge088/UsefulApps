@@ -1,34 +1,26 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { getAllSettings, updatePomodoroTime } from './pomodoroSlice';
 import { useState } from 'react';
-
 import styles from './Settings.module.css';
 import Button from '../../Components/Shared/Button';
-
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSquareXmark } from '@fortawesome/free-solid-svg-icons'
 
 const Settings = ({ _callbackCloseSettings, _callbackShowSideAlert }) => {
     const dispatch = useDispatch();
     const [showDisappearAnimation, setShowDisappearAnimation] = useState(false);
-
-
     const settings = useSelector(getAllSettings);
-
     const [pomodoroSetting, setPomodoroSettings] = useState({
         workTime: settings.work,
         breakTime: settings.break,
         longTime: settings.long
     });
-
     const [invalidInput, setInvalidInput] = useState({
         workTime: false,
         breakTime: false,
         longTime: false
     })
-
     const re = /^[0-9\b]+$/;
-
     const canSave = pomodoroSetting.workTime !== '' && pomodoroSetting.breakTime !== '' && pomodoroSetting.longTime !== '';
 
     const handleChangeInputTime = (e) => {

@@ -4,7 +4,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
 
     running: false,
-    pomodoroTime: 25,
+    pomodoroTime: 1,
     sessionDuration: 0,
     settings: {
         work: 25,
@@ -33,11 +33,10 @@ const pomodoroSlice = createSlice({
         },
         changePomodoroCounterExecution(state) {
             state.running = false;
-            state.pomodoroTime = 0;
             updateSessionDuration({ time: 0 })
             if (state.mode === 'work') {
                 state.status = 'stopped';
-                state.sessionsCount += 1;
+                state.sessionsCount = state.sessionsCount + 1;
                 if (state.sessionsCount % state.longBreakInterval === 0) {
                     state.pomodoroTime = state.settings['long'];
                     state.mode = 'long'
