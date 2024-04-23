@@ -4,10 +4,10 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
 
     running: false,
-    pomodoroTime: 1,
+    pomodoroTime: 25,
     sessionDuration: 0,
     settings: {
-        work: 1,
+        work: 25,
         break: 5,
         long: 15
     },
