@@ -6,7 +6,7 @@ import Button from '../../Components/Shared/Button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSquareXmark } from '@fortawesome/free-solid-svg-icons';
 
-const Settings = ({ _callbackCloseSettings, _callbackShowSideAlert, _callbackChangePomodoroTime }) => {
+const Settings = ({ _callbackCloseSettings, _callbackHandleSideAlert, _callbackChangePomodoroTime }) => {
     const dispatch = useDispatch();
     const [showDisappearAnimation, setShowDisappearAnimation] = useState(false);
     const settings = useSelector(getAllSettings);
@@ -53,10 +53,11 @@ const Settings = ({ _callbackCloseSettings, _callbackShowSideAlert, _callbackCha
         e.preventDefault();
         // console.log(`WORK ${pomodoroTimeSetting.work}, BREAK ${pomodoroTimeSetting.break}, LONG ${pomodoroTimeSetting.breakTime}`);
         if (!canSave) {
-            _callbackShowSideAlert({
+            _callbackHandleSideAlert({
+                show: true,
                 type: 'error',
                 text: "¡Complete todos los datos!"
-            })
+            });
             return;
         }
         let updateCounterTime = settings[pomodoroMode] !== Number(pomodoroTimeSetting[pomodoroMode]);
@@ -71,7 +72,8 @@ const Settings = ({ _callbackCloseSettings, _callbackShowSideAlert, _callbackCha
         if (updateCounterTime) {
             _callbackChangePomodoroTime(Number(pomodoroTimeSetting[pomodoroMode]) * 60);
         }
-        _callbackShowSideAlert({
+        _callbackHandleSideAlert({
+            show: true,
             type: 'succed',
             text: "¡Configuraciones guardadas!"
         });

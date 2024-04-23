@@ -5,7 +5,7 @@ import { updatePomodoroDetail } from './pomodoroSlice';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faRightToBracket } from '@fortawesome/free-solid-svg-icons'
 
-const DetailForm = ({ _callbackShowSideAlert }) => {
+const DetailForm = ({ _callbackHandleSideAlert }) => {
     const [detail, setDetail] = useState({
         category: '',
         description: ''
@@ -27,7 +27,8 @@ const DetailForm = ({ _callbackShowSideAlert }) => {
             category: detail.category,
             description: detail.description
         }));
-        _callbackShowSideAlert({
+        _callbackHandleSideAlert({
+            show: true,
             type: 'succed',
             text: '¡Datos guardados!'
         })

@@ -1,10 +1,7 @@
-
 import { useEffect } from "react";
 import styles from "./SideAlert.module.css";
 
 const SideAlert = ({ text, type, _callback }) => {
-
-
     let sideAlertType;
     switch (type) {
         case "succed":
@@ -16,21 +13,22 @@ const SideAlert = ({ text, type, _callback }) => {
         default:
             sideAlertType = '';
             break;
-    }
+    };
 
-    let sideStyles = `${styles.sideAlertContainer} ${sideAlertType} `
+    let sideStyles = `${styles.sideAlertContainer} ${sideAlertType} `;
 
     useEffect(() => {
         const disappearSideAlert = setTimeout(() => {
-            _callback();
-        }, 3000);
+            _callback({ show: false });
+        }, 1350);
 
         return () => clearTimeout(disappearSideAlert); //unmount the component and clear the timeout
-    }, [_callback]);
+        // eslint-disable-next-line
+    }, []);
 
     const handleSideAlertClick = () => {
-        _callback()
-    }
+        _callback({ show: false })
+    };
     let content =
         <div className={sideStyles} onClick={handleSideAlertClick}>
             <p>{text}</p>

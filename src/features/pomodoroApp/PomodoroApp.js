@@ -96,13 +96,13 @@ const PomodoroApp = () => {
 
     window.addEventListener('keydown', handleEsc)
 
-    const showSideAlert = ({ type, text }) => {
+    const handleSideAlert = ({show, type = '', text = ''}) => {
         setSideAlert({
-            show: true,
+            show,
             type,
             text
         });
-    };
+    }
 
     const handleCloseSideAlert = () => {
         setSideAlert({
@@ -183,13 +183,13 @@ const PomodoroApp = () => {
                     </div>
 
                 </div>
-                <DetailForm _callbackShowSideAlert={showSideAlert} />
+                <DetailForm _callbackHandleSideAlert={handleSideAlert} />
                 <Music />
                 <History />
 
                 {
                     showSettings ?
-                        <Settings _callbackCloseSettings={handleShowSettings} _callbackShowSideAlert={showSideAlert} _callbackChangePomodoroTime={setCounterTime} />
+                        <Settings _callbackCloseSettings={handleShowSettings} _callbackHandleSideAlert={handleSideAlert} _callbackChangePomodoroTime={setCounterTime} />
                         : <></>
                 }
                 {sideAlert.show &&
