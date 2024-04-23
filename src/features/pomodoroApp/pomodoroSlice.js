@@ -82,6 +82,7 @@ const pomodoroSlice = createSlice({
             if (category === '') category = '-';
             if (description === '') description = '-';
             state.detail = { category, description }
+            if (category !== '' && description !== '') localStorage.setItem('PomodoroSessionDetail', JSON.stringify(state.detail));
         },
         saveSession(state) {
             let date = new Date();

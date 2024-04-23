@@ -1,26 +1,36 @@
 import styles from './PomodoroApp.module.css';
 import { useState } from 'react';
+import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { updatePomodoroDetail } from './pomodoroSlice';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faRightToBracket } from '@fortawesome/free-solid-svg-icons'
+import { faRightToBracket } from '@fortawesome/free-solid-svg-icons';
 
 const DetailForm = ({ _callbackHandleSideAlert }) => {
     const [detail, setDetail] = useState({
         category: '',
         description: ''
-    })
+    });
     const dispatch = useDispatch();
+
+    useEffect(() => {
+        const storageDetail = JSON.parse(localStorage.getItem('PomodoroSessionDetail'));
+        if( storageDetail ){
+            setDetail({
+                category: storageDetail.category,
+                description: storageDetail.description
+            });
+        }
+    }, [])
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
-
         setDetail({
             ...detail,
             [name]: value
         })
+    };
 
-    }
     const handleFormDetailSubmit = (e) => {
         e.preventDefault();
         dispatch(updatePomodoroDetail({
@@ -31,8 +41,8 @@ const DetailForm = ({ _callbackHandleSideAlert }) => {
             show: true,
             type: 'succed',
             text: '¡Datos guardados!'
-        })
-    }
+        });
+    };
 
     return (
         <div>
