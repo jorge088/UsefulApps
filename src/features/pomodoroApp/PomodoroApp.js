@@ -25,7 +25,7 @@ import {
 
 const PomodoroApp = () => {
     const dispatch = useDispatch();
-    const { pomodoroTime, running, status, sessionsCount, mode } = useSelector(getPomodoroState);
+    const { pomodoroTime, running, status, sessionsCount, mode, settings } = useSelector(getPomodoroState);
     const [counterTime, setCounterTime] = useState(pomodoroTime * 60);
     const [showSettings, setShowSettings] = useState(false);
     const [sideAlert, setSideAlert] = useState({
@@ -45,7 +45,7 @@ const PomodoroApp = () => {
     useEffect(() => {
         let interval;
         if (status === 'stopped') {
-            setCounterTime(pomodoroTime * 60);
+            setCounterTime(settings[mode] * 60);
         }
         if (running && counterTime > 0) {
             interval = setInterval(() => {
